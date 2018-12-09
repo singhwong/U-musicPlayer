@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="about_str" xml:space="preserve">
+    <value>About </value>
+  </data>
+  <data name="addFolder_button.Label" xml:space="preserve">
+    <value>Add folders </value>
+  </data>
+  <data name="await_str" xml:space="preserve">
+    <value>Please wait for loading to complete!!!</value>
+  </data>
+  <data name="backGround_button.Label" xml:space="preserve">
+    <value>Background picture </value>
+  </data>
+  <data name="back_button.Label" xml:space="preserve">
+    <value>Last one </value>
+  </data>
+  <data name="cancle_menu.Text" xml:space="preserve">
+    <value>Cancel </value>
+  </data>
+  <data name="clear_button.Label" xml:space="preserve">
+    <value>Empty </value>
+  </data>
+  <data name="content_str" xml:space="preserve">
+    <value>Files do not exist or have been moved and cannot be played </value>
+  </data>
+  <data name="custom_menu.Text" xml:space="preserve">
+    <value>Custom </value>
+  </data>
+  <data name="dark_menu.Text" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="defaultTheme_menu.Text" xml:space="preserve">
+    <value>Default </value>
+  </data>
+  <data name="default_menu.Text" xml:space="preserve">
+    <value>Default </value>
+  </data>
+  <data name="direct_menu.Text" xml:space="preserve">
+    <value>Permanently delete </value>
+  </data>
+  <data name="feedBack_menu.Text" xml:space="preserve">
+    <value>FeedBack</value>
+  </data>
+  <data name="forward_button.Label" xml:space="preserve">
+    <value>Next one </value>
+  </data>
+  <data name="fullScreen_button.Label" xml:space="preserve">
+    <value>Full screen </value>
+  </data>
+  <data name="help_button.Label" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="help_str" xml:space="preserve">
+    <value>Free software, no advertising, ordinary users can download and install, strictly prohibit commercial use. 
+
+Use help: 
+1. Users need to agree or open access to local music library        
+    
+2. The music automatically acquired after startup is the music in the local music library           
+ 
+3. Support opening selected files, opening music lists in local music libraries and music lists in selected folders    
+        
+4. Music lists can be dragged and sorted 
+          
+5. Double-click the song or click it with the right-click option to play
+       
+6. If the background is set to a custom image, 
+it is recommended that the theme be set to Dark to show better results.
+            
+7. Some lyrics of songs can be queried. </value>
+  </data>
+  <data name="light_menu.Text" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="listShow_button.Label" xml:space="preserve">
+    <value>Music List </value>
+  </data>
+  <data name="lyric_textblock.Text" xml:space="preserve">
+    <value>No lyrics </value>
+  </data>
+  <data name="mail_button.Label" xml:space="preserve">
+    <value>Feedback mail </value>
+  </data>
+  <data name="model_button.Label" xml:space="preserve">
+    <value>List loop </value>
+  </data>
+  <data name="musicFolder_button.Label" xml:space="preserve">
+    <value>Local music </value>
+  </data>
+  <data name="noneMusic_str" xml:space="preserve">
+    <value>There are no music files in the local music library. 
+You can add music to the local music library and refresh it, or add music in other folders. </value>
+  </data>
+  <data name="openFile_button.Label" xml:space="preserve">
+    <value>Open file </value>
+  </data>
+  <data name="order_menu.Text" xml:space="preserve">
+    <value>List loop </value>
+  </data>
+  <data name="order_str" xml:space="preserve">
+    <value>List loop </value>
+  </data>
+  <data name="pause_str" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="play_button.Label" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="play_menu.Text" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="play_str" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="random_menu.Text" xml:space="preserve">
+    <value>Random play </value>
+  </data>
+  <data name="random_str" xml:space="preserve">
+    <value>Random play </value>
+  </data>
+  <data name="recycleBin_menu.Text" xml:space="preserve">
+    <value>Put in Recycle Bin </value>
+  </data>
+  <data name="removeFromList_menu.Text" xml:space="preserve">
+    <value>Delete from list </value>
+  </data>
+  <data name="removeFromLocal_menu.Text" xml:space="preserve">
+    <value>Delete locally </value>
+  </data>
+  <data name="settings_button.Label" xml:space="preserve">
+    <value>Other </value>
+  </data>
+  <data name="singerName_textbock.Text" xml:space="preserve">
+    <value>Singer</value>
+  </data>
+  <data name="single_menu.Text" xml:space="preserve">
+    <value>Single cycle</value>
+  </data>
+  <data name="single_str" xml:space="preserve">
+    <value>Single cycle</value>
+  </data>
+  <data name="songName_textBlock.Text" xml:space="preserve">
+    <value>Song name </value>
+  </data>
+  <data name="songNumStr_textBlock.Text" xml:space="preserve">
+    <value>Number: </value>
+  </data>
+  <data name="stop_button.Label" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="stop_menu.Text" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="theme_textblock.Text" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="time_textblock.Text" xml:space="preserve">
+    <value>Duration </value>
+  </data>
+  <data name="volume_button.Label" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="clearLyric_str" xml:space="preserve">
+    <value>Empty Lyrics </value>
+  </data>
+  <data name="lyric_button.Content" xml:space="preserve">
+    <value>Query Lyrics </value>
+  </data>
+  <data name="searchLyric_str" xml:space="preserve">
+    <value>Query Lyrics </value>
+  </data>
+  <data name="resultLyric_str" xml:space="preserve">
+    <value>No find lyric</value>
+  </data>
+</root>

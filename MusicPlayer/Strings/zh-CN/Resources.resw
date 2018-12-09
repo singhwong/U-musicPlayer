@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="about_str" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="addFolder_button.Label" xml:space="preserve">
+    <value>添加文件夹</value>
+  </data>
+  <data name="await_str" xml:space="preserve">
+    <value>请等待加载完成！！！</value>
+  </data>
+  <data name="backGround_button.Label" xml:space="preserve">
+    <value>背景图片</value>
+  </data>
+  <data name="back_button.Label" xml:space="preserve">
+    <value>上一首</value>
+  </data>
+  <data name="cancle_menu.Text" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="clearLyric_str" xml:space="preserve">
+    <value>清空歌词</value>
+  </data>
+  <data name="clear_button.Label" xml:space="preserve">
+    <value>清空</value>
+  </data>
+  <data name="content_str" xml:space="preserve">
+    <value>文件不存在或已经被移动，无法播放</value>
+  </data>
+  <data name="custom_menu.Text" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="dark_menu.Text" xml:space="preserve">
+    <value>暗</value>
+  </data>
+  <data name="defaultTheme_menu.Text" xml:space="preserve">
+    <value>默认</value>
+  </data>
+  <data name="default_menu.Text" xml:space="preserve">
+    <value>默认</value>
+  </data>
+  <data name="direct_menu.Text" xml:space="preserve">
+    <value>永久删除</value>
+  </data>
+  <data name="feedBack_menu.Text" xml:space="preserve">
+    <value>反馈</value>
+  </data>
+  <data name="forward_button.Label" xml:space="preserve">
+    <value>下一首</value>
+  </data>
+  <data name="fullScreen_button.Label" xml:space="preserve">
+    <value>全屏</value>
+  </data>
+  <data name="help_button.Label" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="help_str" xml:space="preserve">
+    <value>免费软件，无广告,普通用户可以下载和安装,严禁用于商业用途.  使用帮助:                                                                      1.用户需要同意或打开本地音乐库访问权限
+2.启动后自动获取的音乐为本地音乐库里的音乐
+3.支持打开选定文件、打开本地音乐库音乐列表和选定文件夹中的音乐列表
+4.音乐列表拖拽排序
+5.双击歌曲或者使用右键选项进行播放
+6.若背景设置为自定义图片，建议将主题设置为Dark,显示效果更好
+7.可以查询部分歌曲歌词</value>
+  </data>
+  <data name="light_menu.Text" xml:space="preserve">
+    <value>亮</value>
+  </data>
+  <data name="listShow_button.Label" xml:space="preserve">
+    <value>音乐列表</value>
+  </data>
+  <data name="lyric_button.Content" xml:space="preserve">
+    <value>查询歌词</value>
+  </data>
+  <data name="lyric_textblock.Text" xml:space="preserve">
+    <value>无歌词</value>
+  </data>
+  <data name="mail_button.Label" xml:space="preserve">
+    <value>反馈邮件</value>
+  </data>
+  <data name="model_button.Label" xml:space="preserve">
+    <value>列表循环</value>
+  </data>
+  <data name="musicFolder_button.Label" xml:space="preserve">
+    <value>本地音乐</value>
+  </data>
+  <data name="noneMusic_str" xml:space="preserve">
+    <value>本地音乐库无音乐文件，您可以在本地音乐库中加入音乐然后刷新,或者，添加其他文件夹中的音乐</value>
+  </data>
+  <data name="openFile_button.Label" xml:space="preserve">
+    <value>打开文件</value>
+  </data>
+  <data name="order_menu.Text" xml:space="preserve">
+    <value>列表循环</value>
+  </data>
+  <data name="order_str" xml:space="preserve">
+    <value>列表循环</value>
+  </data>
+  <data name="pause_str" xml:space="preserve">
+    <value>暂停</value>
+  </data>
+  <data name="play_button.Label" xml:space="preserve">
+    <value>播放</value>
+  </data>
+  <data name="play_menu.Text" xml:space="preserve">
+    <value>播放</value>
+  </data>
+  <data name="play_str" xml:space="preserve">
+    <value>播放</value>
+  </data>
+  <data name="random_menu.Text" xml:space="preserve">
+    <value>随机播放</value>
+  </data>
+  <data name="random_str" xml:space="preserve">
+    <value>随机播放</value>
+  </data>
+  <data name="recycleBin_menu.Text" xml:space="preserve">
+    <value>放入回收站</value>
+  </data>
+  <data name="removeFromList_menu.Text" xml:space="preserve">
+    <value>从列表删除</value>
+  </data>
+  <data name="removeFromLocal_menu.Text" xml:space="preserve">
+    <value>从本地删除</value>
+  </data>
+  <data name="resultLyric_str" xml:space="preserve">
+    <value>未查询到歌词</value>
+  </data>
+  <data name="searchLyric_str" xml:space="preserve">
+    <value>查询歌词</value>
+  </data>
+  <data name="settings_button.Label" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="singerName_textbock.Text" xml:space="preserve">
+    <value>歌 手 </value>
+  </data>
+  <data name="single_menu.Text" xml:space="preserve">
+    <value>单曲循环</value>
+  </data>
+  <data name="single_str" xml:space="preserve">
+    <value>单曲循环</value>
+  </data>
+  <data name="songName_textBlock.Text" xml:space="preserve">
+    <value>歌 名</value>
+  </data>
+  <data name="songNumStr_textBlock.Text" xml:space="preserve">
+    <value>歌曲数目: </value>
+  </data>
+  <data name="stop_button.Label" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="stop_menu.Text" xml:space="preserve">
+    <value>暂停</value>
+  </data>
+  <data name="theme_textblock.Text" xml:space="preserve">
+    <value>主题</value>
+  </data>
+  <data name="time_textblock.Text" xml:space="preserve">
+    <value>时 间</value>
+  </data>
+  <data name="volume_button.Label" xml:space="preserve">
+    <value>音量</value>
+  </data>
+</root>

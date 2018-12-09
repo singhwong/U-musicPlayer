@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="zh-CN" target-language="en-US" original="MUSICPLAYER/STRINGS/ZH-CN/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6900.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="MUSICPLAYER/STRINGS/ZH-CN/RESOURCES.RESW" datatype="resx">
+        <trans-unit id="about_str" translate="yes" xml:space="preserve">
+          <source>关于</source>
+          <target state="translated">About </target>
+        </trans-unit>
+        <trans-unit id="addFolder_button.Label" translate="yes" xml:space="preserve">
+          <source>添加文件夹</source>
+          <target state="translated">Add folders </target>
+        </trans-unit>
+        <trans-unit id="await_str" translate="yes" xml:space="preserve">
+          <source>请等待加载完成！！！</source>
+          <target state="translated">Please wait for loading to complete!!!</target>
+        </trans-unit>
+        <trans-unit id="backGround_button.Label" translate="yes" xml:space="preserve">
+          <source>背景图片</source>
+          <target state="translated">Background picture </target>
+        </trans-unit>
+        <trans-unit id="back_button.Label" translate="yes" xml:space="preserve">
+          <source>上一首</source>
+          <target state="translated">Last one </target>
+        </trans-unit>
+        <trans-unit id="cancle_menu.Text" translate="yes" xml:space="preserve">
+          <source>取消</source>
+          <target state="translated">Cancel </target>
+        </trans-unit>
+        <trans-unit id="clear_button.Label" translate="yes" xml:space="preserve">
+          <source>清空</source>
+          <target state="translated">Empty </target>
+        </trans-unit>
+        <trans-unit id="content_str" translate="yes" xml:space="preserve">
+          <source>文件不存在或已经被移动，无法播放</source>
+          <target state="translated">Files do not exist or have been moved and cannot be played </target>
+        </trans-unit>
+        <trans-unit id="custom_menu.Text" translate="yes" xml:space="preserve">
+          <source>自定义</source>
+          <target state="translated">Custom </target>
+        </trans-unit>
+        <trans-unit id="dark_menu.Text" translate="yes" xml:space="preserve">
+          <source>暗</source>
+          <target state="translated">Dark</target>
+        </trans-unit>
+        <trans-unit id="defaultTheme_menu.Text" translate="yes" xml:space="preserve">
+          <source>默认</source>
+          <target state="translated">Default </target>
+        </trans-unit>
+        <trans-unit id="default_menu.Text" translate="yes" xml:space="preserve">
+          <source>默认</source>
+          <target state="translated">Default </target>
+        </trans-unit>
+        <trans-unit id="direct_menu.Text" translate="yes" xml:space="preserve">
+          <source>永久删除</source>
+          <target state="translated">Permanently delete </target>
+        </trans-unit>
+        <trans-unit id="feedBack_menu.Text" translate="yes" xml:space="preserve">
+          <source>反馈</source>
+          <target state="translated">FeedBack</target>
+        </trans-unit>
+        <trans-unit id="forward_button.Label" translate="yes" xml:space="preserve">
+          <source>下一首</source>
+          <target state="translated">Next one </target>
+        </trans-unit>
+        <trans-unit id="fullScreen_button.Label" translate="yes" xml:space="preserve">
+          <source>全屏</source>
+          <target state="translated">Full screen </target>
+        </trans-unit>
+        <trans-unit id="help_button.Label" translate="yes" xml:space="preserve">
+          <source>帮助</source>
+          <target state="translated">Help</target>
+        </trans-unit>
+        <trans-unit id="help_str" translate="yes" xml:space="preserve">
+          <source>免费软件，无广告,普通用户可以下载和安装,严禁用于商业用途.  使用帮助:                                                                      1.用户需要同意或打开本地音乐库访问权限
+2.启动后自动获取的音乐为本地音乐库里的音乐
+3.支持打开选定文件、打开本地音乐库音乐列表和选定文件夹中的音乐列表
+4.音乐列表拖拽排序
+5.双击歌曲或者使用右键选项进行播放
+6.若背景设置为自定义图片，建议将主题设置为Dark,显示效果更好
+7.可以查询部分歌曲歌词</source>
+          <target state="translated">Free software, no advertising, ordinary users can download and install, strictly prohibit commercial use. 
+
+Use help: 
+1. Users need to agree or open access to local music library        
+    
+2. The music automatically acquired after startup is the music in the local music library           
+ 
+3. Support opening selected files, opening music lists in local music libraries and music lists in selected folders    
+        
+4. Music lists can be dragged and sorted 
+          
+5. Double-click the song or click it with the right-click option to play
+       
+6. If the background is set to a custom image, 
+it is recommended that the theme be set to Dark to show better results.
+            
+7. Some lyrics of songs can be queried. </target>
+        </trans-unit>
+        <trans-unit id="light_menu.Text" translate="yes" xml:space="preserve">
+          <source>亮</source>
+          <target state="translated">Light</target>
+        </trans-unit>
+        <trans-unit id="listShow_button.Label" translate="yes" xml:space="preserve">
+          <source>音乐列表</source>
+          <target state="translated">Music List </target>
+        </trans-unit>
+        <trans-unit id="lyric_textblock.Text" translate="yes" xml:space="preserve">
+          <source>无歌词</source>
+          <target state="translated">No lyrics </target>
+        </trans-unit>
+        <trans-unit id="mail_button.Label" translate="yes" xml:space="preserve">
+          <source>反馈邮件</source>
+          <target state="translated">Feedback mail </target>
+        </trans-unit>
+        <trans-unit id="model_button.Label" translate="yes" xml:space="preserve">
+          <source>列表循环</source>
+          <target state="translated">List loop </target>
+        </trans-unit>
+        <trans-unit id="musicFolder_button.Label" translate="yes" xml:space="preserve">
+          <source>本地音乐</source>
+          <target state="translated">Local music </target>
+        </trans-unit>
+        <trans-unit id="noneMusic_str" translate="yes" xml:space="preserve">
+          <source>本地音乐库无音乐文件，您可以在本地音乐库中加入音乐然后刷新,或者，添加其他文件夹中的音乐</source>
+          <target state="translated">There are no music files in the local music library. 
+You can add music to the local music library and refresh it, or add music in other folders. </target>
+        </trans-unit>
+        <trans-unit id="openFile_button.Label" translate="yes" xml:space="preserve">
+          <source>打开文件</source>
+          <target state="translated">Open file </target>
+        </trans-unit>
+        <trans-unit id="order_menu.Text" translate="yes" xml:space="preserve">
+          <source>列表循环</source>
+          <target state="translated">List loop </target>
+        </trans-unit>
+        <trans-unit id="order_str" translate="yes" xml:space="preserve">
+          <source>列表循环</source>
+          <target state="translated">List loop </target>
+        </trans-unit>
+        <trans-unit id="pause_str" translate="yes" xml:space="preserve">
+          <source>暂停</source>
+          <target state="translated">Pause</target>
+        </trans-unit>
+        <trans-unit id="play_button.Label" translate="yes" xml:space="preserve">
+          <source>播放</source>
+          <target state="translated">Play</target>
+        </trans-unit>
+        <trans-unit id="play_menu.Text" translate="yes" xml:space="preserve">
+          <source>播放</source>
+          <target state="translated">Play</target>
+        </trans-unit>
+        <trans-unit id="play_str" translate="yes" xml:space="preserve">
+          <source>播放</source>
+          <target state="translated">Play</target>
+        </trans-unit>
+        <trans-unit id="random_menu.Text" translate="yes" xml:space="preserve">
+          <source>随机播放</source>
+          <target state="translated">Random play </target>
+        </trans-unit>
+        <trans-unit id="random_str" translate="yes" xml:space="preserve">
+          <source>随机播放</source>
+          <target state="translated">Random play </target>
+        </trans-unit>
+        <trans-unit id="recycleBin_menu.Text" translate="yes" xml:space="preserve">
+          <source>放入回收站</source>
+          <target state="translated">Put in Recycle Bin </target>
+        </trans-unit>
+        <trans-unit id="removeFromList_menu.Text" translate="yes" xml:space="preserve">
+          <source>从列表删除</source>
+          <target state="translated">Delete from list </target>
+        </trans-unit>
+        <trans-unit id="removeFromLocal_menu.Text" translate="yes" xml:space="preserve">
+          <source>从本地删除</source>
+          <target state="translated">Delete locally </target>
+        </trans-unit>
+        <trans-unit id="settings_button.Label" translate="yes" xml:space="preserve">
+          <source>其他</source>
+          <target state="translated">Other </target>
+        </trans-unit>
+        <trans-unit id="singerName_textbock.Text" translate="yes" xml:space="preserve">
+          <source>歌 手 </source>
+          <target state="translated">Singer</target>
+        </trans-unit>
+        <trans-unit id="single_menu.Text" translate="yes" xml:space="preserve">
+          <source>单曲循环</source>
+          <target state="translated">Single cycle</target>
+        </trans-unit>
+        <trans-unit id="single_str" translate="yes" xml:space="preserve">
+          <source>单曲循环</source>
+          <target state="translated">Single cycle</target>
+        </trans-unit>
+        <trans-unit id="songName_textBlock.Text" translate="yes" xml:space="preserve">
+          <source>歌 名</source>
+          <target state="translated">Song name </target>
+        </trans-unit>
+        <trans-unit id="songNumStr_textBlock.Text" translate="yes" xml:space="preserve">
+          <source>歌曲数目: </source>
+          <target state="translated">Number: </target>
+        </trans-unit>
+        <trans-unit id="stop_button.Label" translate="yes" xml:space="preserve">
+          <source>停止</source>
+          <target state="translated">Stop</target>
+        </trans-unit>
+        <trans-unit id="stop_menu.Text" translate="yes" xml:space="preserve">
+          <source>暂停</source>
+          <target state="translated">Pause</target>
+        </trans-unit>
+        <trans-unit id="theme_textblock.Text" translate="yes" xml:space="preserve">
+          <source>主题</source>
+          <target state="translated">Theme</target>
+        </trans-unit>
+        <trans-unit id="time_textblock.Text" translate="yes" xml:space="preserve">
+          <source>时 间</source>
+          <target state="translated">Duration </target>
+        </trans-unit>
+        <trans-unit id="volume_button.Label" translate="yes" xml:space="preserve">
+          <source>音量</source>
+          <target state="translated">Volume</target>
+        </trans-unit>
+        <trans-unit id="clearLyric_str" translate="yes" xml:space="preserve">
+          <source>清空歌词</source>
+          <target state="translated">Empty Lyrics </target>
+        </trans-unit>
+        <trans-unit id="lyric_button.Content" translate="yes" xml:space="preserve">
+          <source>查询歌词</source>
+          <target state="translated">Query Lyrics </target>
+        </trans-unit>
+        <trans-unit id="searchLyric_str" translate="yes" xml:space="preserve">
+          <source>查询歌词</source>
+          <target state="translated">Query Lyrics </target>
+        </trans-unit>
+        <trans-unit id="resultLyric_str" translate="yes" xml:space="preserve">
+          <source>未查询到歌词</source>
+          <target state="translated">No find lyric</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

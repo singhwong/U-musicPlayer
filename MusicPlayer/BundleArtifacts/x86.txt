@@ -1,0 +1,2 @@
+MainPackage=C:\Users\singhwong\Source\Repos\U-musicPlayer\MusicPlayer\bin\x86\Release\MusicPlayer_1.1.37.0_x86.appx
+SymbolPackage=C:\Users\singhwong\Source\Repos\U-musicPlayer\MusicPlayer\AppPackages\MusicPlayer_1.1.37.0_Test\MusicPlayer_1.1.37.0_x86.appxsym

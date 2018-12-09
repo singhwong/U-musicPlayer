@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<ArrayOfCacheFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CacheFile>
+    <FileName>Strings\zh-CN\Resources.resw</FileName>
+    <Checksum>12113620151296610655851761891011377624</Checksum>
+    <ModifiedTime>2018-12-06T15:59:28.5908506</ModifiedTime>
+    <CacheFileType>NeutralResource</CacheFileType>
+    <WarningMessage />
+  </CacheFile>
+  <CacheFile>
+    <FileName>MultilingualResources\MusicPlayer.en-US.xlf</FileName>
+    <Checksum>21041170992291771181272311952556120822282</Checksum>
+    <ModifiedTime>2018-12-06T16:03:56.7496934+08:00</ModifiedTime>
+    <CacheFileType>XliffResource</CacheFileType>
+    <WarningMessage />
+  </CacheFile>
+  <CacheFile>
+    <FileName>Strings\en-US\Resources.resw</FileName>
+    <Checksum>20567254151105639731311201261316121415758</Checksum>
+    <ModifiedTime>2018-12-09T22:34:03.2289865+08:00</ModifiedTime>
+    <CacheFileType>LanguageResource</CacheFileType>
+    <WarningMessage />
+  </CacheFile>
+</ArrayOfCacheFile>
