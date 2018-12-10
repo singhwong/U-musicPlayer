@@ -31,7 +31,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="songTile_textblock.FontSize" Value="15"/>
-                        <Setter Target="listView_grid.Visibility" Value="Collapsed"/>
+                        <Setter Target="main_listview.Visibility" Value="Collapsed"/>
                         <Setter Target="title_stackPanel.Visibility" Value="Collapsed"/>
                         <Setter Target="listShow_button.Visibility" Value="Visible"/>
                         <Setter Target="playTitle_textblock.Visibility" Value="Visible"/>
@@ -49,7 +49,7 @@
                         <AdaptiveTrigger MinWindowWidth="600"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="listView_grid.Visibility" Value="Visible"/>
+                        <Setter Target="main_listview.Visibility" Value="Visible"/>
                         <Setter Target="title_stackPanel.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
@@ -162,6 +162,21 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <StackPanel Name="addList_stackPanel"
+                        Orientation="Vertical"
+                        Grid.Row="1"
+                        Visibility="Collapsed">
+                <Button Name="addList_button"
+                        Content="新增歌单"
+                        Margin="23,0,0,0"
+                        Background="Transparent"
+                        Style="{StaticResource button_Style}"
+                        Click="AddList_button_Click_1"/>
+                <ListView>
+                    
+                </ListView>
+
+            </StackPanel>
         </Grid>
         <ScrollViewer Name="main_scrollViewer"
                       Grid.Row="1"
@@ -257,6 +272,20 @@
                       Visibility="Collapsed"
                       AudioCategory="BackgroundCapableMedia"
                       CurrentStateChanged="Main_mediaElement_CurrentStateChanged_1"/>
+        <ContentDialog x:Name="addList_ContentDialog"
+                       PrimaryButtonText="新增" 
+                       IsPrimaryButtonEnabled="True"
+                       CloseButtonText="取消">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="addList_textblock"
+                           Text="歌单名"
+                           VerticalAlignment="Center"
+                           Margin="0,0,10,0"/>
+                <TextBox Name="list_textbox"
+                         Height="30"
+                         Width="200"/>
+            </StackPanel>
+        </ContentDialog>
     </Grid>
     <Page.BottomAppBar>
         <CommandBar Name="main_commandBar"
@@ -266,6 +295,10 @@
                           x:Uid="listShow_button"
                           Visibility="Collapsed"
                           Click="ListShow_button_Click"/>
+            <AppBarButton Name="musicList_button"
+                          Icon="List"
+                          x:Uid="musicList_button"
+                          Click="MusicList_button_Click"/>
             <AppBarSeparator/>
             <AppBarButton Name="back_button"
                           Icon="Previous"
@@ -279,10 +312,6 @@
                           Icon="Next"
                           x:Uid="forward_button"
                           Click="Forward_button_Click_1"/>
-            <AppBarButton Name="stop_button"
-                          Icon="Stop"
-                          x:Uid="stop_button"
-                          Click="Model_button_Click_1"/>
             <AppBarButton Name="model_button"
                           Icon="RepeatAll"
                           x:Uid="model_button">
@@ -303,6 +332,10 @@
                     </MenuFlyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
+            <AppBarButton Name="stop_button"
+                          Icon="Stop"
+                          x:Uid="stop_button"
+                          Click="Model_button_Click_1"/>
             <AppBarSeparator/>
             
             <AppBarButton Name="volume_button"

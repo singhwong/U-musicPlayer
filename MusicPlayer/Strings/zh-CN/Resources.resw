@@ -201,6 +201,9 @@
   <data name="musicFolder_button.Label" xml:space="preserve">
     <value>本地音乐</value>
   </data>
+  <data name="musicList_button.Label" xml:space="preserve">
+    <value>歌单</value>
+  </data>
   <data name="noneMusic_str" xml:space="preserve">
     <value>本地音乐库无音乐文件，您可以在本地音乐库中加入音乐然后刷新,或者，添加其他文件夹中的音乐</value>
   </data>

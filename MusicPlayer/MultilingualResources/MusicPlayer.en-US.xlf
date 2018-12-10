@@ -237,6 +237,10 @@ You can add music to the local music library and refresh it, or add music in oth
           <source>未查询到歌词</source>
           <target state="translated">No find lyric</target>
         </trans-unit>
+        <trans-unit id="musicList_button.Label" translate="yes" xml:space="preserve">
+          <source>歌单</source>
+          <target state="translated">MusicList</target>
+        </trans-unit>
       </group>
     </body>
   </file>

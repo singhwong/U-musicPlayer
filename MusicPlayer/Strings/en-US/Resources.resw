@@ -185,4 +185,7 @@ You can add music to the local music library and refresh it, or add music in oth
   <data name="resultLyric_str" xml:space="preserve">
     <value>No find lyric</value>
   </data>
+  <data name="musicList_button.Label" xml:space="preserve">
+    <value>MusicList</value>
+  </data>
 </root>

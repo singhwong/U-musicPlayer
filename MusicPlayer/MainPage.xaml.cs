@@ -776,15 +776,17 @@ namespace MusicPlayer
         {
             if (IslistShowButtonClick)
             {
-                listView_grid.Visibility = Visibility.Collapsed;
+                main_listview.Visibility = Visibility.Collapsed;
                 title_stackPanel.Visibility = Visibility.Collapsed;
                 IslistShowButtonClick = false;
             }
             else
             {
-                listView_grid.Visibility = Visibility.Visible;
+                main_listview.Visibility = Visibility.Visible;
                 title_stackPanel.Visibility = Visibility.Visible;
+                addList_stackPanel.Visibility = Visibility.Collapsed;
                 IslistShowButtonClick = true;
+                IsMusicListClick_bool = false;
             }
         }
 
@@ -793,6 +795,8 @@ namespace MusicPlayer
             if (listShow_button.Visibility == Visibility.Collapsed)
             {
                 IslistShowButtonClick = false;
+                IsMusicListClick_bool = false;
+                addList_stackPanel.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -1432,6 +1436,40 @@ namespace MusicPlayer
                 lyric_button.Content = _searchLyric_str;
             }
            
+        }
+
+        private async void AddList_button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ContentDialogResult result = await addList_ContentDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                //AddPlayList(list_textbox.Text);
+            }
+            else
+            {
+            }
+        }
+
+        private bool IsMusicListClick_bool = false;
+        private void MusicList_button_Click(object sender, RoutedEventArgs e)
+        {
+            if (IsMusicListClick_bool)
+            {
+                main_listview.Visibility = Visibility.Visible;
+                title_stackPanel.Visibility = Visibility.Visible;
+                addList_stackPanel.Visibility = Visibility.Collapsed;
+                IsMusicListClick_bool = false;
+                IslistShowButtonClick = true;
+            }
+            else
+            {
+                main_listview.Visibility = Visibility.Collapsed;
+                title_stackPanel.Visibility = Visibility.Collapsed;
+                addList_stackPanel.Visibility = Visibility.Visible;
+                IsMusicListClick_bool = true;
+                IslistShowButtonClick = false;
+            }
+            
         }
     }
 }
