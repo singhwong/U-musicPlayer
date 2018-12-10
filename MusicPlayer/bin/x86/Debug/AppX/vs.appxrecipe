@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>145E7F2B97EBFD616FD95D3FC17D1A166A517D75FF56EB75098D25EA2F592EFF</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>81E129B8630AB53BBC37E34798E0F6B7E6B0A079AD5A0DFFB03E657647D24CEF</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>14523wongsoft.OwnMusicPlayer_1.1.37.0_x86__pscw7et81htc4</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>14523wongsoft.OwnMusicPlayer_pscw7et81htc4!App</RegisteredUserModeAppID>
     <RegisteredPackageID>14523wongsoft.OwnMusicPlayer</RegisteredPackageID>
@@ -30,17 +30,21 @@
     <AppXManifest Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-10T03:34:01.669</Modified>
+      <Modified>2018-12-10T09:43:47.379</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\MusicPlayer.exe">
       <PackagePath>entrypoint\MusicPlayer.exe</PackagePath>
-      <Modified>2018-12-10T03:34:00.916</Modified>
+      <Modified>2018-12-10T09:43:46.160</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\.nuget\packages\microsoft.csharp\4.3.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
       <Modified>2016-11-04T20:55:34.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\wang\.nuget\packages\microsoft.identity.client\1.1.2-preview0008\lib\win81\Microsoft.Identity.Client.dll">
+      <PackagePath>Microsoft.Identity.Client.dll</PackagePath>
+      <Modified>2018-02-02T10:02:08.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\UWPNuGetPackages\microsoft.netcore.portable.compatibility\1.0.2\lib\netcore50\System.ComponentModel.DataAnnotations.dll">
       <PackagePath>System.ComponentModel.DataAnnotations.dll</PackagePath>
@@ -89,6 +93,18 @@
     <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\UWPNuGetPackages\microsoft.netcore.portable.compatibility\1.0.2\lib\netcore50\System.dll">
       <PackagePath>System.dll</PackagePath>
       <Modified>2016-07-01T10:10:48.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\wang\.nuget\packages\microsoft.toolkit\4.0.0\lib\netstandard1.4\Microsoft.Toolkit.dll">
+      <PackagePath>Microsoft.Toolkit.dll</PackagePath>
+      <Modified>2018-08-07T14:23:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\wang\.nuget\packages\microsoft.toolkit.uwp\4.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.dll</PackagePath>
+      <Modified>2018-08-07T14:23:14.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\wang\.nuget\packages\microsoft.toolkit.uwp.ui\4.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.dll</PackagePath>
+      <Modified>2018-08-07T14:23:30.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\Microsoft SDKs\UWPNuGetPackages\microsoft.visualbasic\10.0.1\lib\netcore50\Microsoft.VisualBasic.dll">
       <PackagePath>Microsoft.VisualBasic.dll</PackagePath>
@@ -518,6 +534,14 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2016-06-11T15:15:04.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\wang\.nuget\packages\win2d.uwp\1.21.0\runtimes\win10-x86\native\Microsoft.Graphics.Canvas.dll">
+      <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
+      <Modified>2017-06-25T19:01:44.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\wang\.nuget\packages\win2d.uwp\1.21.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
+      <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
+      <Modified>2017-06-25T19:01:44.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
@@ -747,47 +771,59 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\MusicPlayer.xr.xml">
       <PackagePath>MusicPlayer.xr.xml</PackagePath>
-      <Modified>2018-12-10T03:03:56.416</Modified>
+      <Modified>2018-12-10T09:16:56.734</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-12-10T03:34:00.565</Modified>
+      <Modified>2018-12-10T09:43:45.799</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\buttonStyle.xbf">
       <PackagePath>buttonStyle.xbf</PackagePath>
-      <Modified>2018-12-10T03:34:00.561</Modified>
+      <Modified>2018-12-10T09:43:45.795</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\LocalMusicControl.xbf">
       <PackagePath>LocalMusicControl.xbf</PackagePath>
-      <Modified>2018-12-10T03:34:00.566</Modified>
+      <Modified>2018-12-10T09:43:45.800</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-12-10T03:34:00.567</Modified>
+      <Modified>2018-12-10T09:43:45.800</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\progressRingStyle.xbf">
       <PackagePath>progressRingStyle.xbf</PackagePath>
-      <Modified>2018-12-10T03:34:00.563</Modified>
+      <Modified>2018-12-10T09:43:45.796</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\sliderStyle.xbf">
       <PackagePath>sliderStyle.xbf</PackagePath>
-      <Modified>2018-12-10T03:34:00.563</Modified>
+      <Modified>2018-12-10T09:43:45.797</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\textStyle.xbf">
       <PackagePath>textStyle.xbf</PackagePath>
-      <Modified>2018-12-10T03:34:00.564</Modified>
+      <Modified>2018-12-10T09:43:45.797</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2018-04-19T14:01:52.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\wang\.nuget\packages\microsoft.toolkit.uwp.ui\4.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI\Microsoft.Toolkit.Uwp.UI.xr.xml">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI\Microsoft.Toolkit.Uwp.UI.xr.xml</PackagePath>
+      <Modified>2018-08-07T14:19:34.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\wang\.nuget\packages\microsoft.toolkit.uwp.ui\4.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI\Extensions\NavigationView\NavigationView.xbf">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI\Extensions\NavigationView\NavigationView.xbf</PackagePath>
+      <Modified>2018-08-07T14:20:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\wang\.nuget\packages\microsoft.toolkit.uwp.ui\4.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.UI\Extensions\NavigationView\Styles\VSCodeActivityBarStyle.xbf">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI\Extensions\NavigationView\Styles\VSCodeActivityBarStyle.xbf</PackagePath>
+      <Modified>2018-08-07T14:20:40.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2018-12-10T02:49:43.568</Modified>
+      <Modified>2018-12-10T07:07:08.995</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\Core\MusicPlayer.exe">
       <PackagePath>MusicPlayer.exe</PackagePath>
-      <Modified>2018-12-10T03:34:01.658</Modified>
+      <Modified>2018-12-10T09:43:47.361</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

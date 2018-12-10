@@ -29,6 +29,15 @@
           "lib/netcore50/Microsoft.CSharp.dll": {}
         }
       },
+      "Microsoft.Identity.Client/1.1.2-preview0008": {
+        "type": "package",
+        "compile": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
+        },
+        "runtime": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
+        }
+      },
       "Microsoft.Net.Native.Compiler/1.7.3": {
         "type": "package",
         "dependencies": {
@@ -291,6 +300,45 @@
         "type": "package",
         "build": {
           "build/Microsoft.Services.Store.Engagement.targets": {}
+        }
+      },
+      "Microsoft.Toolkit/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Identity.Client": "1.1.2-preview0008",
+          "Microsoft.Toolkit": "4.0.0",
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.UI/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit.Uwp": "4.0.0",
+          "Win2D.uwp": "1.21.0"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
         }
       },
       "Microsoft.VisualBasic/10.0.1": {
@@ -2458,6 +2506,29 @@
             "rid": "aot"
           }
         }
+      },
+      "Win2D.uwp/1.21.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {
+            "assetType": "native",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {
+            "assetType": "native",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {
+            "assetType": "native",
+            "rid": "win10-x86"
+          }
+        }
       }
     },
     "UAP,Version=v10.0.15063/win10-arm": {
@@ -2486,6 +2557,15 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Identity.Client/1.1.2-preview0008": {
+        "type": "package",
+        "compile": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
+        },
+        "runtime": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
         }
       },
       "Microsoft.Net.Native.Compiler/1.7.3": {
@@ -2698,6 +2778,45 @@
         "type": "package",
         "build": {
           "build/Microsoft.Services.Store.Engagement.targets": {}
+        }
+      },
+      "Microsoft.Toolkit/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Identity.Client": "1.1.2-preview0008",
+          "Microsoft.Toolkit": "4.0.0",
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.UI/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit.Uwp": "4.0.0",
+          "Win2D.uwp": "1.21.0"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
         }
       },
       "Microsoft.VisualBasic/10.0.1": {
@@ -4954,6 +5073,18 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Win2D.uwp/1.21.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0.15063/win10-arm-aot": {
@@ -4982,6 +5113,15 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Identity.Client/1.1.2-preview0008": {
+        "type": "package",
+        "compile": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
+        },
+        "runtime": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
         }
       },
       "Microsoft.Net.Native.Compiler/1.7.3": {
@@ -5195,6 +5335,45 @@
         "type": "package",
         "build": {
           "build/Microsoft.Services.Store.Engagement.targets": {}
+        }
+      },
+      "Microsoft.Toolkit/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Identity.Client": "1.1.2-preview0008",
+          "Microsoft.Toolkit": "4.0.0",
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.UI/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit.Uwp": "4.0.0",
+          "Win2D.uwp": "1.21.0"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
         }
       },
       "Microsoft.VisualBasic/10.0.1": {
@@ -7486,6 +7665,18 @@
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Win2D.uwp/1.21.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0.15063/win10-arm64-aot": {
@@ -7514,6 +7705,15 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Identity.Client/1.1.2-preview0008": {
+        "type": "package",
+        "compile": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
+        },
+        "runtime": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
         }
       },
       "Microsoft.Net.Native.Compiler/1.7.3": {
@@ -7725,6 +7925,45 @@
         "type": "package",
         "build": {
           "build/Microsoft.Services.Store.Engagement.targets": {}
+        }
+      },
+      "Microsoft.Toolkit/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Identity.Client": "1.1.2-preview0008",
+          "Microsoft.Toolkit": "4.0.0",
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.UI/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit.Uwp": "4.0.0",
+          "Win2D.uwp": "1.21.0"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
         }
       },
       "Microsoft.VisualBasic/10.0.1": {
@@ -9998,6 +10237,15 @@
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Win2D.uwp/1.21.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        }
       }
     },
     "UAP,Version=v10.0.15063/win10-x64": {
@@ -10026,6 +10274,15 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Identity.Client/1.1.2-preview0008": {
+        "type": "package",
+        "compile": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
+        },
+        "runtime": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
         }
       },
       "Microsoft.Net.Native.Compiler/1.7.3": {
@@ -10241,6 +10498,45 @@
         "type": "package",
         "build": {
           "build/Microsoft.Services.Store.Engagement.targets": {}
+        }
+      },
+      "Microsoft.Toolkit/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Identity.Client": "1.1.2-preview0008",
+          "Microsoft.Toolkit": "4.0.0",
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.UI/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit.Uwp": "4.0.0",
+          "Win2D.uwp": "1.21.0"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
         }
       },
       "Microsoft.VisualBasic/10.0.1": {
@@ -12503,6 +12799,18 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Win2D.uwp/1.21.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0.15063/win10-x64-aot": {
@@ -12531,6 +12839,15 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Identity.Client/1.1.2-preview0008": {
+        "type": "package",
+        "compile": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
+        },
+        "runtime": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
         }
       },
       "Microsoft.Net.Native.Compiler/1.7.3": {
@@ -12747,6 +13064,45 @@
         "type": "package",
         "build": {
           "build/Microsoft.Services.Store.Engagement.targets": {}
+        }
+      },
+      "Microsoft.Toolkit/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Identity.Client": "1.1.2-preview0008",
+          "Microsoft.Toolkit": "4.0.0",
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.UI/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit.Uwp": "4.0.0",
+          "Win2D.uwp": "1.21.0"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
         }
       },
       "Microsoft.VisualBasic/10.0.1": {
@@ -15044,6 +15400,18 @@
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Win2D.uwp/1.21.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0.15063/win10-x86": {
@@ -15072,6 +15440,15 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Identity.Client/1.1.2-preview0008": {
+        "type": "package",
+        "compile": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
+        },
+        "runtime": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
         }
       },
       "Microsoft.Net.Native.Compiler/1.7.3": {
@@ -15287,6 +15664,45 @@
         "type": "package",
         "build": {
           "build/Microsoft.Services.Store.Engagement.targets": {}
+        }
+      },
+      "Microsoft.Toolkit/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Identity.Client": "1.1.2-preview0008",
+          "Microsoft.Toolkit": "4.0.0",
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.UI/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit.Uwp": "4.0.0",
+          "Win2D.uwp": "1.21.0"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
         }
       },
       "Microsoft.VisualBasic/10.0.1": {
@@ -17549,6 +17965,18 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Win2D.uwp/1.21.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0.15063/win10-x86-aot": {
@@ -17577,6 +18005,15 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Identity.Client/1.1.2-preview0008": {
+        "type": "package",
+        "compile": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
+        },
+        "runtime": {
+          "lib/win81/Microsoft.Identity.Client.dll": {}
         }
       },
       "Microsoft.Net.Native.Compiler/1.7.3": {
@@ -17793,6 +18230,45 @@
         "type": "package",
         "build": {
           "build/Microsoft.Services.Store.Engagement.targets": {}
+        }
+      },
+      "Microsoft.Toolkit/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.4/Microsoft.Toolkit.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Identity.Client": "1.1.2-preview0008",
+          "Microsoft.Toolkit": "4.0.0",
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.dll": {}
+        }
+      },
+      "Microsoft.Toolkit.Uwp.UI/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Toolkit.Uwp": "4.0.0",
+          "Win2D.uwp": "1.21.0"
+        },
+        "compile": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll": {}
         }
       },
       "Microsoft.VisualBasic/10.0.1": {
@@ -20090,6 +20566,18 @@
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Win2D.uwp/1.21.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
+        }
       }
     }
   },
@@ -20150,6 +20638,25 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
+      ]
+    },
+    "Microsoft.Identity.Client/1.1.2-preview0008": {
+      "sha512": "bzcLQcBbyaQ5qVCTj2Tewb6JF51tRi33cqvMfy+CkZzZbdHqKlY6lv42Tm6B4kfWMvySsHj4O5kR9BSSipocMg==",
+      "type": "package",
+      "path": "microsoft.identity.client/1.1.2-preview0008",
+      "files": [
+        ".nupkg.metadata",
+        "Microsoft.Identity.Client.dll",
+        "Microsoft.Identity.Client.pri",
+        "Microsoft.Identity.Client.xml",
+        "lib/monoandroid7/Microsoft.Identity.Client.dll",
+        "lib/net45/Microsoft.Identity.Client.dll",
+        "lib/netstandard1.1/Microsoft.Identity.Client.dll",
+        "lib/netstandard1.3/Microsoft.Identity.Client.dll",
+        "lib/win81/Microsoft.Identity.Client.dll",
+        "lib/xamarin.ios10/Microsoft.Identity.Client.dll",
+        "microsoft.identity.client.1.1.2-preview0008.nupkg.sha512",
+        "microsoft.identity.client.nuspec"
       ]
     },
     "Microsoft.Net.Native.Compiler/1.7.3": {
@@ -22724,6 +23231,55 @@
         "build/Microsoft.Services.Store.Engagement.targets",
         "microsoft.services.store.engagement.10.1810.16002.nupkg.sha512",
         "microsoft.services.store.engagement.nuspec"
+      ]
+    },
+    "Microsoft.Toolkit/4.0.0": {
+      "sha512": "tGCovrIKh2mpIIr/Sit42YaaHBR1iuSeAVpdnYg8mRloarDpoKqNcEdhGDU6cZKqfOt3hGpJSWcruv6nwpLlvw==",
+      "type": "package",
+      "path": "microsoft.toolkit/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.4/Microsoft.Toolkit.dll",
+        "lib/netstandard1.4/Microsoft.Toolkit.pdb",
+        "lib/netstandard1.4/Microsoft.Toolkit.xml",
+        "microsoft.toolkit.4.0.0.nupkg.sha512",
+        "microsoft.toolkit.nuspec"
+      ]
+    },
+    "Microsoft.Toolkit.Uwp/4.0.0": {
+      "sha512": "JM2hMzHe7k2pF06EUZd7Yz9kX2J3LryUrKxrZofOpVWsbX40lGkU96xoE5o9+WmOmbogDNIAZgtEQXSHofs2iQ==",
+      "type": "package",
+      "path": "microsoft.toolkit.uwp/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.dll",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.pdb",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.pri",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.xml",
+        "microsoft.toolkit.uwp.4.0.0.nupkg.sha512",
+        "microsoft.toolkit.uwp.nuspec"
+      ]
+    },
+    "Microsoft.Toolkit.Uwp.UI/4.0.0": {
+      "sha512": "F0T3K4F/E9uWiguFEDIY2N2qneQzjpdrnfk44rke6Sk3Wcv+n2RiIi2G8jUnIxINt9PByy2s9TCzm35u9JmQJw==",
+      "type": "package",
+      "path": "microsoft.toolkit.uwp.ui/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.dll",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.pdb",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.pri",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI.xml",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI/Extensions/NavigationView/NavigationView.xaml",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI/Extensions/NavigationView/NavigationView.xbf",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI/Extensions/NavigationView/Styles/VSCodeActivityBarStyle.xaml",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI/Extensions/NavigationView/Styles/VSCodeActivityBarStyle.xbf",
+        "lib/uap10.0/Microsoft.Toolkit.Uwp.UI/Microsoft.Toolkit.Uwp.UI.xr.xml",
+        "microsoft.toolkit.uwp.ui.4.0.0.nupkg.sha512",
+        "microsoft.toolkit.uwp.ui.nuspec"
       ]
     },
     "Microsoft.VisualBasic/10.0.1": {
@@ -30247,12 +30803,32 @@
         "system.xml.xmlserializer.4.0.11.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "Win2D.uwp/1.21.0": {
+      "sha512": "4ddgs6Mt4cDVOPcKE+gV02Rn8G9nhp8C9S94A/msxULD2ysq6Q/z3CmeyATJhJNVfhumWUaXzx0B3v39vB5A4Q==",
+      "type": "package",
+      "path": "win2d.uwp/1.21.0",
+      "files": [
+        ".nupkg.metadata",
+        "Win2d.githash.txt",
+        "build/native/Win2D.uwp.targets",
+        "include/Microsoft.Graphics.Canvas.h",
+        "include/Microsoft.Graphics.Canvas.native.h",
+        "lib/uap10.0/Microsoft.Graphics.Canvas.winmd",
+        "lib/uap10.0/Microsoft.Graphics.Canvas.xml",
+        "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll",
+        "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll",
+        "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll",
+        "win2d.uwp.1.21.0.nupkg.sha512",
+        "win2d.uwp.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "UAP,Version=v10.0.15063": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 6.1.9",
       "Microsoft.Services.Store.Engagement >= 10.1810.16002",
+      "Microsoft.Toolkit.Uwp.UI >= 4.0.0",
       "Newtonsoft.Json >= 12.0.1"
     ]
   },
@@ -30300,6 +30876,10 @@
           "Microsoft.Services.Store.Engagement": {
             "target": "Package",
             "version": "[10.1810.16002, )"
+          },
+          "Microsoft.Toolkit.Uwp.UI": {
+            "target": "Package",
+            "version": "[4.0.0, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",

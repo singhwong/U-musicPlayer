@@ -21,6 +21,10 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="Style" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="FontFamily" />
       <RootProperty Name="Content" />
       <RootProperty Name="Margin" />
       <RootEvent Name="Click" />
@@ -62,13 +66,13 @@
       <RootProperty Name="RowDefinitions" />
       <RootProperty Name="Name" />
       <RootProperty Name="ColumnDefinitions" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="Margin" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="Padding" />
       <RootProperty Name="MaxWidth" />
       <RootProperty Name="MaxHeight" />
-      <RootProperty Name="Visibility" />
       <RootProperty Name="RenderTransformOrigin" />
       <RootProperty Name="FlowDirection" />
       <RootProperty Name="Resources" />
@@ -154,7 +158,6 @@
       <RootProperty Name="Name" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Visibility" />
       <RootProperty Name="IsDoubleTapEnabled" />
       <RootProperty Name="ContextFlyout" />
       <RootEvent Name="DoubleTapped" />
@@ -273,7 +276,9 @@
       <RootProperty Name="IsSwipeEnabled" />
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="IsItemClickEnabled" />
       <RootEvent Name="SelectionChanged" />
+      <RootEvent Name="ItemClick" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />

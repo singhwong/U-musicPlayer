@@ -117,6 +117,18 @@ namespace MusicPlayer.MusicPlayer_XamlTypeInfo
                 {
                     xamlType = CreateXamlType(typeIndex);
                 }
+                var userXamlType = xamlType as global::MusicPlayer.MusicPlayer_XamlTypeInfo.XamlUserType;
+                if(xamlType == null || (userXamlType != null && userXamlType.IsReturnTypeStub && !userXamlType.IsLocalType))
+                {
+                    global::Windows.UI.Xaml.Markup.IXamlType libXamlType = CheckOtherMetadataProvidersForType(type);
+                    if (libXamlType != null)
+                    {
+                        if(libXamlType.IsConstructible || xamlType == null)
+                        {
+                            xamlType = libXamlType;
+                        }
+                    }
+                }
                 if (xamlType != null)
                 {
                     _xamlTypeCacheByName.Add(xamlType.FullName, xamlType);
@@ -143,6 +155,18 @@ namespace MusicPlayer.MusicPlayer_XamlTypeInfo
                 if(typeIndex != -1)
                 {
                     xamlType = CreateXamlType(typeIndex);
+                }
+                var userXamlType = xamlType as global::MusicPlayer.MusicPlayer_XamlTypeInfo.XamlUserType;
+                if(xamlType == null || (userXamlType != null && userXamlType.IsReturnTypeStub && !userXamlType.IsLocalType))
+                {
+                    global::Windows.UI.Xaml.Markup.IXamlType libXamlType = CheckOtherMetadataProvidersForName(typeName);
+                    if (libXamlType != null)
+                    {
+                        if(libXamlType.IsConstructible || xamlType == null)
+                        {
+                            xamlType = libXamlType;
+                        }
+                    }
                 }
                 if (xamlType != null)
                 {
@@ -189,7 +213,7 @@ namespace MusicPlayer.MusicPlayer_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[7];
+            _typeNameTable = new string[10];
             _typeNameTable[0] = "MusicPlayer.LocalMusicControl";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.UserControl";
             _typeNameTable[2] = "MusicPlayer.Models.Music";
@@ -197,8 +221,11 @@ namespace MusicPlayer.MusicPlayer_XamlTypeInfo
             _typeNameTable[4] = "MusicPlayer.Models.ProgressConvert";
             _typeNameTable[5] = "MusicPlayer.MainPage";
             _typeNameTable[6] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[7] = "Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool";
+            _typeNameTable[8] = "Windows.UI.Xaml.Markup.MarkupExtension";
+            _typeNameTable[9] = "Boolean";
 
-            _typeTable = new global::System.Type[7];
+            _typeTable = new global::System.Type[10];
             _typeTable[0] = typeof(global::MusicPlayer.LocalMusicControl);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
             _typeTable[2] = typeof(global::MusicPlayer.Models.Music);
@@ -206,6 +233,9 @@ namespace MusicPlayer.MusicPlayer_XamlTypeInfo
             _typeTable[4] = typeof(global::MusicPlayer.Models.ProgressConvert);
             _typeTable[5] = typeof(global::MusicPlayer.MainPage);
             _typeTable[6] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[7] = typeof(global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool);
+            _typeTable[8] = typeof(global::Windows.UI.Xaml.Markup.MarkupExtension);
+            _typeTable[9] = typeof(global::System.Boolean);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -244,6 +274,7 @@ namespace MusicPlayer.MusicPlayer_XamlTypeInfo
         private object Activate_2_Music() { return new global::MusicPlayer.Models.Music(); }
         private object Activate_4_ProgressConvert() { return new global::MusicPlayer.Models.ProgressConvert(); }
         private object Activate_5_MainPage() { return new global::MusicPlayer.MainPage(); }
+        private object Activate_7_NullableBool() { return new global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -295,15 +326,107 @@ namespace MusicPlayer.MusicPlayer_XamlTypeInfo
             case 6:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::MusicPlayer.MusicPlayer_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
+
+            case 7:   //  Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool
+                userType = new global::MusicPlayer.MusicPlayer_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Markup.MarkupExtension"));
+                userType.Activator = Activate_7_NullableBool;
+                userType.AddMemberName("Value");
+                userType.AddMemberName("IsNull");
+                userType.SetIsBindable();
+                userType.SetIsMarkupExtension();
+                xamlType = userType;
+                break;
+
+            case 8:   //  Windows.UI.Xaml.Markup.MarkupExtension
+                xamlType = new global::MusicPlayer.MusicPlayer_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 9:   //  Boolean
+                xamlType = new global::MusicPlayer.MusicPlayer_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
             }
             return xamlType;
         }
 
+        private global::System.Collections.Generic.List<global::Windows.UI.Xaml.Markup.IXamlMetadataProvider> _otherProviders;
+        private global::System.Collections.Generic.List<global::Windows.UI.Xaml.Markup.IXamlMetadataProvider> OtherProviders
+        {
+            get
+            {
+                if(_otherProviders == null)
+                {
+                    var otherProviders = new global::System.Collections.Generic.List<global::Windows.UI.Xaml.Markup.IXamlMetadataProvider>();
+                    global::Windows.UI.Xaml.Markup.IXamlMetadataProvider provider;
+                    provider = new global::Microsoft.Toolkit.Uwp.UI.Microsoft_Toolkit_Uwp_UI_XamlTypeInfo.XamlMetaDataProvider() as global::Windows.UI.Xaml.Markup.IXamlMetadataProvider;
+                    otherProviders.Add(provider); 
+                    _otherProviders = otherProviders;
+                }
+                return _otherProviders;
+            }
+        }
+
+        private global::Windows.UI.Xaml.Markup.IXamlType CheckOtherMetadataProvidersForName(string typeName)
+        {
+            global::Windows.UI.Xaml.Markup.IXamlType xamlType = null;
+            global::Windows.UI.Xaml.Markup.IXamlType foundXamlType = null;
+            foreach(global::Windows.UI.Xaml.Markup.IXamlMetadataProvider xmp in OtherProviders)
+            {
+                xamlType = xmp.GetXamlType(typeName);
+                if(xamlType != null)
+                {
+                    if(xamlType.IsConstructible)    // not Constructible means it might be a Return Type Stub
+                    {
+                        return xamlType;
+                    }
+                    foundXamlType = xamlType;
+                }
+            }
+            return foundXamlType;
+        }
+
+        private global::Windows.UI.Xaml.Markup.IXamlType CheckOtherMetadataProvidersForType(global::System.Type type)
+        {
+            global::Windows.UI.Xaml.Markup.IXamlType xamlType = null;
+            global::Windows.UI.Xaml.Markup.IXamlType foundXamlType = null;
+            foreach(global::Windows.UI.Xaml.Markup.IXamlMetadataProvider xmp in OtherProviders)
+            {
+                xamlType = xmp.GetXamlType(type);
+                if(xamlType != null)
+                {
+                    if(xamlType.IsConstructible)    // not Constructible means it might be a Return Type Stub
+                    {
+                        return xamlType;
+                    }
+                    foundXamlType = xamlType;
+                }
+            }
+            return foundXamlType;
+        }
 
         private object get_0_LocalMusicControl_this_music(object instance)
         {
             var that = (global::MusicPlayer.LocalMusicControl)instance;
             return that.this_music;
+        }
+        private object get_1_NullableBool_Value(object instance)
+        {
+            var that = (global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool)instance;
+            return that.Value;
+        }
+        private void set_1_NullableBool_Value(object instance, object Value)
+        {
+            var that = (global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool)instance;
+            that.Value = (global::System.Boolean)Value;
+        }
+        private object get_2_NullableBool_IsNull(object instance)
+        {
+            var that = (global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool)instance;
+            return that.IsNull;
+        }
+        private void set_2_NullableBool_IsNull(object instance, object Value)
+        {
+            var that = (global::Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool)instance;
+            that.IsNull = (global::System.Boolean)Value;
         }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
@@ -318,6 +441,18 @@ namespace MusicPlayer.MusicPlayer_XamlTypeInfo
                 xamlMember = new global::MusicPlayer.MusicPlayer_XamlTypeInfo.XamlMember(this, "this_music", "MusicPlayer.Models.Music");
                 xamlMember.Getter = get_0_LocalMusicControl_this_music;
                 xamlMember.SetIsReadOnly();
+                break;
+            case "Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool.Value":
+                userType = (global::MusicPlayer.MusicPlayer_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool");
+                xamlMember = new global::MusicPlayer.MusicPlayer_XamlTypeInfo.XamlMember(this, "Value", "Boolean");
+                xamlMember.Getter = get_1_NullableBool_Value;
+                xamlMember.Setter = set_1_NullableBool_Value;
+                break;
+            case "Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool.IsNull":
+                userType = (global::MusicPlayer.MusicPlayer_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Toolkit.Uwp.UI.Extensions.NullableBool");
+                xamlMember = new global::MusicPlayer.MusicPlayer_XamlTypeInfo.XamlMember(this, "IsNull", "Boolean");
+                xamlMember.Getter = get_2_NullableBool_IsNull;
+                xamlMember.Setter = set_2_NullableBool_IsNull;
                 break;
             }
             return xamlMember;

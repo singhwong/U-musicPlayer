@@ -1,4 +1,5 @@
-﻿using MusicPlayer.Models;
+﻿using Microsoft.Toolkit.Uwp.UI;
+using MusicPlayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -43,6 +44,8 @@ namespace MusicPlayer
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private ObservableCollection<MusicList> main_musicList;
+        private ObservableCollection<Music> list_music;
         private ObservableCollection<Music> use_music;
         private ObservableCollection<StorageFile> allMusic;
         private Music main_music;
@@ -101,6 +104,8 @@ namespace MusicPlayer
         {
             this.InitializeComponent();
             ExtendAcrylicIntoTitleBar();
+            main_musicList = new ObservableCollection<MusicList>();
+            list_music = new ObservableCollection<Music>();
             use_music = new ObservableCollection<Music>();
             allMusic = new ObservableCollection<StorageFile>();
         }
@@ -174,7 +179,7 @@ namespace MusicPlayer
             main_image.Source = Album_Cover;
             songTile_textblock.Text = main_music.Title;
             artist_textblock.Text = main_music.Artist;
-            album_textblock.Text = "【"+ main_music.album_title+"】";
+            album_textblock.Text = "【" + main_music.album_title + "】";
             playTitle_textblock.Text = songTile_textblock.Text;
             playArtist_textblock.Text = main_music.Artist;
             line_textblock.Text = " - ";
@@ -232,7 +237,7 @@ namespace MusicPlayer
             main_image.Source = Album_Cover;
             songTile_textblock.Text = main_music.Title;
             artist_textblock.Text = main_music.Artist;
-            album_textblock.Text = "【" + main_music.album_title+"】";
+            album_textblock.Text = "【" + main_music.album_title + "】";
             playTitle_textblock.Text = songTile_textblock.Text;
             playArtist_textblock.Text = main_music.Artist;
             line_textblock.Text = " - ";
@@ -244,7 +249,7 @@ namespace MusicPlayer
         }
         private ResourceLoader resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
         private async void SetPlayErrorMethod()
-        {         
+        {
             string content_str = resourceLoader.GetString("content_str");
             ContentDialog content = new ContentDialog
             {
@@ -776,15 +781,20 @@ namespace MusicPlayer
         {
             if (IslistShowButtonClick)
             {
+                the_colume.Width = new GridLength(0);
                 main_listview.Visibility = Visibility.Collapsed;
                 title_stackPanel.Visibility = Visibility.Collapsed;
                 IslistShowButtonClick = false;
             }
             else
             {
+                the_colume.Width = second_colume.Width;
                 main_listview.Visibility = Visibility.Visible;
-                title_stackPanel.Visibility = Visibility.Visible;
-                addList_stackPanel.Visibility = Visibility.Collapsed;
+                if (IsMusicListItemShow_bool == false)
+                {
+                    title_stackPanel.Visibility = Visibility.Visible;
+                }                
+                addList_grid.Visibility = Visibility.Collapsed;
                 IslistShowButtonClick = true;
                 IsMusicListClick_bool = false;
             }
@@ -794,9 +804,13 @@ namespace MusicPlayer
         {
             if (listShow_button.Visibility == Visibility.Collapsed)
             {
+                the_colume.Width = second_colume.Width;
                 IslistShowButtonClick = false;
+                //IsMusicListClick_bool = false;
+                //addList_stackPanel.Visibility = Visibility.Collapsed;
                 IsMusicListClick_bool = false;
-                addList_stackPanel.Visibility = Visibility.Collapsed;
+                musicList_grid.Visibility = Visibility.Collapsed;
+
             }
         }
 
@@ -1068,7 +1082,7 @@ namespace MusicPlayer
             main_image.Source = Album_Cover;
             songTile_textblock.Text = musicDetails_music.Title;
             artist_textblock.Text = musicDetails_music.Artist;
-            album_textblock.Text = "【" + musicDetails_music.album_title+"】";
+            album_textblock.Text = "【" + musicDetails_music.album_title + "】";
             playTitle_textblock.Text = musicDetails_music.Title;
             playArtist_textblock.Text = musicDetails_music.Artist;
             line_textblock.Text = " - ";
@@ -1132,7 +1146,7 @@ namespace MusicPlayer
                     main_mediaElement.SetSource(stream, media_file.ContentType);
                     songTile_textblock.Text = song_Properties.Title;
                     artist_textblock.Text = song_Properties.Artist;
-                    album_textblock.Text = "【" + song_Properties.Album+"】";
+                    album_textblock.Text = "【" + song_Properties.Album + "】";
 
                     playTitle_textblock.Text = song_Properties.Title;
                     playArtist_textblock.Text = song_Properties.Artist;
@@ -1152,10 +1166,10 @@ namespace MusicPlayer
                 }
             }
         }
-   
+
         private void RemoveFromList_menu_Click(object sender, RoutedEventArgs e)
         {
-            menu_music = (Music)sender_value.DataContext;           
+            menu_music = (Music)sender_value.DataContext;
             if (main_music == menu_music)
             {
                 AfterRemoveSongMethod();//删除正在播放歌曲后，随机切换下一首
@@ -1248,7 +1262,7 @@ namespace MusicPlayer
                 SetContentDialog();
             }
             else
-            {           
+            {
                 listView_grid.Visibility = Visibility.Visible;
                 IslistShowButtonClick = true;
                 GetSavedMusicForeGround();
@@ -1401,7 +1415,7 @@ namespace MusicPlayer
             }
         }
         private string _resultLyric_str;
-        private void GetLyrics(string artist_str,string title_str)
+        private void GetLyrics(string artist_str, string title_str)
         {
             _resultLyric_str = resourceLoader.GetString("resultLyric_str");
             LyricService ls = new LyricService();
@@ -1435,7 +1449,7 @@ namespace MusicPlayer
                 lyric_textblock.Text = "";
                 lyric_button.Content = _searchLyric_str;
             }
-           
+
         }
 
         private async void AddList_button_Click_1(object sender, RoutedEventArgs e)
@@ -1443,7 +1457,48 @@ namespace MusicPlayer
             ContentDialogResult result = await addList_ContentDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
+                SetMusicListName(list_textbox.Text);
                 //AddPlayList(list_textbox.Text);
+                // Set up the original list with a few sample items
+//                var oc = new ObservableCollection<Person>
+//{
+//    new Person { Name = "Staff" },
+//    new Person { Name = "42" },
+//    new Person { Name = "Swan" },
+//    new Person { Name = "Orchid" },
+//    new Person { Name = "15" },
+//    new Person { Name = "Flame" },
+//    new Person { Name = "16" },
+//    new Person { Name = "Arrow" },
+//    new Person { Name = "Tempest" },
+//    new Person { Name = "23" },
+//    new Person { Name = "Pearl" },
+//    new Person { Name = "Hydra" },
+//    new Person { Name = "Lamp Post" },
+//    new Person { Name = "4" },
+//    new Person { Name = "Looking Glass" },
+//    new Person { Name = "8" },
+//};
+
+//                // Set up the AdvancedCollectionView with live shaping enabled to filter and sort the original list
+//                var acv = new AdvancedCollectionView(oc, true);
+
+//                // Let's filter out the integers
+//                int nul;
+//                acv.Filter = x => !int.TryParse(((Person)x).Name, out nul);
+
+//                // And sort ascending by the property "Name"
+//                acv.SortDescriptions.Add(new SortDescription("Name", SortDirection.Ascending));
+
+//                // Let's add a Person to the observable collection
+//                var person = new Person { Name = "Aardvark" };
+//                oc.Add(person);
+
+//                // Our added person is now at the top of the list, but if we rename this person, we can trigger a re-sort
+//                person.Name = "Zaphod"; // Now a re-sort is triggered and person will be last in the list
+
+//                // AdvancedCollectionView can be bound to anything that uses collections. 
+//                addList_listView.ItemsSource = oc;
             }
             else
             {
@@ -1455,22 +1510,65 @@ namespace MusicPlayer
         {
             if (IsMusicListClick_bool)
             {
+                if (listShow_button.Visibility == Visibility.Collapsed)
+                {
+                    the_colume.Width = second_colume.Width;
+                }
+                else
+                {
+                    the_colume.Width = new GridLength(0);
+                }                
                 main_listview.Visibility = Visibility.Visible;
-                title_stackPanel.Visibility = Visibility.Visible;
-                addList_stackPanel.Visibility = Visibility.Collapsed;
+                if (IsMusicListItemShow_bool == false)
+                {
+                    title_stackPanel.Visibility = Visibility.Visible;
+                }                
+                addList_grid.Visibility = Visibility.Collapsed;
                 IsMusicListClick_bool = false;
-                IslistShowButtonClick = true;
+                IslistShowButtonClick = false;
             }
             else
             {
+                the_colume.Width = second_colume.Width;
                 main_listview.Visibility = Visibility.Collapsed;
                 title_stackPanel.Visibility = Visibility.Collapsed;
-                addList_stackPanel.Visibility = Visibility.Visible;
+                addList_grid.Visibility = Visibility.Visible;
+                listView_grid.Visibility = Visibility.Visible;
+                musicList_grid.Visibility = Visibility.Collapsed;
                 IsMusicListClick_bool = true;
                 IslistShowButtonClick = false;
+                listShow_button.IsEnabled = true;
             }
-            
+
         }
+        private void SetMusicListName(string name)
+        {
+            MusicList music_list = new MusicList();
+            music_list.MusicList_Name = name;
+            main_musicList.Add(music_list);
+        }
+
+        private void AddList_listView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            listShow_button.IsEnabled = false;
+            IsMusicListItemShow_bool = true;
+            IsMusicListClick_bool = false;
+            //SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            musicList_grid.Visibility = Visibility.Visible;
+            listView_grid.Visibility = Visibility.Collapsed;
+             
+        }
+
+        private void ListBack_button_Click(object sender, RoutedEventArgs e)
+        {
+            listShow_button.IsEnabled = true;
+            IsMusicListItemShow_bool = false;
+            musicList_grid.Visibility = Visibility.Collapsed;
+            listView_grid.Visibility = Visibility.Visible;
+        }
+
+        private bool IsMusicListItemShow_bool = false;
+        //public event EventHandler<BackRequestedEventArgs> BackRequested;
     }
 }
 
