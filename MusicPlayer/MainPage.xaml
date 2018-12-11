@@ -42,6 +42,7 @@
                         <Setter Target="main_progressRing.Height" Value="50"/>
                         <Setter Target="main_progressRing.Width" Value="50"/>
                         <Setter Target="the_colume.Width" Value="Auto"/>
+                        <Setter Target="second_colume.Width" Value="0"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState>
@@ -100,7 +101,7 @@
                         <ColumnDefinition x:Name="the_colume"
                               Width="*"/>
                         <ColumnDefinition x:Name="second_colume"
-                              Width="*"/>
+                              Width="0"/>
                         <ColumnDefinition x:Name="third_colume"
                               Width="*"/>
                     </Grid.ColumnDefinitions>
@@ -158,7 +159,6 @@
                            Style="{StaticResource songTextStyle}"/>
             </Grid>-->
                         <ListView Name="main_listview"
-                      Grid.Row="1"
                       SelectionMode="Single"                      
                       AllowDrop="True"
                       CanReorderItems="True"
@@ -201,12 +201,37 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                       
+                    </Grid>
+                    <Grid Name="MusicShow_Grid"
+                          Grid.Row="1"
+                          Grid.RowSpan="2"
+                          Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Name="addMusic_button"
+                                HorizontalAlignment="Right"
+                                FontFamily="Segoe MDL2 Assets"
+                                Content="&#xE710;"
+                                Style="{StaticResource button_Style}"
+                                Background="Transparent"
+                                />
+                        <Button Name="back_Button"
+                                HorizontalAlignment="Left"
+                                FontFamily="Segoe MDL2 Assets"
+                                Content="&#xE72B;"
+                                Style="{StaticResource button_Style}"
+                                Background="Transparent"
+                                Click="Back_Button_Click"/>
+
                         <ListView Name="MusicShow_ListView"
-                                  Grid.Row="1"
-                                  Grid.Column="1">
-                            
+                                  Grid.Row="1">
+
                         </ListView>
                     </Grid>
+                  
                     <ScrollViewer Name="main_scrollViewer"
                       Grid.Row="1"
                       Grid.Column="2"

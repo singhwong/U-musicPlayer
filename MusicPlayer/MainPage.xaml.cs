@@ -800,9 +800,9 @@ namespace MusicPlayer
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-                //the_colume.Width = second_colume.Width;
-                IslistShowButtonClick = false;
-                //IsMusicListClick_bool = false;
+            //the_colume.Width = second_colume.Width;
+            IslistShowButtonClick = false;
+            //IsMusicListClick_bool = false;
         }
 
         private void Volume_button_Click(object sender, RoutedEventArgs e)
@@ -1452,45 +1452,45 @@ namespace MusicPlayer
                 SetMusicListName(list_textbox.Text);
                 //AddPlayList(list_textbox.Text);
                 // Set up the original list with a few sample items
-//                var oc = new ObservableCollection<Person>
-//{
-//    new Person { Name = "Staff" },
-//    new Person { Name = "42" },
-//    new Person { Name = "Swan" },
-//    new Person { Name = "Orchid" },
-//    new Person { Name = "15" },
-//    new Person { Name = "Flame" },
-//    new Person { Name = "16" },
-//    new Person { Name = "Arrow" },
-//    new Person { Name = "Tempest" },
-//    new Person { Name = "23" },
-//    new Person { Name = "Pearl" },
-//    new Person { Name = "Hydra" },
-//    new Person { Name = "Lamp Post" },
-//    new Person { Name = "4" },
-//    new Person { Name = "Looking Glass" },
-//    new Person { Name = "8" },
-//};
+                //                var oc = new ObservableCollection<Person>
+                //{
+                //    new Person { Name = "Staff" },
+                //    new Person { Name = "42" },
+                //    new Person { Name = "Swan" },
+                //    new Person { Name = "Orchid" },
+                //    new Person { Name = "15" },
+                //    new Person { Name = "Flame" },
+                //    new Person { Name = "16" },
+                //    new Person { Name = "Arrow" },
+                //    new Person { Name = "Tempest" },
+                //    new Person { Name = "23" },
+                //    new Person { Name = "Pearl" },
+                //    new Person { Name = "Hydra" },
+                //    new Person { Name = "Lamp Post" },
+                //    new Person { Name = "4" },
+                //    new Person { Name = "Looking Glass" },
+                //    new Person { Name = "8" },
+                //};
 
-//                // Set up the AdvancedCollectionView with live shaping enabled to filter and sort the original list
-//                var acv = new AdvancedCollectionView(oc, true);
+                //                // Set up the AdvancedCollectionView with live shaping enabled to filter and sort the original list
+                //                var acv = new AdvancedCollectionView(oc, true);
 
-//                // Let's filter out the integers
-//                int nul;
-//                acv.Filter = x => !int.TryParse(((Person)x).Name, out nul);
+                //                // Let's filter out the integers
+                //                int nul;
+                //                acv.Filter = x => !int.TryParse(((Person)x).Name, out nul);
 
-//                // And sort ascending by the property "Name"
-//                acv.SortDescriptions.Add(new SortDescription("Name", SortDirection.Ascending));
+                //                // And sort ascending by the property "Name"
+                //                acv.SortDescriptions.Add(new SortDescription("Name", SortDirection.Ascending));
 
-//                // Let's add a Person to the observable collection
-//                var person = new Person { Name = "Aardvark" };
-//                oc.Add(person);
+                //                // Let's add a Person to the observable collection
+                //                var person = new Person { Name = "Aardvark" };
+                //                oc.Add(person);
 
-//                // Our added person is now at the top of the list, but if we rename this person, we can trigger a re-sort
-//                person.Name = "Zaphod"; // Now a re-sort is triggered and person will be last in the list
+                //                // Our added person is now at the top of the list, but if we rename this person, we can trigger a re-sort
+                //                person.Name = "Zaphod"; // Now a re-sort is triggered and person will be last in the list
 
-//                // AdvancedCollectionView can be bound to anything that uses collections. 
-//                addList_listView.ItemsSource = oc;
+                //                // AdvancedCollectionView can be bound to anything that uses collections. 
+                //                addList_listView.ItemsSource = oc;
             }
             else
             {
@@ -1542,6 +1542,15 @@ namespace MusicPlayer
         private void MusicList_ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             the_colume.Width = new GridLength(0);
+            second_colume.Width = third_colume.Width;
+        }
+
+        private void Back_Button_Click(object sender, RoutedEventArgs e)
+        {
+            the_colume.Width = third_colume.Width;
+            main_listview.Visibility = Visibility.Visible;
+            IslistShowButtonClick = true;
+            second_colume.Width = new GridLength(0);
         }
     }
 }
