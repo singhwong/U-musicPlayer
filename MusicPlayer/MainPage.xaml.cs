@@ -309,17 +309,20 @@ namespace MusicPlayer
                         this.RequestedTheme = ElementTheme.Light;
                         main_commandBar.RequestedTheme = ElementTheme.Light;
                         SetAcrylic(newWhite);
-                        main_grid.Background = myBrush; break;
+                        main_grid.Background = myBrush;
+                        musicListShow_grid.Background = myBrush; break;
                     case "dark":
                         this.RequestedTheme = ElementTheme.Dark;
                         main_commandBar.RequestedTheme = ElementTheme.Dark;
                         SetAcrylic(newBlack);
-                        main_grid.Background = myBrush; break;
+                        main_grid.Background = myBrush;
+                        musicListShow_grid.Background = myBrush; break;
                     case "defalut":
                         this.RequestedTheme = ElementTheme.Default;
                         main_commandBar.RequestedTheme = ElementTheme.Default;
                         SetAcrylic(newWhite);
-                        main_grid.Background = myBrush; break;
+                        main_grid.Background = myBrush;
+                        musicListShow_grid.Background = myBrush; break;
                     default:
                         break;
                 }
@@ -330,6 +333,7 @@ namespace MusicPlayer
                 main_commandBar.RequestedTheme = ElementTheme.Default;
                 SetAcrylic(newWhite);
                 main_grid.Background = myBrush;
+                musicListShow_grid.Background = myBrush;
             }
             #endregion
         }
@@ -788,19 +792,17 @@ namespace MusicPlayer
             }
             else
             {
-                the_colume.Width = second_colume.Width;
+                the_colume.Width = third_colume.Width;
                 main_listview.Visibility = Visibility.Visible;
+                IslistShowButtonClick = true;
             }
         }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (this.Width >= 600)
-            {
-                the_colume.Width = second_colume.Width;
+                //the_colume.Width = second_colume.Width;
                 IslistShowButtonClick = false;
                 //IsMusicListClick_bool = false;
-            }
         }
 
         private void Volume_button_Click(object sender, RoutedEventArgs e)
@@ -847,6 +849,7 @@ namespace MusicPlayer
 
             SetAcrylic(newWhite);
             main_grid.Background = myBrush;
+            musicListShow_grid.Background = myBrush;
             this.RequestedTheme = ElementTheme.Light;
             main_commandBar.RequestedTheme = ElementTheme.Light;
             local_backGround.Values.Remove("backGround_image");
@@ -1496,13 +1499,49 @@ namespace MusicPlayer
 
         private void MusicList_button_Click(object sender, RoutedEventArgs e)
         {
-           
+            MusicList_SplitView.IsPaneOpen = !MusicList_SplitView.IsPaneOpen;
         }
         private void SetMusicListName(string name)
         {
             MusicList music_list = new MusicList();
             music_list.MusicList_Name = name;
             main_musicList.Add(music_list);
+        }
+
+        private async void AddMusicList_menu_Click(object sender, RoutedEventArgs e)
+        {
+            //ContentDialogResult result = await addList_ContentDialog.ShowAsync();
+            //if (result == ContentDialogResult.Primary)
+            //{
+            //    // Terms of use were accepted.
+
+            //}
+            //else
+            //{
+            //    // User pressed Cancel, ESC, or the back arrow.
+            //    // Terms of use were not accepted.
+            //}
+        }
+
+        private async void AddMusicList_button_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDialogResult result = await addList_ContentDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                // Terms of use were accepted.
+                SetMusicListName(list_textbox.Text);
+
+            }
+            else
+            {
+                // User pressed Cancel, ESC, or the back arrow.
+                // Terms of use were not accepted.
+            }
+        }
+
+        private void MusicList_ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            the_colume.Width = new GridLength(0);
         }
     }
 }

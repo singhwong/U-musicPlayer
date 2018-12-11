@@ -51,22 +51,60 @@
                     <VisualState.Setters>
                         <Setter Target="main_listview.Visibility" Value="Visible"/>
                         <Setter Target="title_stackPanel.Visibility" Value="Visible"/>
+                        <Setter Target="the_colume.Width" Value="*"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="33"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="the_colume"
+        <SplitView Name="MusicList_SplitView"
+                   OpenPaneLength="200"
+                   IsPaneOpen="False"
+                   DisplayMode="Inline">
+            <SplitView.Pane>
+                <Grid Name="musicListShow_grid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Name="addMusicList_button"
+                            Height="30"
+                            Width="200"
+                            Margin="0,30,0,0"
+                            Background="Transparent"
+                            Content="添加歌单"
+                            Style="{StaticResource button_Style}"
+                            Click="AddMusicList_button_Click"/>
+                    <ListView Name="MusicList_ListView"
+                              Grid.Row="1"
+                          IsItemClickEnabled="True"
+                              ItemsSource="{x:Bind main_musicList}"
+                              ItemClick="MusicList_ListView_ItemClick">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local1:MusicList">
+                                <TextBlock  Text="{x:Bind MusicList_Name}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+                </Grid>
+               
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="33"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Name="the_colume"
                               Width="*"/>
-            <ColumnDefinition x:Name="second_colume"
+                        <ColumnDefinition x:Name="second_colume"
                               Width="*"/>
-        </Grid.ColumnDefinitions>
-        <ProgressRing Name="main_progressRing"
+                        <ColumnDefinition x:Name="third_colume"
+                              Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ProgressRing Name="main_progressRing"
                       Grid.Row="1"
                       Grid.RowSpan="2"
                       Height="150"
@@ -75,32 +113,32 @@
                       Visibility="Collapsed"
                       VerticalAlignment="Center"
                       HorizontalAlignment="Center"/>
-        <StackPanel Name="title_stackPanel"
+                    <StackPanel Name="title_stackPanel"
                     Orientation="Horizontal">
-            <!--<TextBlock Name="name_textblock"
+                        <!--<TextBlock Name="name_textblock"
                        Text="Own MusicPlayer"                   
                        Margin="30,0,0,0"
                        FontSize="15"
                        VerticalAlignment="Center"/>-->
-            <TextBlock Name="songNumStr_textBlock"
+                        <TextBlock Name="songNumStr_textBlock"
                        x:Uid="songNumStr_textBlock"                 
                        Style="{StaticResource songTextStyle}"
                        Margin="33,0,5,0"
                        VerticalAlignment="Center"/>
-            <TextBlock Name="songNum_textBlock"
+                        <TextBlock Name="songNum_textBlock"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Style="{StaticResource songTextStyle}"/>
-        </StackPanel>
+                    </StackPanel>
 
-        <Grid Name="listView_grid"
+                    <Grid Name="listView_grid"
               Grid.Row="1"
               Grid.RowSpan="2">
-            <!--<Grid.RowDefinitions>
+                        <!--<Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>-->
-            <!--<Grid BorderThickness="1"
+                        <!--<Grid BorderThickness="1"
                   BorderBrush="Gray">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="300"/>
@@ -119,7 +157,7 @@
                            Grid.Column="2"
                            Style="{StaticResource songTextStyle}"/>
             </Grid>-->
-            <ListView Name="main_listview"
+                        <ListView Name="main_listview"
                       Grid.Row="1"
                       SelectionMode="Single"                      
                       AllowDrop="True"
@@ -127,152 +165,162 @@
                       IsSwipeEnabled="True"
                       SelectionChanged="Main_listview_SelectionChanged"
                       ItemsSource="{x:Bind use_music}">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="local1:Music">
-                        <StackPanel Name="rightClick_stackPanel"
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="local1:Music">
+                                    <StackPanel Name="rightClick_stackPanel"
                                     IsDoubleTapEnabled="True"
                                     DoubleTapped="RightClick_stackPanel_DoubleTapped"
                                     RightTapped="RightClick_stackPanel_RightTapped">
-                            <local:LocalMusicControl/>
-                            <StackPanel.ContextFlyout>
-                                <MenuFlyout>
-                                    <MenuFlyoutItem Name="play_menu"
+                                        <local:LocalMusicControl/>
+                                        <StackPanel.ContextFlyout>
+                                            <MenuFlyout>
+                                                <MenuFlyoutItem Name="play_menu"
                                                     x:Uid="play_menu"
                                                     Click="Play_menu_Click"/>
-                                    <MenuFlyoutItem Name="stop_menu"
+                                                <MenuFlyoutItem Name="stop_menu"
                                                     x:Uid="stop_menu"
                                                     Click="Stop_menu_Click"/>
-                                    <MenuFlyoutSeparator/>
-                                    <MenuFlyoutItem Name="removeFromList_menu"
+                                                <MenuFlyoutSeparator/>
+                                                <MenuFlyoutItem Name="removeFromList_menu"
                                                     x:Uid="removeFromList_menu"
                                                     Click="RemoveFromList_menu_Click"/>
-                                    <MenuFlyoutSubItem Name="removeFromLocal_menu"
+                                                <MenuFlyoutSubItem Name="removeFromLocal_menu"
                                                        x:Uid="removeFromLocal_menu">
-                                        <MenuFlyoutItem Name="recycleBin_menu"
+                                                    <MenuFlyoutItem Name="recycleBin_menu"
                                                         x:Uid="recycleBin_menu"
                                                         Click="RecycleBin_menu_Click"/>
-                                        <MenuFlyoutItem Name="direct_menu"
+                                                    <MenuFlyoutItem Name="direct_menu"
                                                         x:Uid="direct_menu"
                                                         Click="Direct_menu_Click"/>
-                                    </MenuFlyoutSubItem>
-                                    <MenuFlyoutItem Name="cancle_menu"
+                                                </MenuFlyoutSubItem>
+                                                <MenuFlyoutItem Name="cancle_menu"
                                                     x:Uid="cancle_menu"/>
-                                </MenuFlyout>
-                            </StackPanel.ContextFlyout>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Grid>
-        <ScrollViewer Name="main_scrollViewer"
+                                            </MenuFlyout>
+                                        </StackPanel.ContextFlyout>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <ListView Name="MusicShow_ListView"
+                                  Grid.Row="1"
+                                  Grid.Column="1">
+                            
+                        </ListView>
+                    </Grid>
+                    <ScrollViewer Name="main_scrollViewer"
                       Grid.Row="1"
-                      Grid.Column="1"
+                      Grid.Column="2"
                       IsDeferredScrollingEnabled="False"
                       HorizontalScrollMode="Enabled" 
                       VerticalScrollMode="Enabled"
                       HorizontalScrollBarVisibility="Hidden"  
                       VerticalScrollBarVisibility="Auto">
-            <StackPanel Name="songDetails_grid"
+                        <StackPanel Name="songDetails_grid"
                         Orientation="Vertical">
-                <Image Name="main_image"
+                            <Image Name="main_image"
                        Height="230"
                        Width="230" 
                        HorizontalAlignment="Center"
                        Source="Assets/music_1.png">
-                </Image>
-                <TextBlock Name="songTile_textblock"
+                            </Image>
+                            <TextBlock Name="songTile_textblock"
                                FontSize="20"
                                Margin="0,10,0,0"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Name="artist_textblock"
+                            <TextBlock Name="artist_textblock"
                                FontSize="15"
                                Margin="0,10,0,0"
                                HorizontalAlignment="Center"/>
-                <TextBlock Name="album_textblock"
+                            <TextBlock Name="album_textblock"
                                FontSize="15"
                                Margin="0,10,0,0"
                                HorizontalAlignment="Center"/>
-                <Button Name="lyric_button"
+                            <Button Name="lyric_button"
                         Background="Transparent"
                             HorizontalAlignment="Center"
                         FontWeight="Bold"
                             x:Uid="lyric_button"
                         Style="{StaticResource button_Style}"
                             Click="Lyric_button_Click"/>
-                <TextBlock Name="lyric_textblock"
+                            <TextBlock Name="lyric_textblock"
                            FontSize="15"
                            Margin="50,0,50,0"
                            TextWrapping="Wrap"
                            HorizontalAlignment="Center"/>
-            </StackPanel>
-        </ScrollViewer>
-        <!--<ProgressBar Name="main_progressbar"
+                        </StackPanel>
+                    </ScrollViewer>
+                    <!--<ProgressBar Name="main_progressbar"
                      Visibility="Collapsed"/>
         <ProgressBar Name="main_progressbar2"
                      Visibility="Collapsed"/>-->
-        <StackPanel Name="slider_stackPanel"
+                    <StackPanel Name="slider_stackPanel"
                     Orientation="Vertical"
                     Grid.Row="2"
-                    Grid.Column="1"
+                    Grid.Column="2"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch">
-            <Slider Name="main_slider"
+                        <Slider Name="main_slider"
                     Style="{StaticResource mainSliderStyle}"
                     Background="White"
                     Margin="30,0,30,-20"
                     IsThumbToolTipEnabled="False"
                     Value="{Binding ElementName=main_mediaElement,Path=Position,Converter={StaticResource progressConvert }, Mode=TwoWay}"
                     ValueChanged="Main_slider_ValueChanged_1">
-            </Slider>
-            <Grid Margin="30,0,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Name="playTitle_textblock"
+                        </Slider>
+                        <Grid Margin="30,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Name="playTitle_textblock"
                            FontSize="15"
                            Visibility="Collapsed"
                            HorizontalAlignment="Left"/>
-                <TextBlock Name="line_textblock"
+                            <TextBlock Name="line_textblock"
                            Grid.Column="1"
                            FontSize="15"
                            Visibility="Collapsed"/>
-                <TextBlock Name="playArtist_textblock"
+                            <TextBlock Name="playArtist_textblock"
                            Grid.Column="2"
                            FontSize="15"
                            Visibility="Collapsed"/>
-                <TextBlock Name="playTime_textblock"
+                            <TextBlock Name="playTime_textblock"
                            Grid.Column="3"
                            FontSize="15"
                            FontWeight="Thin"
                            Margin="0,0,30,0"
                            HorizontalAlignment="Right"/>
-            </Grid>
-        </StackPanel>
-        <MediaElement Name="main_mediaElement"
+                        </Grid>
+                    </StackPanel>
+                    <MediaElement Name="main_mediaElement"
                       AutoPlay="True"
                       Height="30"
                       Width="30"
                       Visibility="Collapsed"
                       AudioCategory="BackgroundCapableMedia"
                       CurrentStateChanged="Main_mediaElement_CurrentStateChanged_1"/>
-        <ContentDialog x:Name="addList_ContentDialog"
+                    <ContentDialog x:Name="addList_ContentDialog"
                        PrimaryButtonText="新增" 
                        IsPrimaryButtonEnabled="True"
                        CloseButtonText="取消">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Name="addList_textblock"
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Name="addList_textblock"
                            Text="歌单名"
                            VerticalAlignment="Center"
                            Margin="0,0,10,0"/>
-                <TextBox Name="list_textbox"
+                            <TextBox Name="list_textbox"
                          Height="30"
                          Width="200"/>
-            </StackPanel>
-        </ContentDialog>
+                        </StackPanel>
+                    </ContentDialog>
+                </Grid>
+            </SplitView.Content>
+        </SplitView>
+       
     </Grid>
+        
     <Page.BottomAppBar>
         <CommandBar Name="main_commandBar"
                     RequestedTheme="Light">
