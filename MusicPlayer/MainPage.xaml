@@ -42,8 +42,6 @@
                         <Setter Target="main_progressRing.Height" Value="50"/>
                         <Setter Target="main_progressRing.Width" Value="50"/>
                         <Setter Target="the_colume.Width" Value="Auto"/>
-                        <Setter Target="addList_grid.Visibility" Value="Collapsed"/>
-                        <Setter Target="musicList_grid.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState>
@@ -53,7 +51,6 @@
                     <VisualState.Setters>
                         <Setter Target="main_listview.Visibility" Value="Visible"/>
                         <Setter Target="title_stackPanel.Visibility" Value="Visible"/>
-                        <Setter Target="addList_grid.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -166,57 +163,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Grid Name="addList_grid"
-                        Grid.Row="1"
-                        Visibility="Collapsed">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Button Name="addList_button"
-                        Content="新增歌单"
-                        Margin="23,0,0,0"
-                        Background="Transparent"
-                        Style="{StaticResource button_Style}"
-                        Click="AddList_button_Click_1"/>
-                <ListView Name="addList_listView"
-                          Grid.Row="1"
-                          IsItemClickEnabled="True"
-                          ItemsSource="{x:Bind main_musicList}"
-                          ItemClick="AddList_listView_ItemClick">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="local1:MusicList">
-                            <TextBlock Text="{x:Bind MusicList_Name}"
-                                       Margin="23,0,0,0"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
-        </Grid>
-        <Grid Name="musicList_grid"
-              Grid.RowSpan="3"
-              Visibility="Collapsed">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Name="musicListTitle_textblock"
-                           Text="歌曲数目:"/>
-                <TextBlock Name="musicNum_textblock"
-                           Margin="10,0,0,0"/>
-            </StackPanel>
-            <Button Name="listBack_button"
-                    Height="30"
-                    Width="70"
-                    Grid.Row="1"
-                    VerticalAlignment="Bottom"
-                    Style="{StaticResource button_Style}"
-                    Background="Transparent"
-                    FontFamily="Segoe MDL2 Assets"
-                    Content="&#xE830;"
-                    Click="ListBack_button_Click"/>
         </Grid>
         <ScrollViewer Name="main_scrollViewer"
                       Grid.Row="1"

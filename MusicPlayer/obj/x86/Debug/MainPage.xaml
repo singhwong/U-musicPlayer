@@ -42,8 +42,6 @@
                         <Setter Target="main_progressRing.Height" Value="50"/>
                         <Setter Target="main_progressRing.Width" Value="50"/>
                         <Setter Target="the_colume.Width" Value="Auto"/>
-                        <Setter Target="addList_grid.Visibility" Value="Collapsed"/>
-                        <Setter Target="musicList_grid.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState>
@@ -53,7 +51,6 @@
                     <VisualState.Setters>
                         <Setter Target="main_listview.Visibility" Value="Visible"/>
                         <Setter Target="title_stackPanel.Visibility" Value="Visible"/>
-                        <Setter Target="addList_grid.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -85,12 +82,12 @@
                        Margin="30,0,0,0"
                        FontSize="15"
                        VerticalAlignment="Center"/>-->
-            <TextBlock x:ConnectionId='41' Name="songNumStr_textBlock"
+            <TextBlock x:ConnectionId='33' Name="songNumStr_textBlock"
                        x:Uid="songNumStr_textBlock"                 
                        Style="{StaticResource songTextStyle}"
                        Margin="33,0,5,0"
                        VerticalAlignment="Center"/>
-            <TextBlock x:ConnectionId='42' Name="songNum_textBlock"
+            <TextBlock x:ConnectionId='34' Name="songNum_textBlock"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Style="{StaticResource songTextStyle}"/>
@@ -122,7 +119,7 @@
                            Grid.Column="2"
                            Style="{StaticResource songTextStyle}"/>
             </Grid>-->
-            <ListView x:ConnectionId='30' Name="main_listview"
+            <ListView x:ConnectionId='26' Name="main_listview"
                       Grid.Row="1"
                       SelectionMode="Single"                      
                       AllowDrop="True"
@@ -132,29 +129,29 @@
                                                       >
                 <ListView.ItemTemplate>
                     <DataTemplate                          >
-                        <StackPanel x:ConnectionId='35' Name="rightClick_stackPanel"
+                        <StackPanel x:ConnectionId='27' Name="rightClick_stackPanel"
                                     IsDoubleTapEnabled="True"
                                                                                      
                                                                                    >
                             <local:LocalMusicControl/>
                             <StackPanel.ContextFlyout>
                                 <MenuFlyout>
-                                    <MenuFlyoutItem x:ConnectionId='36' Name="play_menu"
+                                    <MenuFlyoutItem x:ConnectionId='28' Name="play_menu"
                                                     x:Uid="play_menu"
                                                                            />
-                                    <MenuFlyoutItem x:ConnectionId='37' Name="stop_menu"
+                                    <MenuFlyoutItem x:ConnectionId='29' Name="stop_menu"
                                                     x:Uid="stop_menu"
                                                                            />
                                     <MenuFlyoutSeparator/>
-                                    <MenuFlyoutItem x:ConnectionId='38' Name="removeFromList_menu"
+                                    <MenuFlyoutItem x:ConnectionId='30' Name="removeFromList_menu"
                                                     x:Uid="removeFromList_menu"
                                                                                      />
                                     <MenuFlyoutSubItem Name="removeFromLocal_menu"
                                                        x:Uid="removeFromLocal_menu">
-                                        <MenuFlyoutItem x:ConnectionId='39' Name="recycleBin_menu"
+                                        <MenuFlyoutItem x:ConnectionId='31' Name="recycleBin_menu"
                                                         x:Uid="recycleBin_menu"
                                                                                      />
-                                        <MenuFlyoutItem x:ConnectionId='40' Name="direct_menu"
+                                        <MenuFlyoutItem x:ConnectionId='32' Name="direct_menu"
                                                         x:Uid="direct_menu"
                                                                                  />
                                     </MenuFlyoutSubItem>
@@ -166,59 +163,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Grid x:ConnectionId='31' Name="addList_grid"
-                        Grid.Row="1"
-                        Visibility="Collapsed">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Button x:ConnectionId='32' Name="addList_button"
-                        Content="新增歌单"
-                        Margin="23,0,0,0"
-                        Background="Transparent"
-                        Style="{StaticResource button_Style}"
-                                                      />
-                <ListView x:ConnectionId='33' Name="addList_listView"
-                          Grid.Row="1"
-                          IsItemClickEnabled="True"
-                                                               
-                                                                >
-                    <ListView.ItemTemplate>
-                        <DataTemplate                              >
-                            <TextBlock x:ConnectionId='34'                               
-                                       Margin="23,0,0,0"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
         </Grid>
-        <Grid x:ConnectionId='8' Name="musicList_grid"
-              Grid.RowSpan="3"
-              Visibility="Collapsed">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock x:ConnectionId='28' Name="musicListTitle_textblock"
-                           Text="歌曲数目:"/>
-                <TextBlock x:ConnectionId='29' Name="musicNum_textblock"
-                           Margin="10,0,0,0"/>
-            </StackPanel>
-            <Button x:ConnectionId='27' Name="listBack_button"
-                    Height="30"
-                    Width="70"
-                    Grid.Row="1"
-                    VerticalAlignment="Bottom"
-                    Style="{StaticResource button_Style}"
-                    Background="Transparent"
-                    FontFamily="Segoe MDL2 Assets"
-                    Content="&#xE830;"
-                                                 />
-        </Grid>
-        <ScrollViewer x:ConnectionId='9' Name="main_scrollViewer"
+        <ScrollViewer x:ConnectionId='8' Name="main_scrollViewer"
                       Grid.Row="1"
                       Grid.Column="1"
                       IsDeferredScrollingEnabled="False"
@@ -226,34 +172,34 @@
                       VerticalScrollMode="Enabled"
                       HorizontalScrollBarVisibility="Hidden"  
                       VerticalScrollBarVisibility="Auto">
-            <StackPanel x:ConnectionId='20' Name="songDetails_grid"
+            <StackPanel x:ConnectionId='19' Name="songDetails_grid"
                         Orientation="Vertical">
-                <Image x:ConnectionId='21' Name="main_image"
+                <Image x:ConnectionId='20' Name="main_image"
                        Height="230"
                        Width="230" 
                        HorizontalAlignment="Center"
                        Source="Assets/music_1.png">
                 </Image>
-                <TextBlock x:ConnectionId='22' Name="songTile_textblock"
+                <TextBlock x:ConnectionId='21' Name="songTile_textblock"
                                FontSize="20"
                                Margin="0,10,0,0"
                                HorizontalAlignment="Center"/>
-                    <TextBlock x:ConnectionId='23' Name="artist_textblock"
+                    <TextBlock x:ConnectionId='22' Name="artist_textblock"
                                FontSize="15"
                                Margin="0,10,0,0"
                                HorizontalAlignment="Center"/>
-                <TextBlock x:ConnectionId='24' Name="album_textblock"
+                <TextBlock x:ConnectionId='23' Name="album_textblock"
                                FontSize="15"
                                Margin="0,10,0,0"
                                HorizontalAlignment="Center"/>
-                <Button x:ConnectionId='25' Name="lyric_button"
+                <Button x:ConnectionId='24' Name="lyric_button"
                         Background="Transparent"
                             HorizontalAlignment="Center"
                         FontWeight="Bold"
                             x:Uid="lyric_button"
                         Style="{StaticResource button_Style}"
                                                       />
-                <TextBlock x:ConnectionId='26' Name="lyric_textblock"
+                <TextBlock x:ConnectionId='25' Name="lyric_textblock"
                            FontSize="15"
                            Margin="50,0,50,0"
                            TextWrapping="Wrap"
@@ -264,13 +210,13 @@
                      Visibility="Collapsed"/>
         <ProgressBar Name="main_progressbar2"
                      Visibility="Collapsed"/>-->
-        <StackPanel x:ConnectionId='10' Name="slider_stackPanel"
+        <StackPanel x:ConnectionId='9' Name="slider_stackPanel"
                     Orientation="Vertical"
                     Grid.Row="2"
                     Grid.Column="1"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch">
-            <Slider x:ConnectionId='15' Name="main_slider"
+            <Slider x:ConnectionId='14' Name="main_slider"
                     Style="{StaticResource mainSliderStyle}"
                     Background="White"
                     Margin="30,0,30,-20"
@@ -285,19 +231,19 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:ConnectionId='16' Name="playTitle_textblock"
+                <TextBlock x:ConnectionId='15' Name="playTitle_textblock"
                            FontSize="15"
                            Visibility="Collapsed"
                            HorizontalAlignment="Left"/>
-                <TextBlock x:ConnectionId='17' Name="line_textblock"
+                <TextBlock x:ConnectionId='16' Name="line_textblock"
                            Grid.Column="1"
                            FontSize="15"
                            Visibility="Collapsed"/>
-                <TextBlock x:ConnectionId='18' Name="playArtist_textblock"
+                <TextBlock x:ConnectionId='17' Name="playArtist_textblock"
                            Grid.Column="2"
                            FontSize="15"
                            Visibility="Collapsed"/>
-                <TextBlock x:ConnectionId='19' Name="playTime_textblock"
+                <TextBlock x:ConnectionId='18' Name="playTime_textblock"
                            Grid.Column="3"
                            FontSize="15"
                            FontWeight="Thin"
@@ -305,80 +251,80 @@
                            HorizontalAlignment="Right"/>
             </Grid>
         </StackPanel>
-        <MediaElement x:ConnectionId='11' Name="main_mediaElement"
+        <MediaElement x:ConnectionId='10' Name="main_mediaElement"
                       AutoPlay="True"
                       Height="30"
                       Width="30"
                       Visibility="Collapsed"
                       AudioCategory="BackgroundCapableMedia"
                                                                                    />
-        <ContentDialog x:ConnectionId='12' x:Name="addList_ContentDialog"
+        <ContentDialog x:ConnectionId='11' x:Name="addList_ContentDialog"
                        PrimaryButtonText="新增" 
                        IsPrimaryButtonEnabled="True"
                        CloseButtonText="取消">
             <StackPanel Orientation="Horizontal">
-                <TextBlock x:ConnectionId='13' Name="addList_textblock"
+                <TextBlock x:ConnectionId='12' Name="addList_textblock"
                            Text="歌单名"
                            VerticalAlignment="Center"
                            Margin="0,0,10,0"/>
-                <TextBox x:ConnectionId='14' Name="list_textbox"
+                <TextBox x:ConnectionId='13' Name="list_textbox"
                          Height="30"
                          Width="200"/>
             </StackPanel>
         </ContentDialog>
     </Grid>
     <Page.BottomAppBar>
-        <CommandBar x:ConnectionId='43' Name="main_commandBar"
+        <CommandBar x:ConnectionId='35' Name="main_commandBar"
                     RequestedTheme="Light">
-            <AppBarButton x:ConnectionId='44' Name="listShow_button"
+            <AppBarButton x:ConnectionId='36' Name="listShow_button"
                           Icon="MusicInfo"
                           x:Uid="listShow_button"
                           Visibility="Collapsed"
                                                        />
-            <AppBarButton x:ConnectionId='45' Name="musicList_button"
+            <AppBarButton x:ConnectionId='37' Name="musicList_button"
                           Icon="List"
                           x:Uid="musicList_button"
                                                         />
             <AppBarSeparator/>
-            <AppBarButton x:ConnectionId='46' Name="back_button"
+            <AppBarButton x:ConnectionId='38' Name="back_button"
                           Icon="Previous"
                           x:Uid="back_button"
                                                      />
-            <AppBarButton x:ConnectionId='47' Name="play_button"
+            <AppBarButton x:ConnectionId='39' Name="play_button"
                           Icon="Play"
                           x:Uid="play_button"
                                                    />
-            <AppBarButton x:ConnectionId='48' Name="forward_button"
+            <AppBarButton x:ConnectionId='40' Name="forward_button"
                           Icon="Next"
                           x:Uid="forward_button"
                                                         />
-            <AppBarButton x:ConnectionId='49' Name="model_button"
+            <AppBarButton x:ConnectionId='41' Name="model_button"
                           Icon="RepeatAll"
                           x:Uid="model_button">
                 <AppBarButton.Flyout>
-                    <MenuFlyout x:ConnectionId='72' x:Name="model_flyout">
-                        <MenuFlyoutItem x:ConnectionId='73' Name="single_menu" 
+                    <MenuFlyout x:ConnectionId='64' x:Name="model_flyout">
+                        <MenuFlyoutItem x:ConnectionId='65' Name="single_menu" 
                                         x:Uid="single_menu"
                                         FontSize="13"
                                                                  />
-                        <MenuFlyoutItem x:ConnectionId='74' Name="order_menu"
+                        <MenuFlyoutItem x:ConnectionId='66' Name="order_menu"
                                         x:Uid="order_menu"
                                         FontSize="13"
                                                                 />
-                        <MenuFlyoutItem x:ConnectionId='75' Name="random_menu"
+                        <MenuFlyoutItem x:ConnectionId='67' Name="random_menu"
                                         x:Uid="random_menu"
                                         FontSize="13"
                                                                  />
                     </MenuFlyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
-            <AppBarButton x:ConnectionId='50' Name="stop_button"
+            <AppBarButton x:ConnectionId='42' Name="stop_button"
                           Icon="Stop"
                           x:Uid="stop_button"
                                                       />
             <AppBarSeparator/>
             
-            <AppBarButton x:ConnectionId='51' Name="volume_button"
+            <AppBarButton x:ConnectionId='43' Name="volume_button"
                           Icon="Volume"
                           x:Uid="volume_button"
                                                      >
@@ -387,19 +333,19 @@
                         <StackPanel Orientation="Horizontal" 
                                     Height="30"
                                     HorizontalAlignment="Center">
-                            <TextBlock x:ConnectionId='69' Name="volumeIcon_textblock"
+                            <TextBlock x:ConnectionId='61' Name="volumeIcon_textblock"
                                        FontFamily="Segoe MDL2 Assets"
                                        Text="&#xE994;"
                                        FontSize="20"
                                        Margin="0,7,3,0"
                                        VerticalAlignment="Center"
                                                                              />
-                            <Slider x:ConnectionId='70' Name="volume_slider"
+                            <Slider x:ConnectionId='62' Name="volume_slider"
                                     Width="100"
                                     Margin="0,0,0,0"
                                     VerticalAlignment="Top"
                                                                                />
-                            <TextBlock x:ConnectionId='71' Name="volume_textblock"
+                            <TextBlock x:ConnectionId='63' Name="volume_textblock"
                                        Width="30"
                                        HorizontalAlignment="Center"
                                        Margin="10,8,0,0"/>
@@ -408,68 +354,68 @@
                 </AppBarButton.Flyout>
             </AppBarButton>
             
-            <AppBarButton x:ConnectionId='52' Name="fullScreen_button"
+            <AppBarButton x:ConnectionId='44' Name="fullScreen_button"
                           Icon='FullScreen'
                           x:Uid="fullScreen_button"
                                                          />
             <AppBarSeparator/>
-            <AppBarButton x:ConnectionId='53' Name="openFile_button"
+            <AppBarButton x:ConnectionId='45' Name="openFile_button"
                           Icon="OpenFile"
                           x:Uid="openFile_button"
                                                        />
-            <AppBarButton x:ConnectionId='54' Name="musicFolder_button"
+            <AppBarButton x:ConnectionId='46' Name="musicFolder_button"
                           Icon="Folder"
                           x:Uid="musicFolder_button"
                                                           />
-            <AppBarButton x:ConnectionId='55' Name="addFolder_button"
+            <AppBarButton x:ConnectionId='47' Name="addFolder_button"
                           Icon="NewFolder"
                           x:Uid="addFolder_button"
                                                         />
-            <AppBarButton x:ConnectionId='56' Name="clear_button"
+            <AppBarButton x:ConnectionId='48' Name="clear_button"
                           Icon="Clear"
                           x:Uid="clear_button"
                                                     />
-            <AppBarButton x:ConnectionId='57' Name="backGround_button"
+            <AppBarButton x:ConnectionId='49' Name="backGround_button"
                           Icon="BrowsePhotos"
                           x:Uid="backGround_button">
                 <AppBarButton.Flyout>
                     <MenuFlyout>
-                        <MenuFlyoutItem x:ConnectionId='67' Name="custom_menu"
+                        <MenuFlyoutItem x:ConnectionId='59' Name="custom_menu"
                                         x:Uid="custom_menu"
                                                                  />
-                        <MenuFlyoutItem x:ConnectionId='68' Name="default_menu" 
+                        <MenuFlyoutItem x:ConnectionId='60' Name="default_menu" 
                                         x:Uid="default_menu"
                                                                   />
                     </MenuFlyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
             <AppBarSeparator/>
-            <AppBarButton x:ConnectionId='58' Name="help_button"
+            <AppBarButton x:ConnectionId='50' Name="help_button"
                           Icon="Help"
                           x:Uid="help_button"
                                                    />
-            <AppBarButton x:ConnectionId='59' Name="mail_button"
+            <AppBarButton x:ConnectionId='51' Name="mail_button"
                           Icon="Mail"
                           x:Uid="mail_button"
                                                    />
-            <AppBarButton x:ConnectionId='60' Name="settings_button"
+            <AppBarButton x:ConnectionId='52' Name="settings_button"
                           Icon='Setting'
                           x:Uid="settings_button">
                 <AppBarButton.Flyout>
-                    <MenuFlyout x:ConnectionId='61' x:Name="menu_flyout">
-                        <MenuFlyoutItem x:ConnectionId='62' Name="feedBack_menu"
+                    <MenuFlyout x:ConnectionId='53' x:Name="menu_flyout">
+                        <MenuFlyoutItem x:ConnectionId='54' Name="feedBack_menu"
                                         x:Uid="feedBack_menu"
                                         Visibility="Collapsed"
                                                                      />
-                        <MenuFlyoutSubItem x:ConnectionId='63' Name="theme_textblock"
+                        <MenuFlyoutSubItem x:ConnectionId='55' Name="theme_textblock"
                                            x:Uid="theme_textblock">
-                            <MenuFlyoutItem x:ConnectionId='64' Name="light_menu"
+                            <MenuFlyoutItem x:ConnectionId='56' Name="light_menu"
                                             x:Uid="light_menu"
                                                                     />
-                            <MenuFlyoutItem x:ConnectionId='65' Name="dark_menu"
+                            <MenuFlyoutItem x:ConnectionId='57' Name="dark_menu"
                                             x:Uid="dark_menu"
                                                                    />
-                            <MenuFlyoutItem x:ConnectionId='66' Name="defaultTheme_menu"
+                            <MenuFlyoutItem x:ConnectionId='58' Name="defaultTheme_menu"
                                             x:Uid="defaultTheme_menu"
                                                                            />
                         </MenuFlyoutSubItem>

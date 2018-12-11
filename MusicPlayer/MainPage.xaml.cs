@@ -790,27 +790,16 @@ namespace MusicPlayer
             {
                 the_colume.Width = second_colume.Width;
                 main_listview.Visibility = Visibility.Visible;
-                if (IsMusicListItemShow_bool == false)
-                {
-                    title_stackPanel.Visibility = Visibility.Visible;
-                }                
-                addList_grid.Visibility = Visibility.Collapsed;
-                IslistShowButtonClick = true;
-                IsMusicListClick_bool = false;
             }
         }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (listShow_button.Visibility == Visibility.Collapsed)
+            if (this.Width >= 600)
             {
                 the_colume.Width = second_colume.Width;
                 IslistShowButtonClick = false;
                 //IsMusicListClick_bool = false;
-                //addList_stackPanel.Visibility = Visibility.Collapsed;
-                IsMusicListClick_bool = false;
-                musicList_grid.Visibility = Visibility.Collapsed;
-
             }
         }
 
@@ -1505,41 +1494,9 @@ namespace MusicPlayer
             }
         }
 
-        private bool IsMusicListClick_bool = false;
         private void MusicList_button_Click(object sender, RoutedEventArgs e)
         {
-            if (IsMusicListClick_bool)
-            {
-                if (listShow_button.Visibility == Visibility.Collapsed)
-                {
-                    the_colume.Width = second_colume.Width;
-                }
-                else
-                {
-                    the_colume.Width = new GridLength(0);
-                }                
-                main_listview.Visibility = Visibility.Visible;
-                if (IsMusicListItemShow_bool == false)
-                {
-                    title_stackPanel.Visibility = Visibility.Visible;
-                }                
-                addList_grid.Visibility = Visibility.Collapsed;
-                IsMusicListClick_bool = false;
-                IslistShowButtonClick = false;
-            }
-            else
-            {
-                the_colume.Width = second_colume.Width;
-                main_listview.Visibility = Visibility.Collapsed;
-                title_stackPanel.Visibility = Visibility.Collapsed;
-                addList_grid.Visibility = Visibility.Visible;
-                listView_grid.Visibility = Visibility.Visible;
-                musicList_grid.Visibility = Visibility.Collapsed;
-                IsMusicListClick_bool = true;
-                IslistShowButtonClick = false;
-                listShow_button.IsEnabled = true;
-            }
-
+           
         }
         private void SetMusicListName(string name)
         {
@@ -1547,28 +1504,6 @@ namespace MusicPlayer
             music_list.MusicList_Name = name;
             main_musicList.Add(music_list);
         }
-
-        private void AddList_listView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            listShow_button.IsEnabled = false;
-            IsMusicListItemShow_bool = true;
-            IsMusicListClick_bool = false;
-            //SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
-            musicList_grid.Visibility = Visibility.Visible;
-            listView_grid.Visibility = Visibility.Collapsed;
-             
-        }
-
-        private void ListBack_button_Click(object sender, RoutedEventArgs e)
-        {
-            listShow_button.IsEnabled = true;
-            IsMusicListItemShow_bool = false;
-            musicList_grid.Visibility = Visibility.Collapsed;
-            listView_grid.Visibility = Visibility.Visible;
-        }
-
-        private bool IsMusicListItemShow_bool = false;
-        //public event EventHandler<BackRequestedEventArgs> BackRequested;
     }
 }
 
