@@ -1500,6 +1500,7 @@ namespace MusicPlayer
         private void MusicList_button_Click(object sender, RoutedEventArgs e)
         {
             MusicList_SplitView.IsPaneOpen = !MusicList_SplitView.IsPaneOpen;
+            MusicList_ListView.SelectedItem = null;
         }
         private void SetMusicListName(string name)
         {
@@ -1543,6 +1544,9 @@ namespace MusicPlayer
         {
             the_colume.Width = new GridLength(0);
             second_colume.Width = third_colume.Width;
+            var value_List = (MusicList)e.ClickedItem;
+            MusicShow_ListView.ItemsSource = value_List.Musics;
+            musidlistTitle_textblock.Text = value_List.MusicList_Name;
         }
 
         private void Back_Button_Click(object sender, RoutedEventArgs e)
@@ -1559,18 +1563,34 @@ namespace MusicPlayer
         }
 
         private ObservableCollection<Music> List_mainMusic = new ObservableCollection<Music>();
-        private void AddToList_menu_Click(object sender, RoutedEventArgs e)
+        private Music using_music;
+        private Music list_mainmusic;
+        private async void AddToList_menu_Click(object sender, RoutedEventArgs e)
         {
             //MusicList_SplitView.IsPaneOpen = true;
-            var list_mainmusic = new Music();
-            var using_music = (Music)sender_value.DataContext;
+
+            ContentDialogResult result = await musicList_ContentDialog.ShowAsync();
+            
+            using_music = (Music)sender_value.DataContext;
+            list_mainmusic = new Music();
             list_mainmusic.SongFile = using_music.SongFile;
             list_mainmusic.Title = using_music.Title;
             list_mainmusic.Artist = using_music.Artist;
             list_mainmusic.Music_Stream = using_music.Music_Stream;
             list_mainmusic.Music_Path = using_music.Music_Path;
             list_mainmusic.MusicSeconds_Str = using_music.MusicSeconds_Str;
-            List_mainMusic.Add(list_mainmusic);
+            if (result == ContentDialogResult.Primary)
+            {
+                // Terms of use were accepted.
+                
+                value_MusicList.Musics.Add(list_mainmusic);
+            }
+            //else
+            //{
+            //    // User pressed Cancel, ESC, or the back arrow.
+            //    // Terms of use were not accepted.
+            //}
+            // List_mainMusic.Add(list_mainmusic);
 
             //if (main_music == menu_music)
             //{
@@ -1579,6 +1599,40 @@ namespace MusicPlayer
             //use_music.Remove(menu_music);
             //allListSongsCount = use_music.Count;
             //songNum_textBlock.Text = allListSongsCount.ToString();
+        }
+        private MusicList value_MusicList;
+        private void MusicList2_ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            musicList_ContentDialog.IsPrimaryButtonEnabled = true;
+            value_MusicList = (MusicList)e.ClickedItem;
+
+
+            //musicList_ContentDialog.Hide();
+        }
+
+        private void MusicList2_ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
+        }
+
+        private void MusicList_ContentDialog_Closed(ContentDialog sender, ContentDialogClosedEventArgs args)
+        {
+            
+        }
+
+        private void MusicList_ContentDialog_Opened(ContentDialog sender, ContentDialogOpenedEventArgs args)
+        {
+            musicList_ContentDialog.IsPrimaryButtonEnabled = false;
+            #region 取消item选中backGround效果
+            //var selection_value = (ListView)sender;
+            MusicList2_ListView.SelectedItem = null;
+            #endregion
+        }
+
+        private void MusicShow_ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selection_value = (ListView)sender;
+            selection_value.SelectedItem = null;
         }
     }
 }

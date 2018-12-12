@@ -11,6 +11,6 @@ namespace MusicPlayer.Models
     class MusicList
     {
         public string MusicList_Name { get; set; }
-        public AdvancedCollectionView Musics = new AdvancedCollectionView(new ObservableCollection<Music>());
+        public ObservableCollection<Music> Musics = new ObservableCollection<Music>();
     }
 }

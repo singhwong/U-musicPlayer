@@ -221,8 +221,11 @@
                                 FontFamily="Segoe MDL2 Assets"
                                 Content="&#xE710;"
                                 Style="{StaticResource button_Style}"
-                                Background="Transparent"
-                                />
+                                Background="Transparent"/>
+                        <TextBlock Name="musidlistTitle_textblock"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"/>
                         <Button Name="back_Button"
                                 HorizontalAlignment="Left"
                                 FontFamily="Segoe MDL2 Assets"
@@ -233,20 +236,31 @@
 
                         <ListView Name="MusicShow_ListView"
                                   Grid.Row="1"
-                                  ItemsSource="{x:Bind List_mainMusic}">
+                                  ItemsSource="{x:Bind List_mainMusic}"
+                                  SelectionChanged="MusicShow_ListView_SelectionChanged">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="local1:Music">
-                                    <StackPanel Orientation="Vertical">
-                                        <TextBlock Name="listmusic_title"
+                                    <Grid Height="70"
+                                          Margin="10,0,0,0">
+                                        <StackPanel Orientation="Vertical"
+                                                    VerticalAlignment="Center">
+                                            <TextBlock Name="listmusic_title"
+                                                   FontSize="17"
+                                                   FontWeight="Bold"
                                                    Text="{x:Bind Title}"/>
-                                        <TextBlock Name="listmusic_artist"
+                                            <TextBlock Name="listmusic_artist"
+                                                   FontSize="13"
+                                                   FontWeight="Thin"
                                                    Text="{x:Bind Artist}"/>
-                                        <TextBlock Name="listmusic_duration"
+                                            <TextBlock Name="listmusic_duration"
+                                                   FontSize="13"
+                                                   FontWeight="Thin"
                                                    Text="{x:Bind MusicSeconds_Str}"/>
-                                    </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                    
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-
                         </ListView>
                     </Grid>
                   
@@ -358,6 +372,28 @@
                          Width="200"/>
                         </StackPanel>
                     </ContentDialog>
+                    <ContentDialog x:Name="musicList_ContentDialog"
+                                   PrimaryButtonText="确定"
+                       IsPrimaryButtonEnabled="False"
+                       CloseButtonText="取消"
+                                   Opened="MusicList_ContentDialog_Opened"
+                                   Closed="MusicList_ContentDialog_Closed">
+
+                        <ListView Name="MusicList2_ListView"
+                              Grid.Row="1"
+                          IsItemClickEnabled="True"
+                              ItemsSource="{x:Bind main_musicList}"
+                                  SelectionChanged="MusicList2_ListView_SelectionChanged"
+                                  ItemClick="MusicList2_ListView_ItemClick">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="local1:MusicList">
+                                    <TextBlock  Text="{x:Bind MusicList_Name}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+
+                        </ListView>
+                    </ContentDialog>
+
                 </Grid>
             </SplitView.Content>
         </SplitView>

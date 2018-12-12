@@ -66,6 +66,7 @@
       <RootProperty Name="Name" />
       <RootProperty Name="ColumnDefinitions" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Height" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="Padding" />
@@ -259,6 +260,8 @@
       <RootProperty Name="IsPrimaryButtonEnabled" />
       <RootProperty Name="CloseButtonText" />
       <RootProperty Name="Content" />
+      <RootEvent Name="Opened" />
+      <RootEvent Name="Closed" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="Name" />
