@@ -181,6 +181,11 @@
                                                     x:Uid="stop_menu"
                                                     Click="Stop_menu_Click"/>
                                                 <MenuFlyoutSeparator/>
+                                                <MenuFlyoutItem Name="addToList_menu"
+                                                                   Text="添加到歌单"
+                                                                Click="AddToList_menu_Click">
+                                                </MenuFlyoutItem>
+                                                <MenuFlyoutSeparator/>
                                                 <MenuFlyoutItem Name="removeFromList_menu"
                                                     x:Uid="removeFromList_menu"
                                                     Click="RemoveFromList_menu_Click"/>
@@ -227,7 +232,20 @@
                                 Click="Back_Button_Click"/>
 
                         <ListView Name="MusicShow_ListView"
-                                  Grid.Row="1">
+                                  Grid.Row="1"
+                                  ItemsSource="{x:Bind List_mainMusic}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="local1:Music">
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Name="listmusic_title"
+                                                   Text="{x:Bind Title}"/>
+                                        <TextBlock Name="listmusic_artist"
+                                                   Text="{x:Bind Artist}"/>
+                                        <TextBlock Name="listmusic_duration"
+                                                   Text="{x:Bind MusicSeconds_Str}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
 
                         </ListView>
                     </Grid>

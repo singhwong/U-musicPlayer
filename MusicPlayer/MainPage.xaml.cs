@@ -1552,6 +1552,34 @@ namespace MusicPlayer
             IslistShowButtonClick = true;
             second_colume.Width = new GridLength(0);
         }
+
+        private void AddFlyoutItem(string str)
+        {
+           
+        }
+
+        private ObservableCollection<Music> List_mainMusic = new ObservableCollection<Music>();
+        private void AddToList_menu_Click(object sender, RoutedEventArgs e)
+        {
+            //MusicList_SplitView.IsPaneOpen = true;
+            var list_mainmusic = new Music();
+            var using_music = (Music)sender_value.DataContext;
+            list_mainmusic.SongFile = using_music.SongFile;
+            list_mainmusic.Title = using_music.Title;
+            list_mainmusic.Artist = using_music.Artist;
+            list_mainmusic.Music_Stream = using_music.Music_Stream;
+            list_mainmusic.Music_Path = using_music.Music_Path;
+            list_mainmusic.MusicSeconds_Str = using_music.MusicSeconds_Str;
+            List_mainMusic.Add(list_mainmusic);
+
+            //if (main_music == menu_music)
+            //{
+            //    AfterRemoveSongMethod();//删除正在播放歌曲后，随机切换下一首
+            //}
+            //use_music.Remove(menu_music);
+            //allListSongsCount = use_music.Count;
+            //songNum_textBlock.Text = allListSongsCount.ToString();
+        }
     }
 }
 
