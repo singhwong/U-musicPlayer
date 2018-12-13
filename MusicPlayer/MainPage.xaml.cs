@@ -34,6 +34,10 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using static MusicPlayer.Models.LyricService;
 
+using Windows.Media.Playlists;
+using System.Runtime.Serialization;
+using System.Xml;
+
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -269,6 +273,13 @@ namespace MusicPlayer
         //初始化Load
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                ReadPlayListData();
+            }
+            catch
+            {
+            }
             main_slider.Maximum = 0;//第二次启动，上次保存歌曲进度条，在播放前不可滑动，以优化时间显示
             #region 显示并启用后台运行控件按钮
             systemMedia_TransportControls.IsPlayEnabled = true;
@@ -1584,21 +1595,8 @@ namespace MusicPlayer
                 // Terms of use were accepted.
                 
                 value_MusicList.Musics.Add(list_mainmusic);
+                SavePlayListData();
             }
-            //else
-            //{
-            //    // User pressed Cancel, ESC, or the back arrow.
-            //    // Terms of use were not accepted.
-            //}
-            // List_mainMusic.Add(list_mainmusic);
-
-            //if (main_music == menu_music)
-            //{
-            //    AfterRemoveSongMethod();//删除正在播放歌曲后，随机切换下一首
-            //}
-            //use_music.Remove(menu_music);
-            //allListSongsCount = use_music.Count;
-            //songNum_textBlock.Text = allListSongsCount.ToString();
         }
         private MusicList value_MusicList;
         private void MusicList2_ListView_ItemClick(object sender, ItemClickEventArgs e)
@@ -1633,6 +1631,102 @@ namespace MusicPlayer
         {
             var selection_value = (ListView)sender;
             selection_value.SelectedItem = null;
+        }
+
+        //private const string saveMusicList_str = "saveMusicList.txt";
+        //private static async Task<bool> SaveMusicListData(List<MusicList> saveMusicList)
+        //{
+        //    try
+        //    {
+        //        StorageFile musicList_storageFile 
+        //            = await ApplicationData.Current.LocalFolder.CreateFileAsync(saveMusicList_str,CreationCollisionOption.ReplaceExisting);
+        //        using (Stream writeStream = await musicList_storageFile.OpenStreamForWriteAsync())
+        //        {
+        //            DataContractSerializer saveList_serializer = new DataContractSerializer(typeof(ObservableCollection<MusicList>));
+        //            saveList_serializer.WriteObject(writeStream,saveMusicList);
+        //            await writeStream.FlushAsync();
+        //            writeStream.Dispose();
+        //        }
+        //        return true;
+        //    }
+        //    catch (Exception e)
+        //    {
+
+        //        throw new Exception("ERROR: unable to save MusicListData",e);
+        //    }
+        //}
+ 
+        private void SavePlayListData()
+        {
+            if (main_musicList.Count>1)
+            {
+                PlayListDataModel playlistdatamodel = new PlayListDataModel();
+                PlayListCollection playlistCollection = new PlayListCollection();
+                playlistCollection.Playlists = new List<PlayListDataModel>();
+                foreach (var item in main_musicList)
+                {
+
+                    playlistdatamodel.Name = item.MusicList_Name;
+                    playlistdatamodel.MusicList_list = item.Musics;
+                    playlistCollection.Playlists.Add(playlistdatamodel);
+                }
+
+                StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+                var filePath = storageFolder.Path + @"\PlaylistCollection.xml";
+                FileStream writer = new FileStream(filePath, FileMode.Create);
+                DataContractSerializer ser = new DataContractSerializer(typeof(PlayListCollection));
+                ser.WriteObject(writer, playlistCollection.Playlists);
+                //writer.Dispose();
+            }
+        }
+
+        private async void ReadPlayListData()
+        {
+            Windows.Storage.StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            if (System.IO.File.Exists(storageFolder.Path + @"\PlaylistCollection.xml"))
+            {
+                var filePath = storageFolder.Path + @"\PlaylistCollection.xml";
+                try
+                {
+                    FileStream fs = new FileStream(filePath, FileMode.Open);
+                    XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
+                    DataContractSerializer ser = new DataContractSerializer(typeof(PlayListCollection));
+                    var Playlist_Collection = (PlayListCollection)ser.ReadObject(reader, true);
+                    //reader.Dispose();
+                    //fs.Dispose();
+
+                    int i = 1;
+
+                    if (Playlist_Collection.Playlists.Count > 0)
+                    {
+                        foreach (var Playlist_Model in Playlist_Collection.Playlists)
+                        {
+                            var name_path = Playlist_Model.Name;
+                            //ObservableCollection<Music> musiclist_path = (ObservableCollection<Music>)(await KnownFolders.MusicLibrary.get(Playlist_Model.MusicList_list)); 
+                            //try
+                            //{
+                            //    var gg = await Playlist.LoadAsync(path);
+
+
+                            //    EstablishPlaylists(gg, Playlist_Model.Name, i);
+                            //}
+                            //catch (Exception)
+                            //{
+
+                            //}
+                            i++;
+                            MusicList the_musiclist = new MusicList();
+                            the_musiclist.MusicList_Name = name_path;
+                            main_musicList.Add(the_musiclist);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
         }
     }
 }

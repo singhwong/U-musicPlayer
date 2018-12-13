@@ -3,14 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MusicPlayer.Models
 {
-    class MusicList
+    public class MusicList
     {
         public string MusicList_Name { get; set; }
-        public ObservableCollection<Music> Musics = new ObservableCollection<Music>();
+        public AdvancedCollectionView Musics = new AdvancedCollectionView(new ObservableCollection<Music>());
     }
 }

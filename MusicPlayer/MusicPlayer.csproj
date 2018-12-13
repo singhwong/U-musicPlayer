@@ -117,6 +117,7 @@
     <Compile Include="Models\LyricService.cs" />
     <Compile Include="Models\Music.cs" />
     <Compile Include="Models\MusicList.cs" />
+    <Compile Include="Models\PlayListCollection.cs" />
     <Compile Include="Models\ProgressConvert.cs" />
     <Compile Include="Models\SetMusic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
