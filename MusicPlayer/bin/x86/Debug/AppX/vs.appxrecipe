@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>25F2AC878867B0A13B18376C866D565025DC4EC217DED2B50A01F1C08377F085</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>44FB3A0D8ABC7F0D6395E438D3DC8D17FDC7D714961B2C7E78DEC1786E91EF07</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>14523wongsoft.OwnMusicPlayer_1.1.37.0_x86__pscw7et81htc4</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>14523wongsoft.OwnMusicPlayer_pscw7et81htc4!App</RegisteredUserModeAppID>
     <RegisteredPackageID>14523wongsoft.OwnMusicPlayer</RegisteredPackageID>
@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-13T09:37:59.794</Modified>
+      <Modified>2018-12-14T09:19:38.927</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\MusicPlayer.exe">
       <PackagePath>entrypoint\MusicPlayer.exe</PackagePath>
-      <Modified>2018-12-13T09:37:58.580</Modified>
+      <Modified>2018-12-14T09:19:37.890</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\.nuget\packages\microsoft.csharp\4.3.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -775,31 +775,31 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-12-13T09:37:58.147</Modified>
+      <Modified>2018-12-14T09:19:37.488</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\buttonStyle.xbf">
       <PackagePath>buttonStyle.xbf</PackagePath>
-      <Modified>2018-12-13T09:37:58.145</Modified>
+      <Modified>2018-12-14T09:19:37.484</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\LocalMusicControl.xbf">
       <PackagePath>LocalMusicControl.xbf</PackagePath>
-      <Modified>2018-12-13T09:37:58.148</Modified>
+      <Modified>2018-12-14T09:19:37.489</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-12-13T09:37:58.148</Modified>
+      <Modified>2018-12-14T09:19:37.490</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\progressRingStyle.xbf">
       <PackagePath>progressRingStyle.xbf</PackagePath>
-      <Modified>2018-12-13T09:37:58.145</Modified>
+      <Modified>2018-12-14T09:19:37.485</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\sliderStyle.xbf">
       <PackagePath>sliderStyle.xbf</PackagePath>
-      <Modified>2018-12-13T09:37:58.146</Modified>
+      <Modified>2018-12-14T09:19:37.486</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\textStyle.xbf">
       <PackagePath>textStyle.xbf</PackagePath>
-      <Modified>2018-12-13T09:37:58.147</Modified>
+      <Modified>2018-12-14T09:19:37.487</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -819,11 +819,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2018-12-13T08:38:35.687</Modified>
+      <Modified>2018-12-14T08:28:17.685</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\Core\MusicPlayer.exe">
       <PackagePath>MusicPlayer.exe</PackagePath>
-      <Modified>2018-12-13T09:37:59.775</Modified>
+      <Modified>2018-12-14T09:19:38.912</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

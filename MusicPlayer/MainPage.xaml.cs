@@ -37,6 +37,7 @@ using static MusicPlayer.Models.LyricService;
 using Windows.Media.Playlists;
 using System.Runtime.Serialization;
 using System.Xml;
+using System.Xml.Serialization;
 
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
@@ -275,7 +276,9 @@ namespace MusicPlayer
         {
             try
             {
-                ReadPlayListData();
+                MusicList history_musicLit = new MusicList();
+                ReadPlayListData(history_musicLit);
+                main_musicList.Add(history_musicLit);
             }
             catch
             {
@@ -1542,7 +1545,10 @@ namespace MusicPlayer
             {
                 // Terms of use were accepted.
                 SetMusicListName(list_textbox.Text);
-
+                foreach (var item in main_musicList)
+                {
+                    SavePlayListData();
+                }
             }
             else
             {
@@ -1595,7 +1601,7 @@ namespace MusicPlayer
                 // Terms of use were accepted.
                 
                 value_MusicList.Musics.Add(list_mainmusic);
-                SavePlayListData();
+              
             }
         }
         private MusicList value_MusicList;
@@ -1658,74 +1664,108 @@ namespace MusicPlayer
  
         private void SavePlayListData()
         {
-            if (main_musicList.Count>1)
+            if (main_musicList.Count>=1)
             {
-                PlayListDataModel playlistdatamodel = new PlayListDataModel();
-                PlayListCollection playlistCollection = new PlayListCollection();
-                playlistCollection.Playlists = new List<PlayListDataModel>();
-                foreach (var item in main_musicList)
-                {
+                //PlayListDataModel playlistdatamodel = new PlayListDataModel();
+                //PlayListCollection playlistCollection = new PlayListCollection();
+                //playlistCollection.Playlists = new List<PlayListDataModel>();
+                //foreach (var item in main_musicList)
+                //{
 
-                    playlistdatamodel.Name = item.MusicList_Name;
-                    playlistdatamodel.MusicList_list = item.Musics;
-                    playlistCollection.Playlists.Add(playlistdatamodel);
-                }
+                //    playlistdatamodel.Name = item.MusicList_Name;
+                //    playlistdatamodel.MusicList_list = item.Musics;
+                //    playlistCollection.Playlists.Add(playlistdatamodel);
+                //}
 
+                //StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+                //var filePath = storageFolder.Path + @"\PlaylistCollection.xml";
+                //FileStream writer = new FileStream(filePath, FileMode.Create);
+                //DataContractSerializer ser = new DataContractSerializer(typeof(PlayListCollection));
+                //ser.WriteObject(writer, playlistCollection.Playlists);
+                ////writer.Dispose();
+                ///
+
+                //local_musicList = new MusicList();
+                //StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+                //var filePath = storageFolder.Path + @"\PlaylistCollection.xml";
+                //using (FileStream stream = new FileStream(filePath, FileMode.Create))
+                //{
+                //    xmlSerializer.Serialize(stream, local_musicList);
+                //}
+                the_musiclist = new MusicList();
                 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
                 var filePath = storageFolder.Path + @"\PlaylistCollection.xml";
-                FileStream writer = new FileStream(filePath, FileMode.Create);
-                DataContractSerializer ser = new DataContractSerializer(typeof(PlayListCollection));
-                ser.WriteObject(writer, playlistCollection.Playlists);
-                //writer.Dispose();
+                using (FileStream writer = new FileStream(filePath, FileMode.Create))
+                {
+                    DataContractSerializer ser = new DataContractSerializer(typeof(MusicList));
+                    ser.WriteObject(writer, the_musiclist);
+                }
             }
         }
-
-        private async void ReadPlayListData()
+        public XmlSerializer xmlSerializer = new XmlSerializer(typeof(MusicList));
+        private MusicList the_musiclist;
+        private void ReadPlayListData(MusicList local_musiclist)
         {
-            Windows.Storage.StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-            if (System.IO.File.Exists(storageFolder.Path + @"\PlaylistCollection.xml"))
+            //Windows.Storage.StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            //if (System.IO.File.Exists(storageFolder.Path + @"\PlaylistCollection.xml"))
+            //{
+            //    var filePath = storageFolder.Path + @"\PlaylistCollection.xml";
+            //    try
+            //    {
+            //        FileStream fs = new FileStream(filePath, FileMode.Open);
+            //        XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
+            //        DataContractSerializer ser = new DataContractSerializer(typeof(PlayListCollection));
+            //        var Playlist_Collection = (PlayListCollection)ser.ReadObject(reader, true);
+            //        //reader.Dispose();
+            //        //fs.Dispose();
+
+            //        int i = 1;
+
+            //        if (Playlist_Collection.Playlists.Count > 0)
+            //        {
+            //            foreach (var Playlist_Model in Playlist_Collection.Playlists)
+            //            {
+            //                var name_path = Playlist_Model.Name;
+            //                //ObservableCollection<Music> musiclist_path = (ObservableCollection<Music>)(await KnownFolders.MusicLibrary.get(Playlist_Model.MusicList_list)); 
+            //                //try
+            //                //{
+            //                //    var gg = await Playlist.LoadAsync(path);
+
+
+            //                //    EstablishPlaylists(gg, Playlist_Model.Name, i);
+            //                //}
+            //                //catch (Exception)
+            //                //{
+
+            //                //}
+            //                i++;
+            //                MusicList the_musiclist = new MusicList();
+            //                the_musiclist.MusicList_Name = name_path;
+            //                main_musicList.Add(the_musiclist);
+            //            }
+            //        }
+            //    }
+            //    catch (Exception)
+            //    {
+
+            //        throw;
+            //    }
+            //}
+            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            var filePath = storageFolder.Path + @"\PlaylistCollection.xml";
+            //using (FileStream stream = new FileStream(filePath, FileMode.Open))
+            //{
+            //    local_musicList = (MusicList)xmlSerializer.Deserialize(stream);
+            //    name = local_musicList.MusicList_Name;
+            //}
+
+            using (FileStream fs = new FileStream(filePath, FileMode.Open))
             {
-                var filePath = storageFolder.Path + @"\PlaylistCollection.xml";
-                try
-                {
-                    FileStream fs = new FileStream(filePath, FileMode.Open);
-                    XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
-                    DataContractSerializer ser = new DataContractSerializer(typeof(PlayListCollection));
-                    var Playlist_Collection = (PlayListCollection)ser.ReadObject(reader, true);
-                    //reader.Dispose();
-                    //fs.Dispose();
-
-                    int i = 1;
-
-                    if (Playlist_Collection.Playlists.Count > 0)
-                    {
-                        foreach (var Playlist_Model in Playlist_Collection.Playlists)
-                        {
-                            var name_path = Playlist_Model.Name;
-                            //ObservableCollection<Music> musiclist_path = (ObservableCollection<Music>)(await KnownFolders.MusicLibrary.get(Playlist_Model.MusicList_list)); 
-                            //try
-                            //{
-                            //    var gg = await Playlist.LoadAsync(path);
+                XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
+                DataContractSerializer ser = new DataContractSerializer(typeof(MusicList));
 
 
-                            //    EstablishPlaylists(gg, Playlist_Model.Name, i);
-                            //}
-                            //catch (Exception)
-                            //{
-
-                            //}
-                            i++;
-                            MusicList the_musiclist = new MusicList();
-                            the_musiclist.MusicList_Name = name_path;
-                            main_musicList.Add(the_musiclist);
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
+                local_musiclist = (MusicList)ser.ReadObject(reader, true);
             }
         }
     }
