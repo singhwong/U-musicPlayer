@@ -11,7 +11,7 @@
     <AssemblyName>MusicPlayer</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17134.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17763.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -119,6 +119,7 @@
     <Compile Include="Models\MusicList.cs" />
     <Compile Include="Models\PlayListCollection.cs" />
     <Compile Include="Models\ProgressConvert.cs" />
+    <Compile Include="Models\SaveDataClass.cs" />
     <Compile Include="Models\SetMusic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

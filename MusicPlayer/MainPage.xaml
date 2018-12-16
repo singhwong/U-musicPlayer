@@ -78,10 +78,10 @@
                     <ListView Name="MusicList_ListView"
                               Grid.Row="1"
                           IsItemClickEnabled="True"
-                              ItemsSource="{x:Bind main_musicList}"
+                              ItemsSource="{x:Bind savemain_musicList}"
                               ItemClick="MusicList_ListView_ItemClick">
                         <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="local1:MusicList">
+                            <DataTemplate x:DataType="local1:SaveMusicList">
                                 <TextBlock  Text="{x:Bind MusicList_Name}"/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -236,10 +236,9 @@
 
                         <ListView Name="MusicShow_ListView"
                                   Grid.Row="1"
-                                  ItemsSource="{x:Bind List_mainMusic}"
                                   SelectionChanged="MusicShow_ListView_SelectionChanged">
                             <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="local1:Music">
+                                <DataTemplate x:DataType="local1:SaveMusic">
                                     <Grid Height="70"
                                           Margin="10,0,0,0">
                                         <StackPanel Orientation="Vertical"
@@ -382,11 +381,11 @@
                         <ListView Name="MusicList2_ListView"
                               Grid.Row="1"
                           IsItemClickEnabled="True"
-                              ItemsSource="{x:Bind main_musicList}"
+                              ItemsSource="{x:Bind savemain_musicList}"
                                   SelectionChanged="MusicList2_ListView_SelectionChanged"
                                   ItemClick="MusicList2_ListView_ItemClick">
                             <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="local1:MusicList">
+                                <DataTemplate x:DataType="local1:SaveMusicList">
                                     <TextBlock  Text="{x:Bind MusicList_Name}"/>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

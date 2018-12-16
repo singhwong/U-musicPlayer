@@ -49,7 +49,9 @@ namespace MusicPlayer
     /// </summary>
     public sealed partial class MainPage : Page
     {
+       
         private ObservableCollection<MusicList> main_musicList;
+        private ObservableCollection<SaveMusicList> savemain_musicList;
         private ObservableCollection<Music> list_music;
         private ObservableCollection<Music> use_music;
         private ObservableCollection<StorageFile> allMusic;
@@ -113,6 +115,7 @@ namespace MusicPlayer
             list_music = new ObservableCollection<Music>();
             use_music = new ObservableCollection<Music>();
             allMusic = new ObservableCollection<StorageFile>();
+            savemain_musicList = new ObservableCollection<SaveMusicList>();
         }
 
         private void SetAllTimeMethod()
@@ -276,13 +279,29 @@ namespace MusicPlayer
         {
             try
             {
-                MusicList history_musicLit = new MusicList();
-                ReadPlayListData(history_musicLit);
-                main_musicList.Add(history_musicLit);
+                StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+                string filePath = storageFolder.Path + @"\PlaylistCollection.xml";
+
+                List<SaveMusicList> history_musicLit = new List<SaveMusicList>();
+                history_musicLit = SaveDataClass.ReadMusicListData(filePath);
+                //listShow_button.Label = history_musicLit.MusicList_Name;
+                //main_musicList.Add(history_musicLit);
+                foreach (var item in history_musicLit)
+                {
+                    savemain_musicList.Add(item);
+                }
             }
             catch
             {
             }
+
+           
+ 
+               
+
+               
+
+
             main_slider.Maximum = 0;//第二次启动，上次保存歌曲进度条，在播放前不可滑动，以优化时间显示
             #region 显示并启用后台运行控件按钮
             systemMedia_TransportControls.IsPlayEnabled = true;
@@ -1028,10 +1047,11 @@ namespace MusicPlayer
         #endregion
         private FrameworkElement sender_value;
         //string menuItem_url = "";
-
+        //private FrameworkElement savesender_value;
         private void RightClick_stackPanel_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
             sender_value = (FrameworkElement)sender;
+            //savesender_value = (FrameworkElement)sender;
             main_listview.IsItemClickEnabled = true;
         }
 
@@ -1464,47 +1484,6 @@ namespace MusicPlayer
             if (result == ContentDialogResult.Primary)
             {
                 SetMusicListName(list_textbox.Text);
-                //AddPlayList(list_textbox.Text);
-                // Set up the original list with a few sample items
-                //                var oc = new ObservableCollection<Person>
-                //{
-                //    new Person { Name = "Staff" },
-                //    new Person { Name = "42" },
-                //    new Person { Name = "Swan" },
-                //    new Person { Name = "Orchid" },
-                //    new Person { Name = "15" },
-                //    new Person { Name = "Flame" },
-                //    new Person { Name = "16" },
-                //    new Person { Name = "Arrow" },
-                //    new Person { Name = "Tempest" },
-                //    new Person { Name = "23" },
-                //    new Person { Name = "Pearl" },
-                //    new Person { Name = "Hydra" },
-                //    new Person { Name = "Lamp Post" },
-                //    new Person { Name = "4" },
-                //    new Person { Name = "Looking Glass" },
-                //    new Person { Name = "8" },
-                //};
-
-                //                // Set up the AdvancedCollectionView with live shaping enabled to filter and sort the original list
-                //                var acv = new AdvancedCollectionView(oc, true);
-
-                //                // Let's filter out the integers
-                //                int nul;
-                //                acv.Filter = x => !int.TryParse(((Person)x).Name, out nul);
-
-                //                // And sort ascending by the property "Name"
-                //                acv.SortDescriptions.Add(new SortDescription("Name", SortDirection.Ascending));
-
-                //                // Let's add a Person to the observable collection
-                //                var person = new Person { Name = "Aardvark" };
-                //                oc.Add(person);
-
-                //                // Our added person is now at the top of the list, but if we rename this person, we can trigger a re-sort
-                //                person.Name = "Zaphod"; // Now a re-sort is triggered and person will be last in the list
-
-                //                // AdvancedCollectionView can be bound to anything that uses collections. 
-                //                addList_listView.ItemsSource = oc;
             }
             else
             {
@@ -1518,37 +1497,35 @@ namespace MusicPlayer
         }
         private void SetMusicListName(string name)
         {
-            MusicList music_list = new MusicList();
+            SaveMusicList music_list = new SaveMusicList();
             music_list.MusicList_Name = name;
-            main_musicList.Add(music_list);
+            savemain_musicList.Add(music_list);
+
+            
+
+            
         }
 
-        private async void AddMusicList_menu_Click(object sender, RoutedEventArgs e)
-        {
-            //ContentDialogResult result = await addList_ContentDialog.ShowAsync();
-            //if (result == ContentDialogResult.Primary)
-            //{
-            //    // Terms of use were accepted.
-
-            //}
-            //else
-            //{
-            //    // User pressed Cancel, ESC, or the back arrow.
-            //    // Terms of use were not accepted.
-            //}
-        }
-
+        private List<SaveMusicList> main_list = new List<SaveMusicList>();
         private async void AddMusicList_button_Click(object sender, RoutedEventArgs e)
         {
+            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            string filePath = storageFolder.Path + @"\PlaylistCollection.xml";
             ContentDialogResult result = await addList_ContentDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
                 // Terms of use were accepted.
                 SetMusicListName(list_textbox.Text);
-                foreach (var item in main_musicList)
+                main_list.Clear();
+                foreach (var item in savemain_musicList)
                 {
-                    SavePlayListData();
+                    main_list.Add(item);
                 }
+                //if (System.IO.File.Exists(filePath))
+                //{
+                //    await storageFolder.DeleteAsync(StorageDeleteOption.PermanentDelete);
+                //}
+                SaveDataClass.SaveMusicListData(main_list, filePath);
             }
             else
             {
@@ -1561,9 +1538,9 @@ namespace MusicPlayer
         {
             the_colume.Width = new GridLength(0);
             second_colume.Width = third_colume.Width;
-            var value_List = (MusicList)e.ClickedItem;
-            MusicShow_ListView.ItemsSource = value_List.Musics;
-            musidlistTitle_textblock.Text = value_List.MusicList_Name;
+            var value_List = (SaveMusicList)e.ClickedItem;
+            MusicShow_ListView.ItemsSource = value_List.SaveMusics;
+            musidlistTitle_textblock.Text = value_List.MusicList_Name;          
         }
 
         private void Back_Button_Click(object sender, RoutedEventArgs e)
@@ -1579,36 +1556,57 @@ namespace MusicPlayer
            
         }
 
-        private ObservableCollection<Music> List_mainMusic = new ObservableCollection<Music>();
-        private Music using_music;
-        private Music list_mainmusic;
+        //private ObservableCollection<Music> List_mainMusic = new ObservableCollection<Music>();
+        
+        
         private async void AddToList_menu_Click(object sender, RoutedEventArgs e)
         {
+            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            string filePath = storageFolder.Path + @"\PlaylistCollection.xml";
             //MusicList_SplitView.IsPaneOpen = true;
 
             ContentDialogResult result = await musicList_ContentDialog.ShowAsync();
-            
-            using_music = (Music)sender_value.DataContext;
-            list_mainmusic = new Music();
-            list_mainmusic.SongFile = using_music.SongFile;
+
+            Music using_music = (Music)sender_value.DataContext;
+           SaveMusic list_mainmusic = new SaveMusic();
+            //list_mainmusic.SongFile = using_music.SongFile;
             list_mainmusic.Title = using_music.Title;
             list_mainmusic.Artist = using_music.Artist;
-            list_mainmusic.Music_Stream = using_music.Music_Stream;
+            //list_mainmusic.Music_Stream = using_music.Music_Stream;
             list_mainmusic.Music_Path = using_music.Music_Path;
             list_mainmusic.MusicSeconds_Str = using_music.MusicSeconds_Str;
             if (result == ContentDialogResult.Primary)
             {
                 // Terms of use were accepted.
                 
-                value_MusicList.Musics.Add(list_mainmusic);
-              
+                value_MusicList.SaveMusics.Add(list_mainmusic);
+                //main_list.Clear();
+                foreach (var item in main_list)
+                {
+
+                    //item.SaveMusics = value_MusicList.SaveMusics;
+
+                    //item.MusicList_Name = value_MusicList.MusicList_Name;
+                    //item.SaveMusics.Add(list_mainmusic);
+                    if (item == value_MusicList)
+                    {
+                        item.SaveMusics = value_MusicList.SaveMusics;
+                    }
+                   // main_list.Add(item);
+                }
+                //if (System.IO.File.Exists(filePath))
+                //{
+                //    await storageFolder.DeleteAsync(StorageDeleteOption.PermanentDelete);
+                //}
+                SaveDataClass.SaveMusicListData(main_list, filePath);
+
             }
         }
-        private MusicList value_MusicList;
+        private SaveMusicList value_MusicList;
         private void MusicList2_ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             musicList_ContentDialog.IsPrimaryButtonEnabled = true;
-            value_MusicList = (MusicList)e.ClickedItem;
+            value_MusicList = (SaveMusicList)e.ClickedItem;
 
 
             //musicList_ContentDialog.Hide();
@@ -1662,112 +1660,41 @@ namespace MusicPlayer
         //    }
         //}
  
-        private void SavePlayListData()
-        {
-            if (main_musicList.Count>=1)
-            {
-                //PlayListDataModel playlistdatamodel = new PlayListDataModel();
-                //PlayListCollection playlistCollection = new PlayListCollection();
-                //playlistCollection.Playlists = new List<PlayListDataModel>();
-                //foreach (var item in main_musicList)
-                //{
+        //private void SavePlayListData()
+        //{
+        //    if (main_musicList.Count>=1)
+        //    {
+        //        the_musiclist = new MusicList();
+        //        StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+        //        var filePath = storageFolder.Path + @"\PlaylistCollection.xml";
+        //        using (FileStream writer = new FileStream(filePath, FileMode.Create))
+        //        {
+        //            DataContractSerializer ser = new DataContractSerializer(typeof(MusicList));
+        //            ser.WriteObject(writer, the_musiclist);
+        //        }
+        //    }
+        //}
+        //public XmlSerializer xmlSerializer = new XmlSerializer(typeof(MusicList));
+        //private MusicList the_musiclist;
+        //private void ReadPlayListData(MusicList local_musiclist)
+        //{
+        //    StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+        //    var filePath = storageFolder.Path + @"\PlaylistCollection.xml";
+        //    //using (FileStream stream = new FileStream(filePath, FileMode.Open))
+        //    //{
+        //    //    local_musicList = (MusicList)xmlSerializer.Deserialize(stream);
+        //    //    name = local_musicList.MusicList_Name;
+        //    //}
 
-                //    playlistdatamodel.Name = item.MusicList_Name;
-                //    playlistdatamodel.MusicList_list = item.Musics;
-                //    playlistCollection.Playlists.Add(playlistdatamodel);
-                //}
-
-                //StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-                //var filePath = storageFolder.Path + @"\PlaylistCollection.xml";
-                //FileStream writer = new FileStream(filePath, FileMode.Create);
-                //DataContractSerializer ser = new DataContractSerializer(typeof(PlayListCollection));
-                //ser.WriteObject(writer, playlistCollection.Playlists);
-                ////writer.Dispose();
-                ///
-
-                //local_musicList = new MusicList();
-                //StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-                //var filePath = storageFolder.Path + @"\PlaylistCollection.xml";
-                //using (FileStream stream = new FileStream(filePath, FileMode.Create))
-                //{
-                //    xmlSerializer.Serialize(stream, local_musicList);
-                //}
-                the_musiclist = new MusicList();
-                StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-                var filePath = storageFolder.Path + @"\PlaylistCollection.xml";
-                using (FileStream writer = new FileStream(filePath, FileMode.Create))
-                {
-                    DataContractSerializer ser = new DataContractSerializer(typeof(MusicList));
-                    ser.WriteObject(writer, the_musiclist);
-                }
-            }
-        }
-        public XmlSerializer xmlSerializer = new XmlSerializer(typeof(MusicList));
-        private MusicList the_musiclist;
-        private void ReadPlayListData(MusicList local_musiclist)
-        {
-            //Windows.Storage.StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-            //if (System.IO.File.Exists(storageFolder.Path + @"\PlaylistCollection.xml"))
-            //{
-            //    var filePath = storageFolder.Path + @"\PlaylistCollection.xml";
-            //    try
-            //    {
-            //        FileStream fs = new FileStream(filePath, FileMode.Open);
-            //        XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
-            //        DataContractSerializer ser = new DataContractSerializer(typeof(PlayListCollection));
-            //        var Playlist_Collection = (PlayListCollection)ser.ReadObject(reader, true);
-            //        //reader.Dispose();
-            //        //fs.Dispose();
-
-            //        int i = 1;
-
-            //        if (Playlist_Collection.Playlists.Count > 0)
-            //        {
-            //            foreach (var Playlist_Model in Playlist_Collection.Playlists)
-            //            {
-            //                var name_path = Playlist_Model.Name;
-            //                //ObservableCollection<Music> musiclist_path = (ObservableCollection<Music>)(await KnownFolders.MusicLibrary.get(Playlist_Model.MusicList_list)); 
-            //                //try
-            //                //{
-            //                //    var gg = await Playlist.LoadAsync(path);
+        //    using (FileStream fs = new FileStream(filePath, FileMode.Open))
+        //    {
+        //        XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
+        //        DataContractSerializer ser = new DataContractSerializer(typeof(MusicList));
 
 
-            //                //    EstablishPlaylists(gg, Playlist_Model.Name, i);
-            //                //}
-            //                //catch (Exception)
-            //                //{
-
-            //                //}
-            //                i++;
-            //                MusicList the_musiclist = new MusicList();
-            //                the_musiclist.MusicList_Name = name_path;
-            //                main_musicList.Add(the_musiclist);
-            //            }
-            //        }
-            //    }
-            //    catch (Exception)
-            //    {
-
-            //        throw;
-            //    }
-            //}
-            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-            var filePath = storageFolder.Path + @"\PlaylistCollection.xml";
-            //using (FileStream stream = new FileStream(filePath, FileMode.Open))
-            //{
-            //    local_musicList = (MusicList)xmlSerializer.Deserialize(stream);
-            //    name = local_musicList.MusicList_Name;
-            //}
-
-            using (FileStream fs = new FileStream(filePath, FileMode.Open))
-            {
-                XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
-                DataContractSerializer ser = new DataContractSerializer(typeof(MusicList));
-
-
-                local_musiclist = (MusicList)ser.ReadObject(reader, true);
-            }
-        }
+        //        local_musiclist = (MusicList)ser.ReadObject(reader, true);
+        //    }
+        //}
     }
 }
 

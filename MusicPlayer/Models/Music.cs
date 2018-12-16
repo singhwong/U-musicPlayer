@@ -23,4 +23,14 @@ namespace MusicPlayer.Models
         public IRandomAccessStream Music_Stream { get; set; }
         public string MusicSeconds_Str { get; set; }
     }
+
+    public class SaveMusic
+    {
+        public string Title { get; set; }
+        public string Artist { get; set; }
+        public string Music_Path { get; set; }
+        public int id { get; set; }
+        public string album_title { get; set; }
+        public string MusicSeconds_Str { get; set; }
+    }
 }

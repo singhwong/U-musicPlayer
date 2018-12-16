@@ -78,10 +78,10 @@
                     <ListView x:ConnectionId='6' Name="MusicList_ListView"
                               Grid.Row="1"
                           IsItemClickEnabled="True"
-                                                                   
+                                                                       
                                                                       >
                         <ListView.ItemTemplate>
-                            <DataTemplate                              >
+                            <DataTemplate                                  >
                                 <TextBlock x:ConnectionId='7'                                />
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -236,10 +236,9 @@
 
                         <ListView x:ConnectionId='39' Name="MusicShow_ListView"
                                   Grid.Row="1"
-                                                                       
                                                                                         >
                             <ListView.ItemTemplate>
-                                <DataTemplate                          >
+                                <DataTemplate                              >
                                     <Grid x:ConnectionId='40' Height="70"
                                           Margin="10,0,0,0">
                                         <StackPanel Orientation="Vertical"
@@ -382,11 +381,11 @@
                         <ListView x:ConnectionId='20' Name="MusicList2_ListView"
                               Grid.Row="1"
                           IsItemClickEnabled="True"
-                                                                   
+                                                                       
                                                                                          
                                                                            >
                             <ListView.ItemTemplate>
-                                <DataTemplate                              >
+                                <DataTemplate                                  >
                                     <TextBlock x:ConnectionId='21'                                />
                                 </DataTemplate>
                             </ListView.ItemTemplate>
