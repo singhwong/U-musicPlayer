@@ -1,1 +1,1 @@
-D:\gitUWP\U-musicPlayer\MusicPlayer\MusicPlayer.csproj;x86
+C:\Users\Administrator\source\repos\U-musicPlayer\MusicPlayer\MusicPlayer.csproj;x86

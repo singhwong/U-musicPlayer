@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 using Windows.Storage;
+using Windows.UI.Xaml.Shapes;
 
 namespace MusicPlayer.Models
 {
     public class SaveDataClass
     {
-        //MusicList List = new MusicList();
+        public static FileStream writer;
         public static void SaveMusicListData(List<SaveMusicList> list, string folder_path)
         {
             //var serializer = new XmlSerializer(typeof(List<MusicList>));
@@ -24,14 +25,27 @@ namespace MusicPlayer.Models
             //{
             //    serializer.Serialize(stream, List);
             //}
-            FileStream writer = new FileStream(folder_path, FileMode.Create);
 
-            using (writer)
+            if (System.IO.File.Exists(folder_path))
             {
+                System.IO.FileAttributes attr = File.GetAttributes(folder_path);
+                if (attr == System.IO.FileAttributes.Directory)
+                {
+                    Directory.Delete(folder_path, true);
+                }
+                else
+                {
+                    //File.Delete(folder_path);
+                }
+            }
+            writer = new FileStream(folder_path, FileMode.Create);
+            
                 DataContractSerializer ser = new DataContractSerializer(typeof(List<SaveMusicList>));
                 ser.WriteObject(writer, list);
-                //writer.Dispose();
-            }
+                writer.Dispose();
+
+            
+            
 
         }
 
@@ -47,19 +61,11 @@ namespace MusicPlayer.Models
             //return objectMusic;
 
             FileStream fs = new FileStream(folder_path, FileMode.Open);
-
-
-
-            using (fs)
-            {
-                XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
-                DataContractSerializer ser = new DataContractSerializer(typeof(List<SaveMusicList>));
-
-
-                objectMusic = (List<SaveMusicList>)ser.ReadObject(reader, true);
-                reader.Dispose();
-                fs.Dispose();
-            }
+            XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
+            DataContractSerializer ser = new DataContractSerializer(typeof(List<SaveMusicList>));
+            objectMusic = (List<SaveMusicList>)ser.ReadObject(reader, true);
+            //reader.Dispose();
+            fs.Dispose();
             return objectMusic;
         }
     }

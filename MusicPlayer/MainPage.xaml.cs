@@ -284,24 +284,17 @@ namespace MusicPlayer
 
                 List<SaveMusicList> history_musicLit = new List<SaveMusicList>();
                 history_musicLit = SaveDataClass.ReadMusicListData(filePath);
-                //listShow_button.Label = history_musicLit.MusicList_Name;
-                //main_musicList.Add(history_musicLit);
                 foreach (var item in history_musicLit)
                 {
-                    savemain_musicList.Add(item);
+                    SaveMusicList history_SaveMusicList = new SaveMusicList();
+                    history_SaveMusicList.MusicList_Name = item.MusicList_Name;
+                    history_SaveMusicList.SaveMusics = item.SaveMusics;
+                    savemain_musicList.Add(history_SaveMusicList);
                 }
             }
             catch
             {
             }
-
-           
- 
-               
-
-               
-
-
             main_slider.Maximum = 0;//第二次启动，上次保存歌曲进度条，在播放前不可滑动，以优化时间显示
             #region 显示并启用后台运行控件按钮
             systemMedia_TransportControls.IsPlayEnabled = true;
@@ -1514,23 +1507,16 @@ namespace MusicPlayer
             ContentDialogResult result = await addList_ContentDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
-                // Terms of use were accepted.
                 SetMusicListName(list_textbox.Text);
                 main_list.Clear();
                 foreach (var item in savemain_musicList)
                 {
                     main_list.Add(item);
                 }
-                //if (System.IO.File.Exists(filePath))
-                //{
-                //    await storageFolder.DeleteAsync(StorageDeleteOption.PermanentDelete);
-                //}
                 SaveDataClass.SaveMusicListData(main_list, filePath);
             }
             else
             {
-                // User pressed Cancel, ESC, or the back arrow.
-                // Terms of use were not accepted.
             }
         }
 
@@ -1539,7 +1525,15 @@ namespace MusicPlayer
             the_colume.Width = new GridLength(0);
             second_colume.Width = third_colume.Width;
             var value_List = (SaveMusicList)e.ClickedItem;
-            MusicShow_ListView.ItemsSource = value_List.SaveMusics;
+            foreach (var item in savemain_musicList)
+            {
+                if (item == value_List)
+                {
+                    MusicShow_ListView.ItemsSource = item.SaveMusics;
+                }
+
+            }
+            
             musidlistTitle_textblock.Text = value_List.MusicList_Name;          
         }
 
@@ -1579,20 +1573,23 @@ namespace MusicPlayer
             {
                 // Terms of use were accepted.
                 
-                value_MusicList.SaveMusics.Add(list_mainmusic);
-                //main_list.Clear();
-                foreach (var item in main_list)
+                the_SaveMusicList.SaveMusics.Add(list_mainmusic);
+                main_list.Clear();
+                foreach (var item in savemain_musicList)
                 {
 
                     //item.SaveMusics = value_MusicList.SaveMusics;
 
                     //item.MusicList_Name = value_MusicList.MusicList_Name;
                     //item.SaveMusics.Add(list_mainmusic);
-                    if (item == value_MusicList)
-                    {
-                        item.SaveMusics = value_MusicList.SaveMusics;
-                    }
-                   // main_list.Add(item);
+                    SaveMusicList new_SaveMusicList = new SaveMusicList();
+                    //if (item == value_MusicList)
+                    //{
+
+                    //}
+                    new_SaveMusicList.MusicList_Name = item.MusicList_Name;
+                    new_SaveMusicList.SaveMusics = item.SaveMusics;
+                    main_list.Add(new_SaveMusicList);
                 }
                 //if (System.IO.File.Exists(filePath))
                 //{
@@ -1603,10 +1600,18 @@ namespace MusicPlayer
             }
         }
         private SaveMusicList value_MusicList;
+        private SaveMusicList the_SaveMusicList;
         private void MusicList2_ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             musicList_ContentDialog.IsPrimaryButtonEnabled = true;
             value_MusicList = (SaveMusicList)e.ClickedItem;
+            foreach (var item in savemain_musicList)
+            {
+                if (item == value_MusicList)
+                {
+                  the_SaveMusicList = item;
+                }
+            }
 
 
             //musicList_ContentDialog.Hide();
