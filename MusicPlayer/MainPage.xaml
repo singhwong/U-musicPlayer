@@ -78,10 +78,10 @@
                     <ListView Name="MusicList_ListView"
                               Grid.Row="1"
                           IsItemClickEnabled="True"
-                              ItemsSource="{x:Bind savemain_musicList}"
+                              ItemsSource="{x:Bind main_musicList}"
                               ItemClick="MusicList_ListView_ItemClick">
                         <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="local1:SaveMusicList">
+                            <DataTemplate x:DataType="local1:MusicList">
                                 <TextBlock  Text="{x:Bind MusicList_Name}"/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -381,11 +381,11 @@
                         <ListView Name="MusicList2_ListView"
                               Grid.Row="1"
                           IsItemClickEnabled="True"
-                              ItemsSource="{x:Bind savemain_musicList}"
+                              ItemsSource="{x:Bind main_musicList}"
                                   SelectionChanged="MusicList2_ListView_SelectionChanged"
                                   ItemClick="MusicList2_ListView_ItemClick">
                             <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="local1:SaveMusicList">
+                                <DataTemplate x:DataType="local1:MusicList">
                                     <TextBlock  Text="{x:Bind MusicList_Name}"/>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

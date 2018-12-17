@@ -26,18 +26,18 @@ namespace MusicPlayer.Models
             //    serializer.Serialize(stream, List);
             //}
 
-            if (System.IO.File.Exists(folder_path))
-            {
-                System.IO.FileAttributes attr = File.GetAttributes(folder_path);
-                if (attr == System.IO.FileAttributes.Directory)
-                {
-                    Directory.Delete(folder_path, true);
-                }
-                else
-                {
-                    //File.Delete(folder_path);
-                }
-            }
+            //if (System.IO.File.Exists(folder_path))
+            //{
+            //    System.IO.FileAttributes attr = File.GetAttributes(folder_path);
+            //    if (attr == System.IO.FileAttributes.Directory)
+            //    {
+            //        Directory.Delete(folder_path, true);
+            //    }
+            //    else
+            //    {
+            //        //File.Delete(folder_path);
+            //    }
+            //}
             FileStream writer = new FileStream(folder_path, FileMode.Create);
             
                 DataContractSerializer ser = new DataContractSerializer(typeof(List<SaveMusicList>));

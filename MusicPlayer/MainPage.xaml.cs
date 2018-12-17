@@ -51,7 +51,7 @@ namespace MusicPlayer
     {
        
         private ObservableCollection<MusicList> main_musicList;
-        private ObservableCollection<SaveMusicList> savemain_musicList;
+        //private ObservableCollection<MusicList> savemain_musicList;
         private ObservableCollection<Music> list_music;
         private ObservableCollection<Music> use_music;
         private ObservableCollection<SaveMusic> saveuse_music;
@@ -116,7 +116,7 @@ namespace MusicPlayer
             list_music = new ObservableCollection<Music>();
             use_music = new ObservableCollection<Music>();
             allMusic = new ObservableCollection<StorageFile>();
-            savemain_musicList = new ObservableCollection<SaveMusicList>();
+            //savemain_musicList = new ObservableCollection<SaveMusicList>();
             saveuse_music = new ObservableCollection<SaveMusic>();
         }
 
@@ -277,6 +277,7 @@ namespace MusicPlayer
         }
 
         //初始化Load
+        public AdvancedCollectionView local_musics = new AdvancedCollectionView(new ObservableCollection<SaveMusic>());
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -284,19 +285,31 @@ namespace MusicPlayer
                 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
                 string filePath = storageFolder.Path + @"\PlaylistCollection.xml";
 
-                List<SaveMusicList> history_musicLit = new List<SaveMusicList>();
-                history_musicLit = SaveDataClass.ReadMusicListData(filePath);
-                foreach (var item in history_musicLit)
+                List<SaveMusicList> history_musicLit = SaveDataClass.ReadMusicListData(filePath);
+                //foreach (var item in history_musicLit)
+                //{
+                //    MusicList history_SaveMusicList = new MusicList();
+                //    history_SaveMusicList.MusicList_Name = item.MusicList_Name;
+                //    //history_SaveMusicList.Musics = item.Musics;
+                //    //main_musicList.Add(history_SaveMusicList);
+                //}
+                for (int i = 0; i < history_musicLit.Count; i++)
                 {
-                    SaveMusicList history_SaveMusicList = new SaveMusicList();
-                    history_SaveMusicList.MusicList_Name = item.MusicList_Name;
-                    history_SaveMusicList.SaveMusics = item.SaveMusics;
-                    savemain_musicList.Add(history_SaveMusicList);
+                    for (int j = 0; j < history_musicLit[i].SaveMusics.Count; j++)
+                    {
+                        local_musics.Add(history_musicLit[i].SaveMusics[j]);
+                    }
+                    MusicList value_music = new MusicList();
+                    value_music.MusicList_Name = history_musicLit[i].MusicList_Name;
+                    value_music.Musics = local_musics;
+                    main_musicList.Add(value_music);
                 }
             }
             catch
             {
             }
+               
+        
                
    
             main_slider.Maximum = 0;//第二次启动，上次保存歌曲进度条，在播放前不可滑动，以优化时间显示
@@ -1494,16 +1507,16 @@ namespace MusicPlayer
         }
         private void SetMusicListName(string name)
         {
-            SaveMusicList music_list = new SaveMusicList();
+            MusicList music_list = new MusicList();
             music_list.MusicList_Name = name;
-            savemain_musicList.Add(music_list);
+            main_musicList.Add(music_list);
 
             
 
             
         }
 
-        private List<SaveMusicList> main_list = new List<SaveMusicList>();
+        private List<MusicList> main_list = new List<MusicList>();
         private async void AddMusicList_button_Click(object sender, RoutedEventArgs e)
         {
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
@@ -1512,25 +1525,34 @@ namespace MusicPlayer
             if (result == ContentDialogResult.Primary)
             {
                 SetMusicListName(list_textbox.Text);
-                main_list.Clear();
-                foreach (var item in savemain_musicList)
+
+                foreach (var item in main_musicList)
                 {
-                    main_list.Add(item);
+                    MusicList list = new MusicList();
+                    list.MusicList_Name = item.MusicList_Name;
+                    //list.Musics = item.Musics;
+                    main_list.Add(list);
                 }
-                SaveDataClass.SaveMusicListData(main_list, filePath);
+                SaveDataClass.SaveMusicListData(save_musiclist, filePath);
             }
             else
             {
             }
         }
-
+        private MusicList value_List;
         private void MusicList_ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             the_colume.Width = new GridLength(0);
             second_colume.Width = third_colume.Width;
-            var value_List = (SaveMusicList)e.ClickedItem;
-            MusicShow_ListView.ItemsSource = value_List.SaveMusics;
-            musidlistTitle_textblock.Text = value_List.MusicList_Name;          
+            value_List = (MusicList)e.ClickedItem;
+            foreach (var item in main_musicList)
+            {
+                if (item == value_List)
+                {
+                    MusicShow_ListView.ItemsSource = item.Musics;
+                }
+            }
+            
         }
 
         private void Back_Button_Click(object sender, RoutedEventArgs e)
@@ -1553,7 +1575,6 @@ namespace MusicPlayer
         {
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
             string filePath = storageFolder.Path + @"\PlaylistCollection.xml";
-            //MusicList_SplitView.IsPaneOpen = true;
 
             ContentDialogResult result = await musicList_ContentDialog.ShowAsync();
 
@@ -1569,50 +1590,64 @@ namespace MusicPlayer
             {
                 // Terms of use were accepted.
 
-                the_SaveMusicList.SaveMusics.Add(list_mainmusic);
+                value_MusicList.Musics.Add(list_mainmusic);
                 //foreach (var item in the_SaveMusicList.SaveMusics)
                 //{                    
                 //    saveuse_music.Add((SaveMusic)item);
                 //}
                 //saveuse_music.Add(list_mainmusic);
                 main_list.Clear();
-                foreach (var item in savemain_musicList)
-                {
+                //foreach (var item in savemain_musicList)
+                //{
 
-                    //item.SaveMusics = value_MusicList.SaveMusics;
+                //    //item.SaveMusics = value_MusicList.SaveMusics;
 
-                    //item.MusicList_Name = value_MusicList.MusicList_Name;
-                    //item.SaveMusics.Add(list_mainmusic);
-                    //SaveMusicList new_SaveMusicList = new SaveMusicList();
-                    //if (item == value_MusicList)
-                    //{
-                    //    new_SaveMusicList.SaveMusics = item.SaveMusics;
-                    //}
-                    //new_SaveMusicList.MusicList_Name = item.MusicList_Name;
-                    
-                    main_list.Add(item);
-                }
+                //    //item.MusicList_Name = value_MusicList.MusicList_Name;
+                //    //item.SaveMusics.Add(list_mainmusic);
+                //SaveMusicList new_SaveMusicList = new SaveMusicList();
+                //    //if (item == value_MusicList)
+                //    //{
+                //    //    new_SaveMusicList.SaveMusics = item.SaveMusics;
+                //    //}
+                //    //new_SaveMusicList.MusicList_Name = item.MusicList_Name;
+
+                //    main_list.Add(item);
+                //}
                 //if (System.IO.File.Exists(filePath))
                 //{
                 //    await storageFolder.DeleteAsync(StorageDeleteOption.PermanentDelete);
                 //}
-                SaveDataClass.SaveMusicListData(main_list, filePath);
+                foreach (var item in main_musicList)
+                {
+                    MusicList the_list = new MusicList();
+                    the_list.MusicList_Name = item.MusicList_Name;
+                    the_list.Musics = item.Musics;
+                    main_list.Add(item);
+                }
+
+                for (int i = 0; i < main_list.Count; i++)
+                {
+                    for (int j = 0; j < main_list[i].Musics.Count; j++)
+                    {
+                        save_music.Add((SaveMusic)main_list[i].Musics[j]);
+                    }
+                    SaveMusicList value = new SaveMusicList();
+                    value.MusicList_Name = main_list[i].MusicList_Name;
+                    value.SaveMusics = save_music;
+                    save_musiclist.Add(value);
+                }
+                SaveDataClass.SaveMusicListData(save_musiclist, filePath);
 
             }
         }
-        private SaveMusicList value_MusicList;
-        private SaveMusicList the_SaveMusicList;
+        private List<SaveMusicList> save_musiclist = new List<SaveMusicList>();
+        private AdvancedCollectionView save_music = new AdvancedCollectionView(new List<SaveMusic>());
+        private MusicList value_MusicList;
+        //private SaveMusicList the_SaveMusicList;
         private void MusicList2_ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             musicList_ContentDialog.IsPrimaryButtonEnabled = true;
-            value_MusicList = (SaveMusicList)e.ClickedItem;
-            foreach (var item in savemain_musicList)
-            {
-                if (item == value_MusicList)
-                {
-                  the_SaveMusicList = item;
-                }
-            }
+            value_MusicList = (MusicList)e.ClickedItem;
 
 
             //musicList_ContentDialog.Hide();
