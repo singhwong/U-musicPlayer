@@ -14,7 +14,7 @@ namespace MusicPlayer.Models
 {
     public class SaveDataClass
     {
-        public static FileStream writer;
+        
         public static void SaveMusicListData(List<SaveMusicList> list, string folder_path)
         {
             //var serializer = new XmlSerializer(typeof(List<MusicList>));
@@ -38,7 +38,7 @@ namespace MusicPlayer.Models
                     //File.Delete(folder_path);
                 }
             }
-            writer = new FileStream(folder_path, FileMode.Create);
+            FileStream writer = new FileStream(folder_path, FileMode.Create);
             
                 DataContractSerializer ser = new DataContractSerializer(typeof(List<SaveMusicList>));
                 ser.WriteObject(writer, list);

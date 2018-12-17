@@ -54,6 +54,7 @@ namespace MusicPlayer
         private ObservableCollection<SaveMusicList> savemain_musicList;
         private ObservableCollection<Music> list_music;
         private ObservableCollection<Music> use_music;
+        private ObservableCollection<SaveMusic> saveuse_music;
         private ObservableCollection<StorageFile> allMusic;
         private Music main_music;
         private Music local_music;
@@ -116,6 +117,7 @@ namespace MusicPlayer
             use_music = new ObservableCollection<Music>();
             allMusic = new ObservableCollection<StorageFile>();
             savemain_musicList = new ObservableCollection<SaveMusicList>();
+            saveuse_music = new ObservableCollection<SaveMusic>();
         }
 
         private void SetAllTimeMethod()
@@ -295,6 +297,8 @@ namespace MusicPlayer
             catch
             {
             }
+               
+   
             main_slider.Maximum = 0;//第二次启动，上次保存歌曲进度条，在播放前不可滑动，以优化时间显示
             #region 显示并启用后台运行控件按钮
             systemMedia_TransportControls.IsPlayEnabled = true;
@@ -1525,15 +1529,7 @@ namespace MusicPlayer
             the_colume.Width = new GridLength(0);
             second_colume.Width = third_colume.Width;
             var value_List = (SaveMusicList)e.ClickedItem;
-            foreach (var item in savemain_musicList)
-            {
-                if (item == value_List)
-                {
-                    MusicShow_ListView.ItemsSource = item.SaveMusics;
-                }
-
-            }
-            
+            MusicShow_ListView.ItemsSource = value_List.SaveMusics;
             musidlistTitle_textblock.Text = value_List.MusicList_Name;          
         }
 
@@ -1572,8 +1568,13 @@ namespace MusicPlayer
             if (result == ContentDialogResult.Primary)
             {
                 // Terms of use were accepted.
-                
+
                 the_SaveMusicList.SaveMusics.Add(list_mainmusic);
+                //foreach (var item in the_SaveMusicList.SaveMusics)
+                //{                    
+                //    saveuse_music.Add((SaveMusic)item);
+                //}
+                //saveuse_music.Add(list_mainmusic);
                 main_list.Clear();
                 foreach (var item in savemain_musicList)
                 {
@@ -1582,14 +1583,14 @@ namespace MusicPlayer
 
                     //item.MusicList_Name = value_MusicList.MusicList_Name;
                     //item.SaveMusics.Add(list_mainmusic);
-                    SaveMusicList new_SaveMusicList = new SaveMusicList();
+                    //SaveMusicList new_SaveMusicList = new SaveMusicList();
                     //if (item == value_MusicList)
                     //{
-
+                    //    new_SaveMusicList.SaveMusics = item.SaveMusics;
                     //}
-                    new_SaveMusicList.MusicList_Name = item.MusicList_Name;
-                    new_SaveMusicList.SaveMusics = item.SaveMusics;
-                    main_list.Add(new_SaveMusicList);
+                    //new_SaveMusicList.MusicList_Name = item.MusicList_Name;
+                    
+                    main_list.Add(item);
                 }
                 //if (System.IO.File.Exists(filePath))
                 //{
