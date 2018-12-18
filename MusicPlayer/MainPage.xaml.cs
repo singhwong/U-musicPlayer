@@ -1510,6 +1510,7 @@ namespace MusicPlayer
             MusicList music_list = new MusicList();
             music_list.MusicList_Name = name;
             main_musicList.Add(music_list);
+            
 
             
 
@@ -1519,6 +1520,8 @@ namespace MusicPlayer
         private List<MusicList> main_list = new List<MusicList>();
         private async void AddMusicList_button_Click(object sender, RoutedEventArgs e)
         {
+            main_list.Clear();
+            save_music.Clear();
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
             string filePath = storageFolder.Path + @"\PlaylistCollection.xml";
             ContentDialogResult result = await addList_ContentDialog.ShowAsync();
@@ -1532,6 +1535,12 @@ namespace MusicPlayer
                     list.MusicList_Name = item.MusicList_Name;
                     //list.Musics = item.Musics;
                     main_list.Add(list);
+                }
+                foreach (var item in main_list)
+                {
+                    SaveMusicList savelist = new SaveMusicList();
+                    savelist.MusicList_Name = item.MusicList_Name;
+                    save_musiclist.Add(savelist);
                 }
                 SaveDataClass.SaveMusicListData(save_musiclist, filePath);
             }
@@ -1590,13 +1599,14 @@ namespace MusicPlayer
             {
                 // Terms of use were accepted.
 
-                value_MusicList.Musics.Add(list_mainmusic);
+                main_musics.Musics.Add(list_mainmusic);
                 //foreach (var item in the_SaveMusicList.SaveMusics)
                 //{                    
                 //    saveuse_music.Add((SaveMusic)item);
                 //}
                 //saveuse_music.Add(list_mainmusic);
                 main_list.Clear();
+                save_musiclist.Clear();
                 //foreach (var item in savemain_musicList)
                 //{
 
@@ -1643,11 +1653,20 @@ namespace MusicPlayer
         private List<SaveMusicList> save_musiclist = new List<SaveMusicList>();
         private AdvancedCollectionView save_music = new AdvancedCollectionView(new List<SaveMusic>());
         private MusicList value_MusicList;
+        private MusicList main_musics;
         //private SaveMusicList the_SaveMusicList;
         private void MusicList2_ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             musicList_ContentDialog.IsPrimaryButtonEnabled = true;
             value_MusicList = (MusicList)e.ClickedItem;
+            foreach (var item in main_musicList)
+            {
+                if (item == value_MusicList)
+                {
+                    main_musics = new MusicList();
+                    main_musics = item;
+                }
+            }
 
 
             //musicList_ContentDialog.Hide();
