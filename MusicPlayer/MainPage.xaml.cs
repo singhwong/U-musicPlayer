@@ -51,10 +51,11 @@ namespace MusicPlayer
     {
        
         private ObservableCollection<MusicList> main_musicList;
-        //private ObservableCollection<MusicList> savemain_musicList;
+        private List<MusicList> main_list;
+        private List<SaveMusicList> save_mainMusicList;
+
         private ObservableCollection<Music> list_music;
         private ObservableCollection<Music> use_music;
-        //private ObservableCollection<SaveMusic> saveuse_music;
         private ObservableCollection<StorageFile> allMusic;
         private Music main_music;
         private Music local_music;
@@ -113,11 +114,11 @@ namespace MusicPlayer
             this.InitializeComponent();
             ExtendAcrylicIntoTitleBar();
             main_musicList = new ObservableCollection<MusicList>();
+            main_list = new List<MusicList>();
+            save_mainMusicList = new List<SaveMusicList>();
             list_music = new ObservableCollection<Music>();
             use_music = new ObservableCollection<Music>();
             allMusic = new ObservableCollection<StorageFile>();
-            //savemain_musicList = new ObservableCollection<SaveMusicList>();
-            //saveuse_music = new ObservableCollection<SaveMusic>();
         }
 
         private void SetAllTimeMethod()
@@ -282,10 +283,17 @@ namespace MusicPlayer
         {
             try
             {
-                main_list = SaveDataClass.ReadMusicListData(filePath);
+                save_mainMusicList = SaveDataClass.ReadMusicListData(filePath);
                 for (int i = 0; i < main_list.Count; i++)
                 {
-                    main_musicList.Add(main_list[i]);
+                    MusicList value = new MusicList();
+                    value.MusicList_Name = main_list[i].MusicList_Name;
+                    //foreach (var item in main_list[i].Musics)
+                    //{
+
+                    //    value.Musics.Add(item);
+                    //}
+                    main_musicList.Add(value);
                 }
             }
             catch
@@ -822,9 +830,7 @@ namespace MusicPlayer
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            //the_colume.Width = second_colume.Width;
             IslistShowButtonClick = false;
-            //IsMusicListClick_bool = false;
         }
 
         private void Volume_button_Click(object sender, RoutedEventArgs e)
@@ -1348,7 +1354,7 @@ namespace MusicPlayer
         }
         private void Clear_button_Click(object sender, RoutedEventArgs e)
         {//清空所有列表歌曲,释放所有流
-            if (main_progressRing.IsActive)
+            if (main_progressRing.IsActive) 
             {
                 SetContentDialog();
             }
@@ -1476,17 +1482,20 @@ namespace MusicPlayer
             MusicList music_list = new MusicList();
             music_list.MusicList_Name = name;
             main_musicList.Add(music_list);
-            main_list.Add(music_list);
+            //main_list.Add(music_list);
+            SaveMusicList value = new SaveMusicList();
+            value.MusicList_Name = name;
+            save_mainMusicList.Add(value);
         }
 
-        private List<MusicList> main_list = new List<MusicList>();
+ 
         private async void AddMusicList_button_Click(object sender, RoutedEventArgs e)
         {
             ContentDialogResult result = await addList_ContentDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
                 SetMusicListName(list_textbox.Text);
-                SaveDataClass.SaveMusicListData(main_list, filePath);
+                SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);
             }
             else
             {
