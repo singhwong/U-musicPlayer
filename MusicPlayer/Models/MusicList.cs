@@ -15,9 +15,9 @@ namespace MusicPlayer.Models
         public AdvancedCollectionView Musics = new AdvancedCollectionView(new ObservableCollection<SaveMusic>());
     }
 
-    public class SaveMusicList
-    {
-        public string MusicList_Name { get; set; }
-        public AdvancedCollectionView SaveMusics = new AdvancedCollectionView(new List<SaveMusic>());
-    }
+    //public class SaveMusicList
+    //{
+    //    public string MusicList_Name { get; set; }
+    //    public AdvancedCollectionView SaveMusics = new AdvancedCollectionView(new List<SaveMusic>());
+    //}
 }
