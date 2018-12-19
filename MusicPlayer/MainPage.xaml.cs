@@ -49,13 +49,12 @@ namespace MusicPlayer
     /// </summary>
     public sealed partial class MainPage : Page
     {
-       
+
         private ObservableCollection<MusicList> main_musicList;
-        private List<MusicList> main_list;
         private List<SaveMusicList> save_mainMusicList;
         private static StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
         private string filePath = storageFolder.Path + @"\PlaylistCollection.xml";
-        private ObservableCollection<Music> list_music;
+
         private ObservableCollection<Music> use_music;
         private ObservableCollection<StorageFile> allMusic;
         private Music main_music;
@@ -80,6 +79,9 @@ namespace MusicPlayer
         private string single_str;
         private string order_str;
         private string random_str;
+
+        private string _searchLyric_str;
+        private string _clearLyric_str;
         private double volume_value;
         private double volume_num;
         private ImageBrush imageBrush = new ImageBrush();
@@ -115,9 +117,8 @@ namespace MusicPlayer
             this.InitializeComponent();
             ExtendAcrylicIntoTitleBar();
             main_musicList = new ObservableCollection<MusicList>();
-            main_list = new List<MusicList>();
             save_mainMusicList = new List<SaveMusicList>();
-            list_music = new ObservableCollection<Music>();
+
             use_music = new ObservableCollection<Music>();
             allMusic = new ObservableCollection<StorageFile>();
         }
@@ -279,26 +280,10 @@ namespace MusicPlayer
         }
 
         //初始化Load
-        public AdvancedCollectionView local_musics; 
+        public AdvancedCollectionView local_musics;
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                save_mainMusicList = SaveDataClass.ReadMusicListData(filePath);
-                for (int i = 0; i < save_mainMusicList.Count; i++)
-                {
-                    MusicList value = new MusicList();
-                    value.MusicList_Name = save_mainMusicList[i].MusicList_Name;
-                    for (int j = 0; j < save_mainMusicList[i].SaveMusics.Count; j++)
-                    {
-                        value.Musics.Add(save_mainMusicList[i].SaveMusics[j]);
-                    }
-                    main_musicList.Add(value);
-                }
-            }
-            catch
-            {
-            }                                      
+            ReadLocalMusicListData();//获取保存的历史歌单数据
             main_slider.Maximum = 0;//第二次启动，上次保存歌曲进度条，在播放前不可滑动，以优化时间显示
             #region 显示并启用后台运行控件按钮
             systemMedia_TransportControls.IsPlayEnabled = true;
@@ -1354,7 +1339,7 @@ namespace MusicPlayer
         }
         private void Clear_button_Click(object sender, RoutedEventArgs e)
         {//清空所有列表歌曲,释放所有流
-            if (main_progressRing.IsActive) 
+            if (main_progressRing.IsActive)
             {
                 SetContentDialog();
             }
@@ -1424,7 +1409,6 @@ namespace MusicPlayer
                     play_button.Icon = new SymbolIcon(Symbol.Pause);
                     play_button.Label = pause_str;//显示 "暂停"
                     IsMusicPlaying = true;
-                    //GetLyrics(main_music.Artist,main_music.Title);
                 }
                 else
                 {
@@ -1453,8 +1437,7 @@ namespace MusicPlayer
             }
         }
 
-        private string _searchLyric_str;
-        private string _clearLyric_str;
+
         private void Lyric_button_Click(object sender, RoutedEventArgs e)
         {
             _searchLyric_str = resourceLoader.GetString("searchLyric_str");
@@ -1469,7 +1452,6 @@ namespace MusicPlayer
                 lyric_textblock.Text = "";
                 lyric_button.Content = _searchLyric_str;
             }
-
         }
 
         private void MusicList_button_Click(object sender, RoutedEventArgs e)
@@ -1479,16 +1461,43 @@ namespace MusicPlayer
         }
         private void SetMusicListName(string name)
         {
-            MusicList music_list = new MusicList();
-            music_list.MusicList_Name = name;
-            main_musicList.Add(music_list);
-            //main_list.Add(music_list);
-            SaveMusicList value = new SaveMusicList();
-            value.MusicList_Name = name;
-            save_mainMusicList.Add(value);
+            if (!String.IsNullOrEmpty(name.Trim()))
+            {
+                foreach (var item in main_musicList)
+                {
+                    if (item.MusicList_Name == name)
+                    {
+                        SetErrorMusicListNameContentDialog();
+                        return;
+                    }
+                }
+                MusicList music_list = new MusicList();
+                music_list.MusicList_Name = name;
+                main_musicList.Add(music_list);
+                SaveMusicList value = new SaveMusicList();
+                value.MusicList_Name = name;
+                save_mainMusicList.Add(value);
+            }
+            else
+            {
+                SetErrorMusicListNameContentDialog();
+            }
         }
 
- 
+        private async void SetErrorMusicListNameContentDialog()
+        {
+            ContentDialog content = new ContentDialog()
+            {
+                Title = "",
+                Content = "歌单名不能为空或重复",
+                IsPrimaryButtonEnabled = true,
+                PrimaryButtonText = "OK",
+                Background = skyblue,
+                Foreground = white,
+            };
+            ContentDialogResult result = await content.ShowAsync();
+        }
+
         private async void AddMusicList_button_Click(object sender, RoutedEventArgs e)
         {
             ContentDialogResult result = await addList_ContentDialog.ShowAsync();
@@ -1519,17 +1528,9 @@ namespace MusicPlayer
             second_colume.Width = new GridLength(0);
         }
 
-        private void AddFlyoutItem(string str)
-        {
-           
-        }
-        
-        
         private async void AddToList_menu_Click(object sender, RoutedEventArgs e)
         {
             ContentDialogResult result = await musicList_ContentDialog.ShowAsync();
-            //int num = 0;
-            //main_list.Clear();
             if (result == ContentDialogResult.Primary)
             {
                 int num = 0;
@@ -1554,7 +1555,7 @@ namespace MusicPlayer
                         save_mainMusicList[i].SaveMusics.Add(list_mainmusic);
                     }
                 }
-                SaveDataClass.SaveMusicListData(save_mainMusicList,filePath);
+                SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);
             }
         }
         private MusicList value_MusicList = new MusicList();
@@ -1567,12 +1568,12 @@ namespace MusicPlayer
 
         private void MusicList2_ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           
+
         }
 
         private void MusicList_ContentDialog_Closed(ContentDialog sender, ContentDialogClosedEventArgs args)
         {
-            
+
         }
 
         private void MusicList_ContentDialog_Opened(ContentDialog sender, ContentDialogOpenedEventArgs args)
@@ -1588,6 +1589,27 @@ namespace MusicPlayer
         {
             var selection_value = (ListView)sender;
             selection_value.SelectedItem = null;
+        }
+
+        private void ReadLocalMusicListData()
+        {
+            try
+            {
+                save_mainMusicList = SaveDataClass.ReadMusicListData(filePath);
+                for (int i = 0; i < save_mainMusicList.Count; i++)
+                {
+                    MusicList value = new MusicList();
+                    value.MusicList_Name = save_mainMusicList[i].MusicList_Name;
+                    for (int j = 0; j < save_mainMusicList[i].SaveMusics.Count; j++)
+                    {
+                        value.Musics.Add(save_mainMusicList[i].SaveMusics[j]);
+                    }
+                    main_musicList.Add(value);
+                }
+            }
+            catch
+            {
+            }
         }
     }
 }

@@ -24,7 +24,7 @@ namespace MusicPlayer.Models
         public string MusicSeconds_Str { get; set; }
     }
 
-    public class SaveMusic
+    public class SaveMusic//用于保存为XML文件
     {
         public string Title { get; set; }
         public string Artist { get; set; }
