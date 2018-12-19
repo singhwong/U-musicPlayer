@@ -1532,6 +1532,7 @@ namespace MusicPlayer
             //main_list.Clear();
             if (result == ContentDialogResult.Primary)
             {
+                int num = 0;
                 Music using_music = (Music)sender_value.DataContext;
                 SaveMusic list_mainmusic = new SaveMusic();
                 list_mainmusic.Title = using_music.Title;
@@ -1541,34 +1542,19 @@ namespace MusicPlayer
                 value_MusicList.Musics.Add(list_mainmusic);
                 for (int i = 0; i < main_musicList.Count; i++)
                 {
-                    for (int j = 0; j < save_mainMusicList.Count; j++)
+                    if (main_musicList[i] == value_MusicList)
                     {
-                        if (main_musicList[i].MusicList_Name == save_mainMusicList[j].MusicList_Name)
-                        {
-                            save_mainMusicList[j].SaveMusics.Add(list_mainmusic);
-                        }
+                        num = i;
                     }
                 }
-                //foreach (var item in main_musicList)
-                //{
-                //    main_list.Add(item);
-                //}
-                //SaveDataClass.SaveMusicListData(main_list, filePath);
-                //for (int i = 0; i < main_musicList.Count; i++)
-                //{
-                //    if (main_musicList[i] == value_MusicList)
-                //    {
-                //        num = i;
-                //    }
-                //}
-                //for (int i = 0; i < main_list.Count; i++)
-                //{
-                //    if (i == num)
-                //    {
-                //        main_list[i].Musics.Add(list_mainmusic);
-                //    }
-                //}
-                //SaveDataClass.SaveMusicListData(main_list,filePath);
+                for (int i = 0; i < save_mainMusicList.Count; i++)
+                {
+                    if (i == num)
+                    {
+                        save_mainMusicList[i].SaveMusics.Add(list_mainmusic);
+                    }
+                }
+                SaveDataClass.SaveMusicListData(save_mainMusicList,filePath);
             }
         }
         private MusicList value_MusicList = new MusicList();
