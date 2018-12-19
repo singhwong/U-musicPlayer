@@ -18,6 +18,6 @@ namespace MusicPlayer.Models
     public class SaveMusicList
     {
         public string MusicList_Name { get; set; }
-        public AdvancedCollectionView SaveMusics = new AdvancedCollectionView(new List<SaveMusic>());
+        public  List<SaveMusic> SaveMusics = new List<SaveMusic>();
     }
 }

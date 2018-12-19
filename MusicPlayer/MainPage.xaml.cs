@@ -53,7 +53,8 @@ namespace MusicPlayer
         private ObservableCollection<MusicList> main_musicList;
         private List<MusicList> main_list;
         private List<SaveMusicList> save_mainMusicList;
-
+        private static StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+        private string filePath = storageFolder.Path + @"\PlaylistCollection.xml";
         private ObservableCollection<Music> list_music;
         private ObservableCollection<Music> use_music;
         private ObservableCollection<StorageFile> allMusic;
@@ -284,15 +285,14 @@ namespace MusicPlayer
             try
             {
                 save_mainMusicList = SaveDataClass.ReadMusicListData(filePath);
-                for (int i = 0; i < main_list.Count; i++)
+                for (int i = 0; i < save_mainMusicList.Count; i++)
                 {
                     MusicList value = new MusicList();
-                    value.MusicList_Name = main_list[i].MusicList_Name;
-                    //foreach (var item in main_list[i].Musics)
-                    //{
-
-                    //    value.Musics.Add(item);
-                    //}
+                    value.MusicList_Name = save_mainMusicList[i].MusicList_Name;
+                    for (int j = 0; j < save_mainMusicList[i].SaveMusics.Count; j++)
+                    {
+                        value.Musics.Add(save_mainMusicList[i].SaveMusics[j]);
+                    }
                     main_musicList.Add(value);
                 }
             }
@@ -1508,6 +1508,7 @@ namespace MusicPlayer
             second_colume.Width = third_colume.Width;
             value_List = (MusicList)e.ClickedItem;
             MusicShow_ListView.ItemsSource = value_List.Musics;
+            musidlistTitle_textblock.Text = value_List.MusicList_Name;
         }
 
         private void Back_Button_Click(object sender, RoutedEventArgs e)
@@ -1522,8 +1523,7 @@ namespace MusicPlayer
         {
            
         }
-        private static StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-         private string filePath = storageFolder.Path + @"\PlaylistCollection.xml";
+        
         
         private async void AddToList_menu_Click(object sender, RoutedEventArgs e)
         {
@@ -1539,6 +1539,16 @@ namespace MusicPlayer
                 list_mainmusic.Music_Path = using_music.Music_Path;
                 list_mainmusic.MusicSeconds_Str = using_music.MusicSeconds_Str;
                 value_MusicList.Musics.Add(list_mainmusic);
+                for (int i = 0; i < main_musicList.Count; i++)
+                {
+                    for (int j = 0; j < save_mainMusicList.Count; j++)
+                    {
+                        if (main_musicList[i].MusicList_Name == save_mainMusicList[j].MusicList_Name)
+                        {
+                            save_mainMusicList[j].SaveMusics.Add(list_mainmusic);
+                        }
+                    }
+                }
                 //foreach (var item in main_musicList)
                 //{
                 //    main_list.Add(item);
