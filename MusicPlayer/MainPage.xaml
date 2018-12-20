@@ -82,7 +82,19 @@
                               ItemClick="MusicList_ListView_ItemClick">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="local1:MusicList">
-                                <TextBlock  Text="{x:Bind MusicList_Name}"/>
+                                <StackPanel Name="MusicList_stackPanel"
+                                            RightTapped="MusicList_stackPanel_RightTapped">
+                                    <TextBlock  Text="{x:Bind MusicList_Name}"
+                                            FontWeight="Light"/>
+                                    <StackPanel.ContextFlyout>
+                                        <MenuFlyout>
+                                            <MenuFlyoutItem Name="remove_musicList"
+                                                            Text="移除"
+                                                            Click="Remove_musicList_Click"/>
+                                        </MenuFlyout>
+                                    </StackPanel.ContextFlyout>
+                                </StackPanel>
+                                
                             </DataTemplate>
                         </ListView.ItemTemplate>
 
@@ -294,7 +306,6 @@
                             <Button Name="lyric_button"
                         Background="Transparent"
                             HorizontalAlignment="Center"
-                        FontWeight="Bold"
                             x:Uid="lyric_button"
                         Style="{StaticResource button_Style}"
                             Click="Lyric_button_Click"/>

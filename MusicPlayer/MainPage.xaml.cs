@@ -1032,6 +1032,8 @@ namespace MusicPlayer
         {
             sender_value = (FrameworkElement)sender;
             //savesender_value = (FrameworkElement)sender;
+            //var song = (ListViewItem)sender;
+            //song.IsSelected = true;
             main_listview.IsItemClickEnabled = true;
         }
 
@@ -1610,6 +1612,35 @@ namespace MusicPlayer
             catch
             {
             }
+        }
+
+        private void Remove_musicList_Click(object sender, RoutedEventArgs e)
+        {
+            int index_num = 0;
+            MusicList remove_value = (MusicList)musicList_senderValue.DataContext;
+            for (int i = 0; i < main_musicList.Count; i++)
+            {
+                if (main_musicList[i] == remove_value)
+                {
+                    i = index_num;
+                }
+            }
+            main_musicList.Remove(remove_value);
+            //for (int j = 0; j < save_mainMusicList.Count; j++)
+            //{
+            //    if (j == index_num)
+            //    {
+
+                save_mainMusicList.Remove(save_mainMusicList[index_num]);
+           
+            //    }
+            //}
+            SaveDataClass.SaveMusicListData(save_mainMusicList,filePath);
+        }
+        private FrameworkElement musicList_senderValue;
+        private void MusicList_stackPanel_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            musicList_senderValue = (FrameworkElement)sender;
         }
     }
 }
