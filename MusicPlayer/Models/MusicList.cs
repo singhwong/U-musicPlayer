@@ -13,7 +13,7 @@ namespace MusicPlayer.Models
     public class MusicList
     {
         public string MusicList_Name { get; set; }
-        public AdvancedCollectionView Musics = new AdvancedCollectionView(new ObservableCollection<SaveMusic>());
+        public ObservableCollection<SaveMusic> Musics = new ObservableCollection<SaveMusic>();
     }
 
     public class SaveMusicList//用于保存List数据

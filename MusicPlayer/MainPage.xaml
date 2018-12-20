@@ -94,7 +94,8 @@
                                         </MenuFlyout>
                                     </StackPanel.ContextFlyout>
                                 </StackPanel>
-                                
+
+
                             </DataTemplate>
                         </ListView.ItemTemplate>
 
@@ -254,7 +255,9 @@
                                     <Grid Height="70"
                                           Margin="10,0,0,0">
                                         <StackPanel Orientation="Vertical"
-                                                    VerticalAlignment="Center">
+                                                    VerticalAlignment="Center"
+                                                    IsDoubleTapEnabled="True"
+                                                    DoubleTapped="StackPanel_DoubleTapped">
                                             <TextBlock Name="listmusic_title"
                                                    FontSize="17"
                                                    FontWeight="Bold"
