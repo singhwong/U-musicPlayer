@@ -1052,3 +1052,8 @@ C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\obj\x86\Debug\Microsoft.Too
 C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\obj\x86\Debug\ProjectArchitectures.txt
 C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\obj\x86\Debug\.winmd_cache\$Microsoft.Graphics.Canvas.winmd_636340141040000000.json
 C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636758264200000000.json
+C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\obj\x86\Debug\MusicListSongsShow.g.i.cs
+C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\obj\x86\Debug\MusicListSongsShow.g.cs
+C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\obj\x86\Debug\MusicListSongsShow.xaml
+C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\obj\x86\Debug\MusicListSongsShow.xbf
+C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\MusicListSongsShow.xbf

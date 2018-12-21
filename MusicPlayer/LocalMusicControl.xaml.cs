@@ -21,7 +21,7 @@ namespace MusicPlayer
 {
     public sealed partial class LocalMusicControl : UserControl
     {
-        private SolidColorBrush transParent = new SolidColorBrush(Colors.Transparent);
+        //private SolidColorBrush transParent = new SolidColorBrush(Colors.Transparent);
         public Music this_music { get { return this.DataContext as Music; } }
         public LocalMusicControl()
         {
@@ -34,7 +34,7 @@ namespace MusicPlayer
         {
             try
             {
-                icon_textblock.Foreground = this_music.Music_BackGround;
+                icon_textblock.Foreground = this_music.Music_Color;
             }
             catch
             {

@@ -249,29 +249,17 @@
 
                         <ListView Name="MusicShow_ListView"
                                   Grid.Row="1"
+                                  AllowDrop="True"
+                      CanReorderItems="True"
+                      IsSwipeEnabled="True"
                                   SelectionChanged="MusicShow_ListView_SelectionChanged">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="local1:SaveMusic">
-                                    <Grid Height="70"
-                                          Margin="10,0,0,0">
-                                        <StackPanel Orientation="Vertical"
-                                                    VerticalAlignment="Center"
-                                                    IsDoubleTapEnabled="True"
-                                                    DoubleTapped="StackPanel_DoubleTapped">
-                                            <TextBlock Name="listmusic_title"
-                                                   FontSize="17"
-                                                   FontWeight="Bold"
-                                                   Text="{x:Bind Title}"/>
-                                            <TextBlock Name="listmusic_artist"
-                                                   FontSize="13"
-                                                   FontWeight="Thin"
-                                                   Text="{x:Bind Artist}"/>
-                                            <TextBlock Name="listmusic_duration"
-                                                   FontSize="13"
-                                                   FontWeight="Thin"
-                                                   Text="{x:Bind MusicSeconds_Str}"/>
-                                        </StackPanel>
-                                    </Grid>
+                                    <StackPanel  Name="musicListSongsShow_stackPanel"
+                                                 IsDoubleTapEnabled="True"
+                                                 DoubleTapped="MusicListSongsShow_stackPanel_DoubleTapped">
+                                        <local:MusicListSongsShow/>
+                                    </StackPanel>
                                     
                                 </DataTemplate>
                             </ListView.ItemTemplate>

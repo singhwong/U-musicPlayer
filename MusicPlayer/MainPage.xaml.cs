@@ -99,7 +99,7 @@ namespace MusicPlayer
         #region 初始化并设置颜色
         private SolidColorBrush white = new SolidColorBrush(Colors.White);
         private SolidColorBrush transParent = new SolidColorBrush(Colors.Transparent);
-        //private SolidColorBrush hotPink = new SolidColorBrush(Colors.HotPink);
+        private SolidColorBrush red = new SolidColorBrush(Colors.Red);
         private SolidColorBrush lightPink = new SolidColorBrush(Colors.LightPink);
         private SolidColorBrush skyblue = new SolidColorBrush(Colors.SkyBlue);
         private SolidColorBrush black = new SolidColorBrush(Colors.Black);
@@ -197,7 +197,11 @@ namespace MusicPlayer
             playArtist_textblock.Text = main_music.Artist;
             line_textblock.Text = " - ";
             //GetLyrics(main_music.Artist,main_music.Title);
-            main_music.Music_BackGround = skyblue;
+            main_music.Music_Color = skyblue;
+            if (main_savemusic != null)
+            {
+                main_savemusic.SaveMusic_Color = transParent;
+            }            
             lyric_textblock.Text = "";
             lyric_button.Content = resourceLoader.GetString("searchLyric_str");
             #endregion
@@ -208,7 +212,8 @@ namespace MusicPlayer
             //var random_music = SetMusic.GetMusicByStream(use_music,_musicStream);
             Random rd_2 = new Random();
             int random_index = rd_2.Next(0,value_List.Musics.Count);
-            string random_path = value_List.Musics[random_index].Music_Path;
+            main_savemusic = value_List.Musics[random_index];//获取歌单列表歌曲
+            string random_path = main_savemusic.Music_Path;
             main_music = SetMusic.GetMusicByPath(use_music,random_path);
             #region 重复代码，后续需要进行简化优化
             source_path = main_music.Music_Path;
@@ -231,7 +236,7 @@ namespace MusicPlayer
             playArtist_textblock.Text = main_music.Artist;
             line_textblock.Text = " - ";
             //GetLyrics(main_music.Artist,main_music.Title);
-            main_music.Music_BackGround = skyblue;
+            ClearUseMusicIconColor();//清除获取的总歌曲icon颜色并设置歌单歌曲列表icon颜色
             lyric_textblock.Text = "";
             lyric_button.Content = resourceLoader.GetString("searchLyric_str");
             #endregion
@@ -270,7 +275,8 @@ namespace MusicPlayer
             {
                 num_2 = value_List.Musics.Count - 1;
             }
-            string value_path = value_List.Musics[num_2].Music_Path;
+            main_savemusic = value_List.Musics[num_2];//获取歌单列表歌曲
+            string value_path = main_savemusic.Music_Path;
             main_music = SetMusic.GetMusicByPath(use_music,value_path);
             #region 重复代码(List_Source())，需要优化
             source_path = main_music.Music_Path;
@@ -293,7 +299,7 @@ namespace MusicPlayer
             playArtist_textblock.Text = main_music.Artist;
             line_textblock.Text = " - ";
             //GetLyrics(main_music.Artist,main_music.Title);
-            main_music.Music_BackGround = skyblue;
+            ClearUseMusicIconColor();//清除获取的总歌曲icon颜色并设置歌单歌曲列表icon颜色
             lyric_textblock.Text = "";
             lyric_button.Content = resourceLoader.GetString("searchLyric_str");
             #endregion
@@ -349,7 +355,11 @@ namespace MusicPlayer
             playArtist_textblock.Text = main_music.Artist;
             line_textblock.Text = " - ";
             //GetLyrics(main_music.Artist,main_music.Title);
-            main_music.Music_BackGround = skyblue;
+            main_music.Music_Color = skyblue;
+            if (main_savemusic != null)
+            {
+                main_savemusic.SaveMusic_Color = transParent;
+            }           
             lyric_textblock.Text = "";
             lyric_button.Content = resourceLoader.GetString("searchLyric_str");
             #endregion
@@ -602,7 +612,7 @@ namespace MusicPlayer
                 music.Music_Path = song.Name;
                 music.id = num;
                 music.SongFile = song;
-                music.Music_BackGround = transParent;
+                music.Music_Color = transParent;
                 music.album_title = song_Properties.Album;
                 use_music.Add(music);
                 num++;
@@ -803,7 +813,7 @@ namespace MusicPlayer
             }
 
             playTime_textblock.Text = "00:00" + "/" + local_allTimeStr;
-            local_music.Music_BackGround = skyblue;
+            local_music.Music_Color = skyblue;
             main_music = local_music;//删除正在播放歌曲后，随机切换下一首会用到该main_music
         }
         #endregion
@@ -1137,14 +1147,15 @@ namespace MusicPlayer
                 }
                 catch
                 {
-
                     SetPlayErrorMethod();
                 }
-
-
                 local_musicPath.Values["music_path"] = source_path;
                 local_allTime.Values["allTime"] = allmm_str + ":" + allss_str;
-                main_music.Music_BackGround = skyblue;
+                main_music.Music_Color = skyblue;
+                if (main_savemusic != null)//清除歌单歌曲列表icon颜色
+                {
+                    main_savemusic.SaveMusic_Color = transParent;
+                }
                 lyric_textblock.Text = "";
                 lyric_button.Content = resourceLoader.GetString("searchLyric_str");
             }
@@ -1199,7 +1210,11 @@ namespace MusicPlayer
                 IsMusicPlaying = true;
                 play_button.Icon = new SymbolIcon(Symbol.Pause);
                 play_button.Label = resourceLoader.GetString("pause_str");
-                main_music.Music_BackGround = skyblue;
+                main_music.Music_Color = skyblue;
+                if (main_savemusic != null)
+                {
+                    main_savemusic.SaveMusic_Color = transParent;
+                }
 
                 local_musicPath.Values["music_path"] = source_path;
                 local_allTime.Values["allTime"] = allmm_str + ":" + allss_str;
@@ -1225,18 +1240,29 @@ namespace MusicPlayer
         #region 上一首恢复颜色
         private void GetSavedMusicForeGround()
         {
-            if (local_music != null)
+            if (IsMusicListSongPlay_bool)
             {
-                local_music.Music_BackGround = transParent;
+                if (main_savemusic != null)
+                {
+                    main_savemusic.SaveMusic_Color = transParent;
+                }
             }
-            //if (menu_music != null)
-            //{
-            //    menu_music.ForeColor = transParent;
-            //}
-            if (main_music != null)
+            else
             {
-                main_music.Music_BackGround = transParent;
+                if (local_music != null)
+                {
+                    local_music.Music_Color = transParent;
+                }
+                //if (menu_music != null)
+                //{
+                //    menu_music.ForeColor = transParent;
+                //}
+                if (main_music != null)
+                {
+                    main_music.Music_Color = transParent;
+                }
             }
+           
         }
         #endregion
         private IRandomAccessStream stream;
@@ -1385,7 +1411,7 @@ namespace MusicPlayer
                 forward_button.IsEnabled = true;
                 main_music = use_music[0];
                 SameSongDetailsHelpMethod(main_music);
-                main_music.Music_BackGround = skyblue;
+                main_music.Music_Color = skyblue;
             }
         }
 
@@ -1628,6 +1654,7 @@ namespace MusicPlayer
 
         private async void AddMusicList_button_Click(object sender, RoutedEventArgs e)
         {
+            list_textbox.Text = "";
             ContentDialogResult result = await addList_ContentDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
@@ -1759,8 +1786,8 @@ namespace MusicPlayer
             musicList_senderValue = (FrameworkElement)sender;
         }
         private FrameworkElement doubleTapped_senderValue;
-
-        private void StackPanel_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        private SaveMusic main_savemusic;
+        private void MusicListSongsShow_stackPanel_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
             if (main_progressRing.IsActive)
             {
@@ -1774,8 +1801,8 @@ namespace MusicPlayer
 
                 #region 包含一些重复代码，后期需要进行优化
                 doubleTapped_senderValue = (FrameworkElement)sender;
-                var value = (SaveMusic)doubleTapped_senderValue.DataContext;
-                string path = value.Music_Path;
+                main_savemusic = (SaveMusic)doubleTapped_senderValue.DataContext;//获取歌单列表歌曲
+                string path = main_savemusic.Music_Path;
                 main_music = SetMusic.GetMusicByPath(use_music, path);
                 source_path = main_music.Music_Path;
                 //_musicStream = main_music.Music_Stream;
@@ -1791,8 +1818,7 @@ namespace MusicPlayer
                 IsMusicPlaying = true;
                 play_button.Icon = new SymbolIcon(Symbol.Pause);
                 play_button.Label = resourceLoader.GetString("pause_str");
-                main_music.Music_BackGround = skyblue;
-
+                ClearUseMusicIconColor();
                 local_musicPath.Values["music_path"] = source_path;
                 local_allTime.Values["allTime"] = allmm_str + ":" + allss_str;
                 lyric_textblock.Text = "";
@@ -1800,8 +1826,16 @@ namespace MusicPlayer
                 #endregion
             }
         }
-
-       
+        private void ClearUseMusicIconColor()
+        {
+            #region 清除获取的总歌曲列表icon颜色并设置歌单歌曲列表icon颜色
+            foreach (var item in use_music)//清除获取的总歌曲列表icon颜色
+            {
+                item.Music_Color = transParent;
+            }
+            main_savemusic.SaveMusic_Color = red;//设置歌单歌曲icon颜色变化
+            #endregion
+        }
     }
 }
 
