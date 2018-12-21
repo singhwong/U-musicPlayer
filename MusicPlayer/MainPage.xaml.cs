@@ -203,6 +203,40 @@ namespace MusicPlayer
             #endregion
         }
 
+        private void SetMusicListRandomPlay()
+        {
+            //var random_music = SetMusic.GetMusicByStream(use_music,_musicStream);
+            Random rd_2 = new Random();
+            int random_index = rd_2.Next(0,value_List.Musics.Count);
+            string random_path = value_List.Musics[random_index].Music_Path;
+            main_music = SetMusic.GetMusicByPath(use_music,random_path);
+            #region 重复代码，后续需要进行简化优化
+            source_path = main_music.Music_Path;
+            _musicStream = main_music.Music_Stream;
+            try
+            {
+                main_mediaElement.SetSource(main_music.Music_Stream, main_music.SongFile.ContentType);//对流的访问
+            }
+            catch
+            {
+                SetPlayErrorMethod();
+            }
+
+            Album_Cover = main_music.Cover;
+            main_image.Source = Album_Cover;
+            songTile_textblock.Text = main_music.Title;
+            artist_textblock.Text = main_music.Artist;
+            album_textblock.Text = "【" + main_music.album_title + "】";
+            playTitle_textblock.Text = songTile_textblock.Text;
+            playArtist_textblock.Text = main_music.Artist;
+            line_textblock.Text = " - ";
+            //GetLyrics(main_music.Artist,main_music.Title);
+            main_music.Music_BackGround = skyblue;
+            lyric_textblock.Text = "";
+            lyric_button.Content = resourceLoader.GetString("searchLyric_str");
+            #endregion
+
+        }
         private IRandomAccessStream _musicStream;
 
         private int num_2 = 0;
@@ -221,7 +255,7 @@ namespace MusicPlayer
             }
             if (IsBackButtonClick)
             {
-                num = index_2 - 1;
+                num_2 = index_2 - 1;
                 IsBackButtonClick = false;
             }
             else
@@ -668,6 +702,10 @@ namespace MusicPlayer
                 {
                     SetMusicListListPlay();
                 }
+                else if (RandomPlay_bool)
+                {
+                    SetMusicListRandomPlay();
+                }
             }
             else
             {
@@ -834,7 +872,7 @@ namespace MusicPlayer
                     GetSavedMusicForeGround();
                     if (IsMusicListSongPlay_bool)
                     {
-                        SetMusicListListPlay();
+                        SetMusicListListPlay();//歌单歌曲列表，列表循环播放模式设置
                     }
                     else
                     {
@@ -845,7 +883,14 @@ namespace MusicPlayer
                 else if (RandomPlay_bool)
                 {
                     GetSavedMusicForeGround();
-                    Random_Source();
+                    if (IsMusicListSongPlay_bool)
+                    {
+                        SetMusicListRandomPlay();//歌单歌曲列表，随机循环播放模式设置
+                    }
+                    else
+                    {
+                        Random_Source();
+                    }                    
                 }
                 else
                 {
