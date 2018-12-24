@@ -32,6 +32,6 @@ namespace MusicPlayer.Models
         public int id { get; set; }
         public string album_title { get; set; }
         public string MusicSeconds_Str { get; set; }
-        public SolidColorBrush SaveMusic_Color { get; set; }
+        //public SolidColorBrush SaveMusic_Color { get; set; }
     }
 }

@@ -200,7 +200,7 @@ namespace MusicPlayer
             main_music.Music_Color = skyblue;
             if (main_savemusic != null)
             {
-                main_savemusic.SaveMusic_Color = transParent;
+                //main_savemusic.SaveMusic_Color = transParent;
             }            
             lyric_textblock.Text = "";
             lyric_button.Content = resourceLoader.GetString("searchLyric_str");
@@ -358,7 +358,7 @@ namespace MusicPlayer
             main_music.Music_Color = skyblue;
             if (main_savemusic != null)
             {
-                main_savemusic.SaveMusic_Color = transParent;
+                //main_savemusic.SaveMusic_Color = transParent;
             }           
             lyric_textblock.Text = "";
             lyric_button.Content = resourceLoader.GetString("searchLyric_str");
@@ -1154,7 +1154,7 @@ namespace MusicPlayer
                 main_music.Music_Color = skyblue;
                 if (main_savemusic != null)//清除歌单歌曲列表icon颜色
                 {
-                    main_savemusic.SaveMusic_Color = transParent;
+                    //main_savemusic.SaveMusic_Color = transParent;
                 }
                 lyric_textblock.Text = "";
                 lyric_button.Content = resourceLoader.GetString("searchLyric_str");
@@ -1213,7 +1213,7 @@ namespace MusicPlayer
                 main_music.Music_Color = skyblue;
                 if (main_savemusic != null)
                 {
-                    main_savemusic.SaveMusic_Color = transParent;
+                    //main_savemusic.SaveMusic_Color = transParent;
                 }
 
                 local_musicPath.Values["music_path"] = source_path;
@@ -1244,7 +1244,7 @@ namespace MusicPlayer
             {
                 if (main_savemusic != null)
                 {
-                    main_savemusic.SaveMusic_Color = transParent;
+                    //main_savemusic.SaveMusic_Color = transParent;
                 }
             }
             else
@@ -1833,7 +1833,7 @@ namespace MusicPlayer
             {
                 item.Music_Color = transParent;
             }
-            main_savemusic.SaveMusic_Color = red;//设置歌单歌曲icon颜色变化
+            //main_savemusic.SaveMusic_Color = red;//设置歌单歌曲icon颜色变化
             #endregion
         }
     }

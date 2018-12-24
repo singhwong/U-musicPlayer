@@ -32,14 +32,14 @@ namespace MusicPlayer
 
         private void main_storyBoard_Completed(object sender, object e)
         {
-            try
-            {
-                icon_textblock.Foreground = this_music.SaveMusic_Color;
-            }
-            catch
-            {
-            }
-            main_storyBoard.Begin();
+            //try
+            //{
+            //    icon_textblock.Foreground = this_music.SaveMusic_Color;
+            //}
+            //catch
+            //{
+            //}
+            //main_storyBoard.Begin();
         }
     }
 }

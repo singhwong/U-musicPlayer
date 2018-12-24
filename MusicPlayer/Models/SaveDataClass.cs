@@ -14,14 +14,14 @@ namespace MusicPlayer.Models
 {
     public class SaveDataClass
     {
-        
+
         public static void SaveMusicListData(List<SaveMusicList> list, string folder_path)
         {
             FileStream writer = new FileStream(folder_path, FileMode.Create);
-            
-                DataContractSerializer ser = new DataContractSerializer(typeof(List<SaveMusicList>));
-                ser.WriteObject(writer, list);
-                writer.Dispose();
+
+            DataContractSerializer ser = new DataContractSerializer(typeof(List<SaveMusicList>));
+            ser.WriteObject(writer, list);
+            writer.Dispose();
         }
 
         public static List<SaveMusicList> ReadMusicListData(string folder_path)
