@@ -77,6 +77,9 @@
                             Click="AddMusicList_button_Click"/>
                     <ListView Name="MusicList_ListView"
                               Grid.Row="1"
+                               AllowDrop="True"
+                      CanReorderItems="True"
+                      IsSwipeEnabled="True"
                           IsItemClickEnabled="True"
                               ItemsSource="{x:Bind main_musicList}"
                               ItemClick="MusicList_ListView_ItemClick">
@@ -88,9 +91,9 @@
                                             FontWeight="Light"/>
                                     <StackPanel.ContextFlyout>
                                         <MenuFlyout>
-                                            <MenuFlyoutItem Name="remove_musicList"
-                                                            Text="移除"
-                                                            Click="Remove_musicList_Click"/>
+                                            <MenuFlyoutItem Name="removeMusicList_item"
+                                                            x:Uid="removeMusicList_item"
+                                                            Click="RemoveMusicList_item_Click"/>
                                         </MenuFlyout>
                                     </StackPanel.ContextFlyout>
                                 </StackPanel>
@@ -172,7 +175,7 @@
                                                     Click="Stop_menu_Click"/>
                                                 <MenuFlyoutSeparator/>
                                                 <MenuFlyoutItem Name="addToList_menu"
-                                                                   Text="添加到歌单"
+                                                                   x:Uid="addToList_menu"
                                                                 Click="AddToList_menu_Click">
                                                 </MenuFlyoutItem>
                                                 <MenuFlyoutSeparator/>
@@ -236,6 +239,22 @@
                                                  IsDoubleTapEnabled="True"
                                                  DoubleTapped="MusicListSongsShow_stackPanel_DoubleTapped">
                                         <local:MusicListSongsShow/>
+                                        <StackPanel.ContextFlyout>
+                                            <MenuFlyout>
+                                                <MenuFlyoutItem Name="listPlay_item"
+                                                                Text="播放"
+                                                                Click="ListPlay_item_Click"/>
+                                                <MenuFlyoutItem Name="listPause_item"
+                                                                Text="暂停"
+                                                                Click="ListPause_item_Click"/>
+                                                <MenuFlyoutSeparator/>
+                                                <MenuFlyoutItem Name="listRemove_item"
+                                                                Text="从歌单移除"
+                                                                Click="ListRemove_item_Click"/>
+                                                <MenuFlyoutItem Name="listCancle_item"
+                                                                Text="取消"/>
+                                            </MenuFlyout>
+                                        </StackPanel.ContextFlyout>
                                     </StackPanel>
 
                                 </DataTemplate>

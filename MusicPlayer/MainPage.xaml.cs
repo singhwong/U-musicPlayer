@@ -1588,10 +1588,11 @@ namespace MusicPlayer
 
         private async void SetErrorMusicListNameContentDialog()
         {
+            string musicListNameError_str = resourceLoader.GetString("musicListNameError_str");
             ContentDialog content = new ContentDialog()
             {
                 Title = "",
-                Content = "歌单名不能为空或重复",
+                Content = musicListNameError_str,
                 IsPrimaryButtonEnabled = true,
                 PrimaryButtonText = "OK",
                 Background = skyblue,
@@ -1705,7 +1706,30 @@ namespace MusicPlayer
             }
         }
 
-        private void Remove_musicList_Click(object sender, RoutedEventArgs e)
+        private FrameworkElement musicList_senderValue;
+        private void MusicList_stackPanel_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            musicList_senderValue = (FrameworkElement)sender;
+        }
+        private FrameworkElement Tapped_senderValue;
+        private SaveMusic main_savemusic;
+        private void MusicListSongsShow_stackPanel_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            Tapped_senderValue = (FrameworkElement)sender;
+            MusicListSongsPlaySameCode();
+        }
+        private void ClearUseMusicIconColor()
+        {
+            #region 清除获取的总歌曲列表icon颜色并设置歌单歌曲列表icon颜色
+            foreach (var item in use_music)//清除获取的总歌曲列表icon颜色
+            {
+                item.Music_Color = transParent;
+            }
+            main_savemusic.SaveMusicColor_str = "red";//设置歌单歌曲icon颜色变化
+            #endregion
+        }
+
+        private void RemoveMusicList_item_Click(object sender, RoutedEventArgs e)
         {
             MusicList remove_value = (MusicList)musicList_senderValue.DataContext;
             main_musicList.Remove(remove_value);
@@ -1718,14 +1742,14 @@ namespace MusicPlayer
             }
             SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);
         }
-        private FrameworkElement musicList_senderValue;
-        private void MusicList_stackPanel_RightTapped(object sender, RightTappedRoutedEventArgs e)
+
+        private void ListPlay_item_Click(object sender, RoutedEventArgs e)
         {
-            musicList_senderValue = (FrameworkElement)sender;
+            Tapped_senderValue = (FrameworkElement)sender;
+            MusicListSongsPlaySameCode();
         }
-        private FrameworkElement doubleTapped_senderValue;
-        private SaveMusic main_savemusic;
-        private void MusicListSongsShow_stackPanel_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+
+        private void MusicListSongsPlaySameCode()
         {
             if (main_progressRing.IsActive)
             {
@@ -1738,8 +1762,8 @@ namespace MusicPlayer
                 GetSavedMusicForeGround();
 
                 #region 包含一些重复代码，后期需要进行优化
-                doubleTapped_senderValue = (FrameworkElement)sender;
-                main_savemusic = (SaveMusic)doubleTapped_senderValue.DataContext;//获取歌单列表歌曲
+                
+                main_savemusic = (SaveMusic)Tapped_senderValue.DataContext;//获取歌单列表歌曲
                 string path = main_savemusic.Music_Path;
                 main_music = SetMusic.GetMusicByPath(use_music, path);
                 source_path = main_music.Music_Path;
@@ -1764,15 +1788,36 @@ namespace MusicPlayer
                 #endregion
             }
         }
-        private void ClearUseMusicIconColor()
+        private void ListPause_item_Click(object sender, RoutedEventArgs e)
         {
-            #region 清除获取的总歌曲列表icon颜色并设置歌单歌曲列表icon颜色
-            foreach (var item in use_music)//清除获取的总歌曲列表icon颜色
-            {
-                item.Music_Color = transParent;
-            }
-            main_savemusic.SaveMusicColor_str = "red";//设置歌单歌曲icon颜色变化
+            #region 重复代码，是否要简化优化
+            main_mediaElement.Pause();
+            play_button.Icon = new SymbolIcon(Symbol.Play);
+            play_button.Label = play_str;//显示 "播放"
+            IsMusicPlaying = false;
             #endregion
+        }
+
+        private void ListRemove_item_Click(object sender, RoutedEventArgs e)
+        {
+            Tapped_senderValue = (FrameworkElement)sender;
+            var remove_value = (SaveMusic)Tapped_senderValue.DataContext;           
+            for (int i = 0; i < main_musicList.Count; i++)
+            {
+                if (main_musicList[i] == value_List)
+                {
+                    num = i;
+                }
+            }
+            for (int i = 0; i < save_mainMusicList.Count; i++)
+            {
+                if (i == num)
+                {
+                    save_mainMusicList[i].SaveMusics.Remove(remove_value);
+                }
+            }
+            SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);
+            value_List.Musics.Remove(remove_value);
         }
     }
 }

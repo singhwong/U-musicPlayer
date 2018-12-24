@@ -197,4 +197,13 @@ You can add music to the local music library and refresh it, or add music in oth
   <data name="addList_textblock.Text" xml:space="preserve">
     <value>MusicList Name</value>
   </data>
+  <data name="musicListNameError_str" xml:space="preserve">
+    <value>The MusicList Name cannot be empty or duplicated </value>
+  </data>
+  <data name="removeMusicList_item.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="addToList_menu.Text" xml:space="preserve">
+    <value>Add to MusicList</value>
+  </data>
 </root>

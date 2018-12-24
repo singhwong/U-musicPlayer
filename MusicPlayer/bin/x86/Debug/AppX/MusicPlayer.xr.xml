@@ -210,12 +210,12 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
       <RootProperty Name="Name" />
-      <RootProperty Name="IsItemClickEnabled" />
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="ItemTemplate" />
       <RootProperty Name="AllowDrop" />
       <RootProperty Name="CanReorderItems" />
       <RootProperty Name="IsSwipeEnabled" />
+      <RootProperty Name="IsItemClickEnabled" />
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="ItemTemplate" />
       <RootProperty Name="SelectionMode" />
       <RootEvent Name="ItemClick" />
       <RootEvent Name="SelectionChanged" />

@@ -132,6 +132,9 @@
   <data name="addMusicList_button.Content" xml:space="preserve">
     <value>添加歌单</value>
   </data>
+  <data name="addToList_menu.Text" xml:space="preserve">
+    <value>添加到歌单</value>
+  </data>
   <data name="await_str" xml:space="preserve">
     <value>请等待加载完成！！！</value>
   </data>
@@ -210,6 +213,9 @@
   <data name="musicFolder_button.Label" xml:space="preserve">
     <value>本地音乐</value>
   </data>
+  <data name="musicListNameError_str" xml:space="preserve">
+    <value>歌单名不能为空或重复</value>
+  </data>
   <data name="musicList_button.Label" xml:space="preserve">
     <value>歌单</value>
   </data>
@@ -251,6 +257,9 @@
   </data>
   <data name="removeFromLocal_menu.Text" xml:space="preserve">
     <value>从本地删除</value>
+  </data>
+  <data name="removeMusicList_item.Text" xml:space="preserve">
+    <value>移除</value>
   </data>
   <data name="resultLyric_str" xml:space="preserve">
     <value>未查询到歌词</value>

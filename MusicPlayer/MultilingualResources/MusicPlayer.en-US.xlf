@@ -253,6 +253,18 @@ You can add music to the local music library and refresh it, or add music in oth
           <source>歌单名</source>
           <target state="translated">MusicList Name</target>
         </trans-unit>
+        <trans-unit id="musicListNameError_str" translate="yes" xml:space="preserve">
+          <source>歌单名不能为空或重复</source>
+          <target state="translated">The MusicList Name cannot be empty or duplicated </target>
+        </trans-unit>
+        <trans-unit id="removeMusicList_item.Text" translate="yes" xml:space="preserve">
+          <source>移除</source>
+          <target state="translated">Remove</target>
+        </trans-unit>
+        <trans-unit id="addToList_menu.Text" translate="yes" xml:space="preserve">
+          <source>添加到歌单</source>
+          <target state="translated">Add to MusicList</target>
+        </trans-unit>
       </group>
     </body>
   </file>
