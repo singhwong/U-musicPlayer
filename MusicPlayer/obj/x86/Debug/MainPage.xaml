@@ -88,7 +88,8 @@
                                 <StackPanel x:ConnectionId='7' Name="MusicList_stackPanel"
                                                                                           >
                                     <TextBlock x:ConnectionId='8'                                
-                                            FontWeight="Light"/>
+                                            FontWeight="Light"
+                                                TextWrapping="Wrap"/>
                                     <StackPanel.ContextFlyout>
                                         <MenuFlyout>
                                             <MenuFlyoutItem x:ConnectionId='9' Name="removeMusicList_item"
