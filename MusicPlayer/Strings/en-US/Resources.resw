@@ -188,4 +188,13 @@ You can add music to the local music library and refresh it, or add music in oth
   <data name="musicList_button.Label" xml:space="preserve">
     <value>MusicList</value>
   </data>
+  <data name="addMusicList_button.Content" xml:space="preserve">
+    <value>Add MusicList</value>
+  </data>
+  <data name="addListContentDialogTile_textblock.Text" xml:space="preserve">
+    <value>Custom MusicList</value>
+  </data>
+  <data name="addList_textblock.Text" xml:space="preserve">
+    <value>MusicList Name</value>
+  </data>
 </root>

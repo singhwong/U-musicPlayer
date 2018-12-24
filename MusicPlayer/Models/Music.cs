@@ -17,9 +17,9 @@ namespace MusicPlayer.Models
         public string Music_Path { get; set; }
         public BitmapImage Cover { get; set; }
         public StorageFile SongFile { get; set; }
-        public int id { get; set; }
+        public int Id { get; set; }
         public SolidColorBrush Music_Color { get; set; }
-        public string album_title { get; set; }
+        public string Album_title { get; set; }
         public IRandomAccessStream Music_Stream { get; set; }
         public string MusicSeconds_Str { get; set; }
     }
@@ -29,9 +29,10 @@ namespace MusicPlayer.Models
         public string Title { get; set; }
         public string Artist { get; set; }
         public string Music_Path { get; set; }
-        public int id { get; set; }
-        public string album_title { get; set; }
+        public int Id { get; set; }
+        public string Album_title { get; set; }
         public string MusicSeconds_Str { get; set; }
         //public SolidColorBrush SaveMusic_Color { get; set; }
+        public string SaveMusicColor_str { get; set; }
     }
 }

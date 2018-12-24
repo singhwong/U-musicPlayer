@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -18,10 +19,11 @@ using Windows.UI.Xaml.Navigation;
 
 namespace MusicPlayer
 {
-    
+
     public sealed partial class MusicListSongsShow : UserControl
     {
-        //private SolidColorBrush transParent = new SolidColorBrush(Colors.Transparent);
+        private SolidColorBrush transParent = new SolidColorBrush(Colors.Transparent);
+        private SolidColorBrush red = new SolidColorBrush(Colors.Red);
         public SaveMusic this_music { get { return this.DataContext as SaveMusic; } }
         public MusicListSongsShow()
         {
@@ -32,14 +34,20 @@ namespace MusicPlayer
 
         private void main_storyBoard_Completed(object sender, object e)
         {
-            //try
-            //{
-            //    icon_textblock.Foreground = this_music.SaveMusic_Color;
-            //}
-            //catch
-            //{
-            //}
-            //main_storyBoard.Begin();
+            try
+            {
+                switch (this_music.SaveMusicColor_str)
+                {
+                    case "transparent": icon_textblock.Foreground = transParent; break;
+                    case "red": icon_textblock.Foreground = red; break;
+                    default:
+                        break;
+                }
+            }
+            catch
+            {
+            }
+            main_storyBoard.Begin();
         }
     }
 }

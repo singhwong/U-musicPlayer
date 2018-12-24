@@ -123,6 +123,15 @@
   <data name="addFolder_button.Label" xml:space="preserve">
     <value>添加文件夹</value>
   </data>
+  <data name="addListContentDialogTile_textblock.Text" xml:space="preserve">
+    <value>自定义歌单</value>
+  </data>
+  <data name="addList_textblock.Text" xml:space="preserve">
+    <value>歌单名</value>
+  </data>
+  <data name="addMusicList_button.Content" xml:space="preserve">
+    <value>添加歌单</value>
+  </data>
   <data name="await_str" xml:space="preserve">
     <value>请等待加载完成！！！</value>
   </data>

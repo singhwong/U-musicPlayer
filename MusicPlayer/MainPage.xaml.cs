@@ -177,33 +177,14 @@ namespace MusicPlayer
             Random rm = new Random();
             int index = rm.Next(0, allsong_count);
             main_music = use_music[index];
-            source_path = main_music.Music_Path;
-            _musicStream = main_music.Music_Stream;
-            try
-            {
-                main_mediaElement.SetSource(main_music.Music_Stream, main_music.SongFile.ContentType);//对流的访问
-            }
-            catch
-            {
-                SetPlayErrorMethod();
-            }
-
-            Album_Cover = main_music.Cover;
-            main_image.Source = Album_Cover;
-            songTile_textblock.Text = main_music.Title;
-            artist_textblock.Text = main_music.Artist;
-            album_textblock.Text = "【" + main_music.album_title + "】";
-            playTitle_textblock.Text = songTile_textblock.Text;
-            playArtist_textblock.Text = main_music.Artist;
-            line_textblock.Text = " - ";
+            PlayModeSameCodeUpdate();//播放模式重复代码块
             //GetLyrics(main_music.Artist,main_music.Title);
             main_music.Music_Color = skyblue;
             if (main_savemusic != null)
             {
-                //main_savemusic.SaveMusic_Color = transParent;
-            }            
-            lyric_textblock.Text = "";
-            lyric_button.Content = resourceLoader.GetString("searchLyric_str");
+                main_savemusic.SaveMusicColor_str = "transparent";
+            }
+
             #endregion
         }
 
@@ -211,14 +192,25 @@ namespace MusicPlayer
         {
             //var random_music = SetMusic.GetMusicByStream(use_music,_musicStream);
             Random rd_2 = new Random();
-            int random_index = rd_2.Next(0,value_List.Musics.Count);
+            int random_index = rd_2.Next(0, value_List.Musics.Count);
             main_savemusic = value_List.Musics[random_index];//获取歌单列表歌曲
             string random_path = main_savemusic.Music_Path;
-            main_music = SetMusic.GetMusicByPath(use_music,random_path);
+            main_music = SetMusic.GetMusicByPath(use_music, random_path);
             #region 重复代码，后续需要进行简化优化
+            PlayModeSameCodeUpdate();
+            //GetLyrics(main_music.Artist,main_music.Title);
+            ClearUseMusicIconColor();//清除获取的总歌曲icon颜色并设置歌单歌曲列表icon颜色
+
+            #endregion
+
+        }
+        private IRandomAccessStream _musicStream;
+
+        private void PlayModeSameCodeUpdate()
+        {
             source_path = main_music.Music_Path;
             _musicStream = main_music.Music_Stream;
-            try
+            try//从本地删除歌曲后，列表未删除，引发播放异常
             {
                 main_mediaElement.SetSource(main_music.Music_Stream, main_music.SongFile.ContentType);//对流的访问
             }
@@ -231,25 +223,20 @@ namespace MusicPlayer
             main_image.Source = Album_Cover;
             songTile_textblock.Text = main_music.Title;
             artist_textblock.Text = main_music.Artist;
-            album_textblock.Text = "【" + main_music.album_title + "】";
+            album_textblock.Text = "【" + main_music.Album_title + "】";
             playTitle_textblock.Text = songTile_textblock.Text;
             playArtist_textblock.Text = main_music.Artist;
             line_textblock.Text = " - ";
-            //GetLyrics(main_music.Artist,main_music.Title);
-            ClearUseMusicIconColor();//清除获取的总歌曲icon颜色并设置歌单歌曲列表icon颜色
             lyric_textblock.Text = "";
             lyric_button.Content = resourceLoader.GetString("searchLyric_str");
-            #endregion
-
         }
-        private IRandomAccessStream _musicStream;
 
         private int num_2 = 0;
         private void SetMusicListListPlay()
         {
             #region 歌单列表顺序播放
             int index_2 = 0;
-            var list_music2 = SetMusic.GetMusicByStream(use_music,_musicStream);
+            var list_music2 = SetMusic.GetMusicByStream(use_music, _musicStream);
             string path = list_music2.Music_Path;
             for (int i = 0; i < value_List.Musics.Count; i++)
             {
@@ -277,31 +264,11 @@ namespace MusicPlayer
             }
             main_savemusic = value_List.Musics[num_2];//获取歌单列表歌曲
             string value_path = main_savemusic.Music_Path;
-            main_music = SetMusic.GetMusicByPath(use_music,value_path);
+            main_music = SetMusic.GetMusicByPath(use_music, value_path);
             #region 重复代码(List_Source())，需要优化
-            source_path = main_music.Music_Path;
-            _musicStream = main_music.Music_Stream;
-            try//从本地删除歌曲后，列表未删除，引发播放异常
-            {
-                main_mediaElement.SetSource(main_music.Music_Stream, main_music.SongFile.ContentType);//对流的访问
-            }
-            catch
-            {
-                SetPlayErrorMethod();
-            }
-
-            Album_Cover = main_music.Cover;
-            main_image.Source = Album_Cover;
-            songTile_textblock.Text = main_music.Title;
-            artist_textblock.Text = main_music.Artist;
-            album_textblock.Text = "【" + main_music.album_title + "】";
-            playTitle_textblock.Text = songTile_textblock.Text;
-            playArtist_textblock.Text = main_music.Artist;
-            line_textblock.Text = " - ";
+            PlayModeSameCodeUpdate();
             //GetLyrics(main_music.Artist,main_music.Title);
-            ClearUseMusicIconColor();//清除获取的总歌曲icon颜色并设置歌单歌曲列表icon颜色
-            lyric_textblock.Text = "";
-            lyric_button.Content = resourceLoader.GetString("searchLyric_str");
+            ClearUseMusicIconColor();//清除获取的总歌曲icon颜色并设置歌单歌曲列表icon颜色           
             #endregion
             #endregion
         }
@@ -310,58 +277,39 @@ namespace MusicPlayer
             #region 顺序播放设置
             int index = 0;
             var list_music = SetMusic.GetMusicByStream(use_music, _musicStream);
-                for (int i = 0; i <= use_music.Count - 1; i++)
-                {
-                    if (use_music[i] == list_music)
-                    {
-                        index = i;
-                    }
-                }
-                if (IsBackButtonClick)
-                {
-                    num = index - 1;
-                    IsBackButtonClick = false;
-                }
-                else
-                {
-                    num = index + 1;
-                }
-                if (num == use_music.Count)
-                {
-                    num = 0;
-                }
-                else if (num == -1)
-                {
-                    num = use_music.Count - 1;
-                }
-                main_music = use_music[num];
-            source_path = main_music.Music_Path;
-            _musicStream = main_music.Music_Stream;
-            try//从本地删除歌曲后，列表未删除，引发播放异常
+            for (int i = 0; i <= use_music.Count - 1; i++)
             {
-                main_mediaElement.SetSource(main_music.Music_Stream, main_music.SongFile.ContentType);//对流的访问
+                if (use_music[i] == list_music)
+                {
+                    index = i;
+                }
             }
-            catch
+            if (IsBackButtonClick)
             {
-                SetPlayErrorMethod();
+                num = index - 1;
+                IsBackButtonClick = false;
             }
-
-            Album_Cover = main_music.Cover;
-            main_image.Source = Album_Cover;
-            songTile_textblock.Text = main_music.Title;
-            artist_textblock.Text = main_music.Artist;
-            album_textblock.Text = "【" + main_music.album_title + "】";
-            playTitle_textblock.Text = songTile_textblock.Text;
-            playArtist_textblock.Text = main_music.Artist;
-            line_textblock.Text = " - ";
+            else
+            {
+                num = index + 1;
+            }
+            if (num == use_music.Count)
+            {
+                num = 0;
+            }
+            else if (num == -1)
+            {
+                num = use_music.Count - 1;
+            }
+            main_music = use_music[num];
+            PlayModeSameCodeUpdate();
             //GetLyrics(main_music.Artist,main_music.Title);
             main_music.Music_Color = skyblue;
             if (main_savemusic != null)
             {
-                //main_savemusic.SaveMusic_Color = transParent;
-            }           
-            lyric_textblock.Text = "";
-            lyric_button.Content = resourceLoader.GetString("searchLyric_str");
+                main_savemusic.SaveMusicColor_str = "transparent";
+            }
+
             #endregion
         }
         private ResourceLoader resourceLoader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
@@ -610,10 +558,10 @@ namespace MusicPlayer
                 music.MusicSeconds_Str = list_hh + ":" + list_mm + ":" + list_ss;
                 music.Music_Stream = main_stream;
                 music.Music_Path = song.Name;
-                music.id = num;
+                music.Id = num;
                 music.SongFile = song;
                 music.Music_Color = transParent;
-                music.album_title = song_Properties.Album;
+                music.Album_title = song_Properties.Album;
                 use_music.Add(music);
                 num++;
             }
@@ -728,7 +676,7 @@ namespace MusicPlayer
                     Random_Source();
                 }
             }
-            
+
             local_musicPath.Values["music_path"] = source_path;
             local_allTime.Values["allTime"] = allmm_str + ":" + allss_str;
 
@@ -888,7 +836,7 @@ namespace MusicPlayer
                     {
                         List_Source();
                     }
-                   
+
                 }
                 else if (RandomPlay_bool)
                 {
@@ -900,7 +848,7 @@ namespace MusicPlayer
                     else
                     {
                         Random_Source();
-                    }                    
+                    }
                 }
                 else
                 {
@@ -1154,7 +1102,7 @@ namespace MusicPlayer
                 main_music.Music_Color = skyblue;
                 if (main_savemusic != null)//清除歌单歌曲列表icon颜色
                 {
-                    //main_savemusic.SaveMusic_Color = transParent;
+                    main_savemusic.SaveMusicColor_str = "transparent";
                 }
                 lyric_textblock.Text = "";
                 lyric_button.Content = resourceLoader.GetString("searchLyric_str");
@@ -1213,7 +1161,7 @@ namespace MusicPlayer
                 main_music.Music_Color = skyblue;
                 if (main_savemusic != null)
                 {
-                    //main_savemusic.SaveMusic_Color = transParent;
+                    main_savemusic.SaveMusicColor_str = "transparent";
                 }
 
                 local_musicPath.Values["music_path"] = source_path;
@@ -1231,7 +1179,7 @@ namespace MusicPlayer
             main_image.Source = Album_Cover;
             songTile_textblock.Text = musicDetails_music.Title;
             artist_textblock.Text = musicDetails_music.Artist;
-            album_textblock.Text = "【" + musicDetails_music.album_title + "】";
+            album_textblock.Text = "【" + musicDetails_music.Album_title + "】";
             playTitle_textblock.Text = musicDetails_music.Title;
             playArtist_textblock.Text = musicDetails_music.Artist;
             line_textblock.Text = " - ";
@@ -1244,7 +1192,7 @@ namespace MusicPlayer
             {
                 if (main_savemusic != null)
                 {
-                    //main_savemusic.SaveMusic_Color = transParent;
+                    main_savemusic.SaveMusicColor_str = "transparent";
                 }
             }
             else
@@ -1262,7 +1210,7 @@ namespace MusicPlayer
                     main_music.Music_Color = transParent;
                 }
             }
-           
+
         }
         #endregion
         private IRandomAccessStream stream;
@@ -1721,16 +1669,6 @@ namespace MusicPlayer
             value_MusicList = (MusicList)e.ClickedItem;
         }
 
-        private void MusicList2_ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void MusicList_ContentDialog_Closed(ContentDialog sender, ContentDialogClosedEventArgs args)
-        {
-
-        }
-
         private void MusicList_ContentDialog_Opened(ContentDialog sender, ContentDialogOpenedEventArgs args)
         {
             musicList_ContentDialog.IsPrimaryButtonEnabled = false;
@@ -1833,7 +1771,7 @@ namespace MusicPlayer
             {
                 item.Music_Color = transParent;
             }
-            //main_savemusic.SaveMusic_Color = red;//设置歌单歌曲icon颜色变化
+            main_savemusic.SaveMusicColor_str = "red";//设置歌单歌曲icon颜色变化
             #endregion
         }
     }

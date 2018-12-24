@@ -72,7 +72,7 @@
                             Width="200"
                             Margin="0,30,0,0"
                             Background="Transparent"
-                            Content="添加歌单"
+                            x:Uid="addMusicList_button"
                             Style="{StaticResource button_Style}"
                             Click="AddMusicList_button_Click"/>
                     <ListView Name="MusicList_ListView"
@@ -101,7 +101,7 @@
 
                     </ListView>
                 </Grid>
-               
+
             </SplitView.Pane>
             <SplitView.Content>
                 <Grid>
@@ -148,29 +148,6 @@
                     <Grid Name="listView_grid"
               Grid.Row="1"
               Grid.RowSpan="2">
-                        <!--<Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>-->
-                        <!--<Grid BorderThickness="1"
-                  BorderBrush="Gray">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="300"/>
-                    <ColumnDefinition Width="140"/>
-                    <ColumnDefinition Width="53"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Name="songName_textBlock"
-                           x:Uid="songName_textBlock"
-                           Style="{StaticResource songTextStyle}"/>
-                <TextBlock Name="singerName_textbock"
-                           x:Uid="singerName_textbock"
-                           Grid.Column="1"
-                           Style="{StaticResource songTextStyle}"/>
-                <TextBlock Name="time_textblock"
-                           x:Uid="time_textblock"
-                           Grid.Column="2"
-                           Style="{StaticResource songTextStyle}"/>
-            </Grid>-->
                         <ListView Name="main_listview"
                       SelectionMode="Single"                      
                       AllowDrop="True"
@@ -219,7 +196,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                       
+
                     </Grid>
                     <Grid Name="MusicShow_Grid"
                           Grid.Row="1"
@@ -260,12 +237,12 @@
                                                  DoubleTapped="MusicListSongsShow_stackPanel_DoubleTapped">
                                         <local:MusicListSongsShow/>
                                     </StackPanel>
-                                    
+
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
                     </Grid>
-                  
+
                     <ScrollViewer Name="main_scrollViewer"
                       Grid.Row="1"
                       Grid.Column="2"
@@ -360,31 +337,38 @@
                       AudioCategory="BackgroundCapableMedia"
                       CurrentStateChanged="Main_mediaElement_CurrentStateChanged_1"/>
                     <ContentDialog x:Name="addList_ContentDialog"
-                       PrimaryButtonText="新增" 
+                       PrimaryButtonText="OK" 
                        IsPrimaryButtonEnabled="True"
-                       CloseButtonText="取消">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Name="addList_textblock"
-                           Text="歌单名"
-                           VerticalAlignment="Center"
-                           Margin="0,0,10,0"/>
-                            <TextBox Name="list_textbox"
-                         Height="30"
-                         Width="200"/>
-                        </StackPanel>
+                       CloseButtonText="Cancle">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Name="addListContentDialogTile_textblock"
+                                       x:Uid="addListContentDialogTile_textblock"
+                                       HorizontalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal"
+                                        Grid.Row="1">
+                                <TextBlock Name="addList_textblock"
+                                           x:Uid="addList_textblock"
+                                           VerticalAlignment="Center"
+                                           Margin="0,0,10,0"/>
+                                <TextBox Name="list_textbox"
+                                         Height="30"
+                                         Width="200"/>
+                            </StackPanel>
+                        </Grid>
                     </ContentDialog>
                     <ContentDialog x:Name="musicList_ContentDialog"
-                                   PrimaryButtonText="确定"
+                                   PrimaryButtonText="OK"
                        IsPrimaryButtonEnabled="False"
-                       CloseButtonText="取消"
-                                   Opened="MusicList_ContentDialog_Opened"
-                                   Closed="MusicList_ContentDialog_Closed">
-
+                       CloseButtonText="Cancle"
+                                   Opened="MusicList_ContentDialog_Opened">
                         <ListView Name="MusicList2_ListView"
                               Grid.Row="1"
                           IsItemClickEnabled="True"
                               ItemsSource="{x:Bind main_musicList}"
-                                  SelectionChanged="MusicList2_ListView_SelectionChanged"
                                   ItemClick="MusicList2_ListView_ItemClick">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="local1:MusicList">
@@ -398,9 +382,9 @@
                 </Grid>
             </SplitView.Content>
         </SplitView>
-       
+
     </Grid>
-        
+
     <Page.BottomAppBar>
         <CommandBar Name="main_commandBar"
                     RequestedTheme="Light">
@@ -451,7 +435,7 @@
                           x:Uid="stop_button"
                           Click="Model_button_Click_1"/>
             <AppBarSeparator/>
-            
+
             <AppBarButton Name="volume_button"
                           Icon="Volume"
                           x:Uid="volume_button"
@@ -481,7 +465,7 @@
                     </Flyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
-            
+
             <AppBarButton Name="fullScreen_button"
                           Icon='FullScreen'
                           x:Uid="fullScreen_button"
