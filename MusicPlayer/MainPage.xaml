@@ -98,14 +98,10 @@
                                         </MenuFlyout>
                                     </StackPanel.ContextFlyout>
                                 </StackPanel>
-
-
                             </DataTemplate>
                         </ListView.ItemTemplate>
-
                     </ListView>
                 </Grid>
-
             </SplitView.Pane>
             <SplitView.Content>
                 <Grid>
@@ -148,7 +144,6 @@
                        VerticalAlignment="Center"
                        Style="{StaticResource songTextStyle}"/>
                     </StackPanel>
-
                     <Grid Name="listView_grid"
               Grid.Row="1"
               Grid.RowSpan="2">
@@ -200,7 +195,6 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-
                     </Grid>
                     <Grid Name="MusicShow_Grid"
                           Grid.Row="1"
@@ -227,7 +221,6 @@
                                 Style="{StaticResource button_Style}"
                                 Background="Transparent"
                                 Click="Back_Button_Click"/>
-
                         <ListView Name="MusicShow_ListView"
                                   Grid.Row="1"
                                   AllowDrop="True"
@@ -243,26 +236,24 @@
                                         <StackPanel.ContextFlyout>
                                             <MenuFlyout>
                                                 <MenuFlyoutItem Name="listPlay_item"
-                                                                Text="播放"
+                                                                x:Uid="listPlay_item"
                                                                 Click="ListPlay_item_Click"/>
                                                 <MenuFlyoutItem Name="listPause_item"
-                                                                Text="暂停"
+                                                                x:Uid="listPause_item"
                                                                 Click="ListPause_item_Click"/>
                                                 <MenuFlyoutSeparator/>
                                                 <MenuFlyoutItem Name="listRemove_item"
-                                                                Text="从歌单移除"
+                                                                x:Uid="listRemove_item"
                                                                 Click="ListRemove_item_Click"/>
                                                 <MenuFlyoutItem Name="listCancle_item"
-                                                                Text="取消"/>
+                                                                x:Uid="listCancle_item"/>
                                             </MenuFlyout>
                                         </StackPanel.ContextFlyout>
                                     </StackPanel>
-
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
                     </Grid>
-
                     <ScrollViewer Name="main_scrollViewer"
                       Grid.Row="1"
                       Grid.Column="2"
@@ -395,16 +386,12 @@
                                     <TextBlock  Text="{x:Bind MusicList_Name}"/>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-
                         </ListView>
                     </ContentDialog>
-
                 </Grid>
             </SplitView.Content>
         </SplitView>
-
     </Grid>
-
     <Page.BottomAppBar>
         <CommandBar Name="main_commandBar"
                     RequestedTheme="Light">
@@ -485,7 +472,6 @@
                     </Flyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
-
             <AppBarButton Name="fullScreen_button"
                           Icon='FullScreen'
                           x:Uid="fullScreen_button"

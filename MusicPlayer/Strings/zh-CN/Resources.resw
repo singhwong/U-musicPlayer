@@ -195,6 +195,18 @@
   <data name="light_menu.Text" xml:space="preserve">
     <value>亮</value>
   </data>
+  <data name="listCancle_item.Text" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="listPause_item.Text" xml:space="preserve">
+    <value>暂停</value>
+  </data>
+  <data name="listPlay_item.Text" xml:space="preserve">
+    <value>播放</value>
+  </data>
+  <data name="listRemove_item.Text" xml:space="preserve">
+    <value>从歌单移除</value>
+  </data>
   <data name="listShow_button.Label" xml:space="preserve">
     <value>音乐列表</value>
   </data>

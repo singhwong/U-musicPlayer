@@ -265,6 +265,22 @@ You can add music to the local music library and refresh it, or add music in oth
           <source>添加到歌单</source>
           <target state="translated">Add to MusicList</target>
         </trans-unit>
+        <trans-unit id="listCancle_item.Text" translate="yes" xml:space="preserve">
+          <source>取消</source>
+          <target state="translated">Cancle</target>
+        </trans-unit>
+        <trans-unit id="listPause_item.Text" translate="yes" xml:space="preserve">
+          <source>暂停</source>
+          <target state="translated">Pause</target>
+        </trans-unit>
+        <trans-unit id="listPlay_item.Text" translate="yes" xml:space="preserve">
+          <source>播放</source>
+          <target state="translated">Play</target>
+        </trans-unit>
+        <trans-unit id="listRemove_item.Text" translate="yes" xml:space="preserve">
+          <source>从歌单移除</source>
+          <target state="translated">Remove from MusicList</target>
+        </trans-unit>
       </group>
     </body>
   </file>

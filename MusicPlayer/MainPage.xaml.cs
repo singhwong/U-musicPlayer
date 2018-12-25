@@ -65,6 +65,7 @@ namespace MusicPlayer
         private bool IsBackButtonClick = false;
         private bool IsMusicPlaying = false;
         private bool IsVolumeOpen = true;
+        private bool IsMusicListSongPlay_bool = false;
         private string source_path;
         private string image_source_path;
         private string backGround_path;
@@ -96,6 +97,8 @@ namespace MusicPlayer
         private ApplicationDataContainer local_allTime = ApplicationData.Current.LocalSettings;
         private ApplicationDataContainer local_theme = ApplicationData.Current.LocalSettings;
         private ApplicationDataContainer local_IsCustom = ApplicationData.Current.LocalSettings;
+        private ApplicationDataContainer local_IsMusicListSongPlay = ApplicationData.Current.LocalSettings;
+        private ApplicationDataContainer local_MusicListName = ApplicationData.Current.LocalSettings;
         #region 初始化并设置颜色
         private SolidColorBrush white = new SolidColorBrush(Colors.White);
         private SolidColorBrush transParent = new SolidColorBrush(Colors.Transparent);
@@ -188,12 +191,12 @@ namespace MusicPlayer
             #endregion
         }
 
-        private void SetMusicListRandomPlay()
+        private void SetMusicListRandomPlay(MusicList randomList)
         {
             //var random_music = SetMusic.GetMusicByStream(use_music,_musicStream);
             Random rd_2 = new Random();
-            int random_index = rd_2.Next(0, value_List.Musics.Count);
-            main_savemusic = value_List.Musics[random_index];//获取歌单列表歌曲
+            int random_index = rd_2.Next(0, randomList.Musics.Count);
+            main_savemusic = randomList.Musics[random_index];//获取歌单列表歌曲
             string random_path = main_savemusic.Music_Path;
             main_music = SetMusic.GetMusicByPath(use_music, random_path);
             #region 重复代码，后续需要进行简化优化
@@ -232,15 +235,15 @@ namespace MusicPlayer
         }
 
         private int num_2 = 0;
-        private void SetMusicListListPlay()
+        private void SetMusicListListPlay(MusicList list)
         {
             #region 歌单列表顺序播放
             int index_2 = 0;
             var list_music2 = SetMusic.GetMusicByStream(use_music, _musicStream);
             string path = list_music2.Music_Path;
-            for (int i = 0; i < value_List.Musics.Count; i++)
+            for (int i = 0; i < list.Musics.Count; i++)
             {
-                if (value_List.Musics[i].Music_Path == path)
+                if (list.Musics[i].Music_Path == path)
                 {
                     index_2 = i;
                 }
@@ -254,15 +257,15 @@ namespace MusicPlayer
             {
                 num_2 = index_2 + 1;
             }
-            if (num_2 == value_List.Musics.Count)
+            if (num_2 == list.Musics.Count)
             {
                 num_2 = 0;
             }
             else if (num_2 == -1)
             {
-                num_2 = value_List.Musics.Count - 1;
+                num_2 = list.Musics.Count - 1;
             }
-            main_savemusic = value_List.Musics[num_2];//获取歌单列表歌曲
+            main_savemusic = list.Musics[num_2];//获取歌单列表歌曲
             string value_path = main_savemusic.Music_Path;
             main_music = SetMusic.GetMusicByPath(use_music, value_path);
             #region 重复代码(List_Source())，需要优化
@@ -335,6 +338,7 @@ namespace MusicPlayer
         public AdvancedCollectionView local_musics;
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            GetLocalIsMusicListSongPlayMethod();
             ReadLocalMusicListData();//获取保存的历史歌单数据
             main_slider.Maximum = 0;//第二次启动，上次保存歌曲进度条，在播放前不可滑动，以优化时间显示
             #region 显示并启用后台运行控件按钮
@@ -364,6 +368,24 @@ namespace MusicPlayer
             random_str = resourceLoader.GetString("random_str");
         }
 
+        private void GetLocalIsMusicListSongPlayMethod()
+        {
+            try
+            {
+                string local_str = local_IsMusicListSongPlay.Values["IsMusicListSongPlay"].ToString();
+                switch (local_str)
+                {
+                    case "true": IsMusicListSongPlay_bool = true; break;
+                    case "false": IsMusicListSongPlay_bool = false; break;
+                    default:
+                        break;
+                }
+            }
+            catch
+            {
+            }
+            
+        }
         private void HistoryThemeHelpMethod()
         {
             #region 历史主题
@@ -646,7 +668,7 @@ namespace MusicPlayer
             main_progressRing.IsActive = false;
             main_progressRing.Visibility = Visibility.Collapsed;
         }
-        private bool IsMusicListSongPlay_bool = false;
+        
         private void SwitchMusic()
         {
             IsMusicPlaying = true;
@@ -658,11 +680,29 @@ namespace MusicPlayer
             {
                 if (ListPlay_bool)
                 {
-                    SetMusicListListPlay();
+                    try
+                    {
+                        SetHistoryMusicListPalyModeSameCode();
+                        SetMusicListListPlay(local_saveMusicList);
+                    }
+                    catch
+                    {
+                        SetMusicListListPlay(value_List);
+                    }
+                    
+                   
                 }
                 else if (RandomPlay_bool)
                 {
-                    SetMusicListRandomPlay();
+                    try
+                    {
+                        SetHistoryMusicListPalyModeSameCode();
+                        SetMusicListRandomPlay(local_saveMusicList);
+                    }
+                    catch
+                    {
+                        SetMusicListRandomPlay(value_List);
+                    }
                 }
             }
             else
@@ -681,7 +721,19 @@ namespace MusicPlayer
             local_allTime.Values["allTime"] = allmm_str + ":" + allss_str;
 
         }
-
+        private MusicList local_saveMusicList;
+        private void SetHistoryMusicListPalyModeSameCode()
+        {
+            local_saveMusicList = new MusicList();
+            string musicList_Name = local_MusicListName.Values["MusicListName"].ToString();
+            foreach (var item in main_musicList)
+            {
+                if (item.MusicList_Name == musicList_Name)
+                {
+                    local_saveMusicList = item;
+                }
+            }
+        }
         private async void SetAboutContent()
         {
             string help_str = resourceLoader.GetString("help_str");
@@ -761,7 +813,36 @@ namespace MusicPlayer
             }
 
             playTime_textblock.Text = "00:00" + "/" + local_allTimeStr;
-            local_music.Music_Color = skyblue;
+            if (IsMusicListSongPlay_bool)
+            {
+                try
+                {
+                    #region 设置历史歌单历史歌曲icon颜色
+                    var local_saveMusic = new SaveMusic();
+                    string musicListName = local_MusicListName.Values["MusicListName"].ToString();
+                    foreach (var item in main_musicList)
+                    {
+                        if (item.MusicList_Name == musicListName)
+                        {
+                            foreach (var song in item.Musics)
+                            {
+                                if (song.Music_Path == source_path)
+                                {
+                                    song.SaveMusicColor_str = "red";
+                                }
+                            }
+                        }
+                    }
+                    #endregion
+                }
+                catch
+                {
+                }
+            }
+            else
+            {
+                local_music.Music_Color = skyblue;
+            }           
             main_music = local_music;//删除正在播放歌曲后，随机切换下一首会用到该main_music
         }
         #endregion
@@ -830,7 +911,16 @@ namespace MusicPlayer
                     GetSavedMusicForeGround();
                     if (IsMusicListSongPlay_bool)
                     {
-                        SetMusicListListPlay();//歌单歌曲列表，列表循环播放模式设置
+                        try
+                        {
+                            SetHistoryMusicListPalyModeSameCode();
+                            SetMusicListListPlay(local_saveMusicList);
+                        }
+                        catch
+                        {
+                            SetMusicListListPlay(value_List);
+                        }
+                        //SetMusicListListPlay();//歌单歌曲列表，列表循环播放模式设置
                     }
                     else
                     {
@@ -843,7 +933,16 @@ namespace MusicPlayer
                     GetSavedMusicForeGround();
                     if (IsMusicListSongPlay_bool)
                     {
-                        SetMusicListRandomPlay();//歌单歌曲列表，随机循环播放模式设置
+                        try
+                        {
+                            SetHistoryMusicListPalyModeSameCode();
+                            SetMusicListRandomPlay(local_saveMusicList);
+                        }
+                        catch
+                        {
+                            SetMusicListRandomPlay(value_List);
+                        }
+                        //SetMusicListRandomPlay();//歌单歌曲列表，随机循环播放模式设置
                     }
                     else
                     {
@@ -1078,9 +1177,11 @@ namespace MusicPlayer
             else
             {
                 IsMusicListSongPlay_bool = false;
+                local_IsMusicListSongPlay.Values["IsMusicListSongPlay"] = "false";
                 main_mediaElement.AutoPlay = true;
                 main_mediaElement.Play();
                 GetSavedMusicForeGround();
+                sender_value = (FrameworkElement)sender;
                 main_music = (Music)sender_value.DataContext;
 
                 source_path = main_music.Music_Path;
@@ -1114,7 +1215,7 @@ namespace MusicPlayer
         //private FrameworkElement savesender_value;
         private void RightClick_stackPanel_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
-            sender_value = (FrameworkElement)sender;
+            
             //savesender_value = (FrameworkElement)sender;
             //var song = (ListViewItem)sender;
             //song.IsSelected = true;
@@ -1140,6 +1241,7 @@ namespace MusicPlayer
             else
             {
                 IsMusicListSongPlay_bool = false;
+                local_IsMusicListSongPlay.Values["IsMusicListSongPlay"] = "false";
                 main_mediaElement.AutoPlay = true;
                 GetSavedMusicForeGround();
                 main_music = (Music)sender_value.DataContext;
@@ -1617,11 +1719,13 @@ namespace MusicPlayer
         private MusicList value_List;
         private void MusicList_ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
+            
             the_colume.Width = new GridLength(0);
             second_colume.Width = third_colume.Width;
             value_List = (MusicList)e.ClickedItem;
             MusicShow_ListView.ItemsSource = value_List.Musics;
             musidlistTitle_textblock.Text = value_List.MusicList_Name;
+            local_MusicListName.Values["MusicListName"] = value_List.MusicList_Name; ;
         }
 
         private void Back_Button_Click(object sender, RoutedEventArgs e)
@@ -1697,13 +1801,14 @@ namespace MusicPlayer
                     for (int j = 0; j < save_mainMusicList[i].SaveMusics.Count; j++)
                     {
                         value.Musics.Add(save_mainMusicList[i].SaveMusics[j]);
+                        value.Musics[j].SaveMusicColor_str = "transparent";
                     }
                     main_musicList.Add(value);
                 }
             }
             catch
             {
-            }
+            }           
         }
 
         private FrameworkElement musicList_senderValue;
@@ -1758,6 +1863,7 @@ namespace MusicPlayer
             else
             {
                 IsMusicListSongPlay_bool = true;//启用歌单歌曲列表播放模式设置
+                local_IsMusicListSongPlay.Values["IsMusicListSongPlay"] = "true";
                 main_mediaElement.AutoPlay = true;
                 GetSavedMusicForeGround();
 

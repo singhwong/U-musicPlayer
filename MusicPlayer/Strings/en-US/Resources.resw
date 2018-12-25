@@ -206,4 +206,16 @@ You can add music to the local music library and refresh it, or add music in oth
   <data name="addToList_menu.Text" xml:space="preserve">
     <value>Add to MusicList</value>
   </data>
+  <data name="listCancle_item.Text" xml:space="preserve">
+    <value>Cancle</value>
+  </data>
+  <data name="listPause_item.Text" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="listPlay_item.Text" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="listRemove_item.Text" xml:space="preserve">
+    <value>Remove from MusicList</value>
+  </data>
 </root>
