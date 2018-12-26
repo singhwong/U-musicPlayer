@@ -846,6 +846,7 @@ namespace MusicPlayer
                                     local_saveMusic = song;
                                 }
                             }
+                            item.MusicListColor_str = "skyblue";//第二次启动，历史歌单显示颜色
                         }
                     }
                     #endregion
@@ -1508,6 +1509,17 @@ namespace MusicPlayer
                 SetAcrylic(newWhite);
                 main_grid.Background = myBrush;
             }
+            foreach (var item in main_musicList)
+            {
+                if (item == main_musicList[playMode_index])
+                {
+                    item.MusicListColor_str = "skyblue";
+                }
+                else
+                {
+                    item.MusicListColor_str = "black";
+                }
+            }
             this.RequestedTheme = ElementTheme.Light;
             main_commandBar.RequestedTheme = ElementTheme.Light;
             local_theme.Values["theme"] = "light";
@@ -1520,7 +1532,17 @@ namespace MusicPlayer
                 SetAcrylic(newBlack);
                 main_grid.Background = myBrush;
             }
-
+            foreach (var item in main_musicList)
+            {
+                if (item == main_musicList[playMode_index])
+                {
+                    item.MusicListColor_str = "skyblue";
+                }
+                else
+                {
+                    item.MusicListColor_str = "white";
+                }
+            }
             this.RequestedTheme = ElementTheme.Dark;
             main_commandBar.RequestedTheme = ElementTheme.Dark;
             local_theme.Values["theme"] = "dark";
@@ -1843,7 +1865,14 @@ namespace MusicPlayer
         {
             foreach (var item in main_musicList)
             {
-                item.MusicListColor_str = "black";
+                if (this.RequestedTheme == ElementTheme.Dark)
+                {
+                    item.MusicListColor_str = "white";
+                }
+                else if (this.RequestedTheme == ElementTheme.Light)
+                {
+                    item.MusicListColor_str = "black";
+                }
             }
             Tapped_senderValue = (FrameworkElement)sender;
             MusicListSongsPlaySameCode();
@@ -1878,10 +1907,22 @@ namespace MusicPlayer
 
         private void ListPlay_item_Click(object sender, RoutedEventArgs e)
         {
+            foreach (var item in main_musicList)
+            {
+                if (this.RequestedTheme == ElementTheme.Dark)
+                {
+                    item.MusicListColor_str = "white";
+                }
+                else if (this.RequestedTheme == ElementTheme.Light)
+                {
+                    item.MusicListColor_str = "black";
+                }
+            }
             Tapped_senderValue = (FrameworkElement)sender;
             MusicListSongsPlaySameCode();
             SetHistoryMusicListPlayModeMethod();
             local_MusicListName.Values["MusicListName"] = main_musicList[playMode_index].MusicList_Name;
+            main_musicList[playMode_index].MusicListColor_str = "skyblue";
         }
 
         private void MusicListSongsPlaySameCode()

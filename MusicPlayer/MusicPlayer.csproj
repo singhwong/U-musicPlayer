@@ -121,6 +121,9 @@
     <Compile Include="Models\ProgressConvert.cs" />
     <Compile Include="Models\SaveDataClass.cs" />
     <Compile Include="Models\SetMusic.cs" />
+    <Compile Include="MusicLists.xaml.cs">
+      <DependentUpon>MusicLists.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MusicListSongsShow.xaml.cs">
       <DependentUpon>MusicListSongsShow.xaml</DependentUpon>
     </Compile>
@@ -198,6 +201,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MusicLists.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MusicListSongsShow.xaml">
       <SubType>Designer</SubType>

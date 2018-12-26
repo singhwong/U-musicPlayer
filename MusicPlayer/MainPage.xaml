@@ -87,9 +87,7 @@
                             <DataTemplate x:DataType="local1:MusicList">
                                 <StackPanel Name="MusicList_stackPanel"
                                             RightTapped="MusicList_stackPanel_RightTapped">
-                                    <TextBlock  Text="{x:Bind MusicList_Name}"
-                                            FontWeight="Light"
-                                                TextWrapping="Wrap"/>
+                                    <local:MusicLists/>
                                     <StackPanel.ContextFlyout>
                                         <MenuFlyout>
                                             <MenuFlyoutItem Name="removeMusicList_item"
