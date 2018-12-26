@@ -233,11 +233,11 @@ namespace MusicPlayer
 
         private int num_2 = 0;
         private int index_2 = 0;
-        private int Num = 0;
+        //private int Num = 0;
         private void SetMusicListListPlay(MusicList list)
         {
             #region 歌单列表顺序播放
-            Num = index_2;
+            //Num = index_2;
             var list_music2 = SetMusic.GetMusicByStream(use_music, _musicStream);
             string path = list_music2.Music_Path;
             for (int i = 0; i < list.Musics.Count; i++)
@@ -247,8 +247,8 @@ namespace MusicPlayer
                     index_2 = i;
                 }
             }
-            if (index_2 != Num)
-            {
+            //if (index_2 != Num)
+            //{
                 if (IsBackButtonClick)
                 {
                     num_2 = index_2 - 1;
@@ -266,9 +266,9 @@ namespace MusicPlayer
                 {
                     num_2 = list.Musics.Count - 1;
                 }
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 //if (IsBackButtonClick)
                 //{
                 //    num_2 = index_2-2;
@@ -286,7 +286,7 @@ namespace MusicPlayer
                 //{
                 //    num_2 = list.Musics.Count - 1;
                 //}
-            }
+            //}
             main_savemusic = list.Musics[num_2];//获取歌单列表歌曲
             string value_path = main_savemusic.Music_Path;
             main_music = SetMusic.GetMusicByPath(use_music, value_path);
