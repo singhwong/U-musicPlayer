@@ -14,11 +14,13 @@ namespace MusicPlayer.Models
     {
         public string MusicList_Name { get; set; }
         public ObservableCollection<SaveMusic> Musics = new ObservableCollection<SaveMusic>();
+        public string MusicListColor_str { get; set; }
     }
 
     public class SaveMusicList//用于保存List数据
     {
         public string MusicList_Name { get; set; }
         public  List<SaveMusic> SaveMusics = new List<SaveMusic>();
+        
     }
 }

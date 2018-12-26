@@ -54,7 +54,6 @@ namespace MusicPlayer
         private List<SaveMusicList> save_mainMusicList;
         private static StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
         private string filePath = storageFolder.Path + @"\PlaylistCollection.xml";
-
         private ObservableCollection<Music> use_music;
         private ObservableCollection<StorageFile> allMusic;
         private Music main_music;
@@ -80,7 +79,6 @@ namespace MusicPlayer
         private string single_str;
         private string order_str;
         private string random_str;
-
         private string _searchLyric_str;
         private string _clearLyric_str;
         private double volume_value;
@@ -738,7 +736,6 @@ namespace MusicPlayer
         }
         private void SetHistoryMusicListPlayModeMethod()
         {
-            playMode_index = 0;
             for (int i = 0; i < main_musicList.Count; i++)
             {
                 for (int j = 0; j < main_musicList[i].Musics.Count; j++)
@@ -1844,10 +1841,15 @@ namespace MusicPlayer
         private SaveMusic main_savemusic;
         private void MusicListSongsShow_stackPanel_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
+            foreach (var item in main_musicList)
+            {
+                item.MusicListColor_str = "black";
+            }
             Tapped_senderValue = (FrameworkElement)sender;
             MusicListSongsPlaySameCode();
             SetHistoryMusicListPlayModeMethod();
             local_MusicListName.Values["MusicListName"] = main_musicList[playMode_index].MusicList_Name;
+            main_musicList[playMode_index].MusicListColor_str = "skyblue";//设置正在播放歌曲歌单颜色
         }
         private void ClearUseMusicIconColor()
         {
