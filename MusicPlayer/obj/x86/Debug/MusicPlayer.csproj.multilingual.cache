@@ -2,22 +2,22 @@
 <ArrayOfCacheFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <CacheFile>
     <FileName>Strings\zh-CN\Resources.resw</FileName>
-    <Checksum>214206251172229415921092641267880628108</Checksum>
-    <ModifiedTime>2018-12-25T14:03:54.8329274</ModifiedTime>
+    <Checksum>12722319384453323517581076919220624101128</Checksum>
+    <ModifiedTime>2018-12-26T17:18:49.9592182</ModifiedTime>
     <CacheFileType>NeutralResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>MultilingualResources\MusicPlayer.en-US.xlf</FileName>
-    <Checksum>128224119184373206752065219729195224246250</Checksum>
-    <ModifiedTime>2018-12-25T14:05:37.0455678+08:00</ModifiedTime>
+    <Checksum>101679601681842121022445924310223674145137</Checksum>
+    <ModifiedTime>2018-12-26T17:22:42.258043+08:00</ModifiedTime>
     <CacheFileType>XliffResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>Strings\en-US\Resources.resw</FileName>
-    <Checksum>16215120231691483239236164142127018499</Checksum>
-    <ModifiedTime>2018-12-26T13:49:45.5663673+08:00</ModifiedTime>
+    <Checksum>850178321172077637110129135296017819</Checksum>
+    <ModifiedTime>2018-12-26T17:22:52.2378951+08:00</ModifiedTime>
     <CacheFileType>LanguageResource</CacheFileType>
     <WarningMessage />
   </CacheFile>

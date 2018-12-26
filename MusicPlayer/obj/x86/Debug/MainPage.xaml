@@ -207,7 +207,8 @@
                                 FontFamily="Segoe MDL2 Assets"
                                 Content="&#xE710;"
                                 Style="{StaticResource button_Style}"
-                                Background="Transparent"/>
+                                Background="Transparent"
+                                Visibility="Collapsed"/>
                         <TextBlock x:ConnectionId='39' Name="musidlistTitle_textblock"
                                    FontSize="17"
                                    FontWeight="Bold"

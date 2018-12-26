@@ -81,7 +81,7 @@
 4.音乐列表拖拽排序
 5.双击歌曲或者使用右键选项进行播放
 6.若背景设置为自定义图片，建议将主题设置为Dark,显示效果更好
-7.可以查询部分歌曲歌词</source>
+7.可以查询部分歌曲歌词                                                                                                                        8.支持自定义歌单功能，右键歌曲将歌曲添加进歌单                                                                                    9.歌单拖拽排序                  </source>
           <target state="translated">Free software, no advertising, ordinary users can download and install, strictly prohibit commercial use. 
 
 Use help: 
@@ -91,14 +91,18 @@ Use help:
  
 3. Support opening selected files, opening music lists in local music libraries and music lists in selected folders    
         
-4. Music lists can be dragged and sorted 
+4. Songs can be dragged and sorted 
           
 5. Double-click the song or click it with the right-click option to play
        
 6. If the background is set to a custom image, 
 it is recommended that the theme be set to Dark to show better results.
             
-7. Some lyrics of songs can be queried. </target>
+7. Some lyrics of songs can be queried. 
+
+8.Support custom MusicList function, right-click song to add it to the MusicList
+
+9.MusicLists can be dragged and sorted </target>
         </trans-unit>
         <trans-unit id="light_menu.Text" translate="yes" xml:space="preserve">
           <source>亮</source>

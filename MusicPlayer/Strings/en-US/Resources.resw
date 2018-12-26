@@ -73,14 +73,18 @@ Use help:
  
 3. Support opening selected files, opening music lists in local music libraries and music lists in selected folders    
         
-4. Music lists can be dragged and sorted 
+4. Songs can be dragged and sorted 
           
 5. Double-click the song or click it with the right-click option to play
        
 6. If the background is set to a custom image, 
 it is recommended that the theme be set to Dark to show better results.
             
-7. Some lyrics of songs can be queried. </value>
+7. Some lyrics of songs can be queried. 
+
+8.Support custom MusicList function, right-click song to add it to the MusicList
+
+9.MusicLists can be dragged and sorted </value>
   </data>
   <data name="light_menu.Text" xml:space="preserve">
     <value>Light</value>

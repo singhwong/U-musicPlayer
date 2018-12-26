@@ -214,29 +214,30 @@ namespace MusicPlayer
             try//从本地删除歌曲后，列表未删除，引发播放异常
             {
                 main_mediaElement.SetSource(main_music.Music_Stream, main_music.SongFile.ContentType);//对流的访问
+                Album_Cover = main_music.Cover;
+                main_image.Source = Album_Cover;
+                songTile_textblock.Text = main_music.Title;
+                artist_textblock.Text = main_music.Artist;
+                album_textblock.Text = "【" + main_music.Album_title + "】";
+                playTitle_textblock.Text = songTile_textblock.Text;
+                playArtist_textblock.Text = main_music.Artist;
             }
             catch
             {
                 SetPlayErrorMethod();
             }
-
-            Album_Cover = main_music.Cover;
-            main_image.Source = Album_Cover;
-            songTile_textblock.Text = main_music.Title;
-            artist_textblock.Text = main_music.Artist;
-            album_textblock.Text = "【" + main_music.Album_title + "】";
-            playTitle_textblock.Text = songTile_textblock.Text;
-            playArtist_textblock.Text = main_music.Artist;
             line_textblock.Text = " - ";
             lyric_textblock.Text = "";
             lyric_button.Content = resourceLoader.GetString("searchLyric_str");
         }
 
         private int num_2 = 0;
+        private int index_2 = 0;
+        private int Num = 0;
         private void SetMusicListListPlay(MusicList list)
         {
             #region 歌单列表顺序播放
-            int index_2 = 0;
+            Num = index_2;
             var list_music2 = SetMusic.GetMusicByStream(use_music, _musicStream);
             string path = list_music2.Music_Path;
             for (int i = 0; i < list.Musics.Count; i++)
@@ -246,22 +247,45 @@ namespace MusicPlayer
                     index_2 = i;
                 }
             }
-            if (IsBackButtonClick)
+            if (index_2 != Num)
             {
-                num_2 = index_2 - 1;
-                IsBackButtonClick = false;
+                if (IsBackButtonClick)
+                {
+                    num_2 = index_2 - 1;
+                    IsBackButtonClick = false;
+                }
+                else
+                {
+                    num_2 = index_2 + 1;
+                }
+                if (num_2 == list.Musics.Count)
+                {
+                    num_2 = 0;
+                }
+                else if (num_2 == -1)
+                {
+                    num_2 = list.Musics.Count - 1;
+                }
             }
             else
             {
-                num_2 = index_2 + 1;
-            }
-            if (num_2 == list.Musics.Count)
-            {
-                num_2 = 0;
-            }
-            else if (num_2 == -1)
-            {
-                num_2 = list.Musics.Count - 1;
+                //if (IsBackButtonClick)
+                //{
+                //    num_2 = index_2-2;
+                //    IsBackButtonClick = false;
+                //}
+                //else
+                //{
+                //    num_2 = index_2 + 2;
+                //}
+                //if (num_2 == list.Musics.Count)
+                //{
+                //    num_2 = 0;
+                //}
+                //else if (num_2 == -1)
+                //{
+                //    num_2 = list.Musics.Count - 1;
+                //}
             }
             main_savemusic = list.Musics[num_2];//获取歌单列表歌曲
             string value_path = main_savemusic.Music_Path;
@@ -382,7 +406,6 @@ namespace MusicPlayer
             catch
             {
             }
-
         }
         private void HistoryThemeHelpMethod()
         {
@@ -669,6 +692,7 @@ namespace MusicPlayer
         private int playMode_index = 0;
         private void SwitchMusic()
         {
+
             IsMusicPlaying = true;
             main_mediaElement.AutoPlay = true;
             GetSavedMusicForeGround();
@@ -1194,6 +1218,7 @@ namespace MusicPlayer
             }
             else
             {
+                RestoreMusicListForeGround();//恢复MusicList ForeGround
                 IsMusicListSongPlay_bool = false;
                 local_IsMusicListSongPlay.Values["IsMusicListSongPlay"] = "false";
                 main_mediaElement.AutoPlay = true;
@@ -1257,6 +1282,7 @@ namespace MusicPlayer
             }
             else
             {
+                RestoreMusicListForeGround();//恢复MusicList ForeGround
                 IsMusicListSongPlay_bool = false;
                 local_IsMusicListSongPlay.Values["IsMusicListSongPlay"] = "false";
                 main_mediaElement.AutoPlay = true;
@@ -1777,21 +1803,38 @@ namespace MusicPlayer
             IslistShowButtonClick = true;
             second_colume.Width = new GridLength(0);
         }
-
+        private bool IsContainsTheSong_bool = false;
         private async void AddToList_menu_Click(object sender, RoutedEventArgs e)
         {
             ContentDialogResult result = await musicList_ContentDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
                 int num = 0;
-                
+
                 Music using_music = (Music)sender_value.DataContext;
                 SaveMusic list_mainmusic = new SaveMusic();
                 list_mainmusic.Title = using_music.Title;
                 list_mainmusic.Artist = using_music.Artist;
                 list_mainmusic.Music_Path = using_music.Music_Path;
                 list_mainmusic.MusicSeconds_Str = using_music.MusicSeconds_Str;
-                value_MusicList.Musics.Add(list_mainmusic);
+                #region 重复添加歌曲到歌单，提示
+                foreach (var item in value_MusicList.Musics)
+                {
+                    if (item.Music_Path == list_mainmusic.Music_Path)
+                    {
+                        IsContainsTheSong_bool = true;
+                    }
+                }
+                if (IsContainsTheSong_bool)
+                {
+                    AddSongToMusicListDoubleError();
+                    IsContainsTheSong_bool = false;
+                }
+                else
+                {
+                    value_MusicList.Musics.Add(list_mainmusic);
+                }
+                #endregion
                 for (int i = 0; i < main_musicList.Count; i++)
                 {
                     if (main_musicList[i] == value_MusicList)
@@ -1808,6 +1851,20 @@ namespace MusicPlayer
                 }
                 SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);
             }
+        }
+
+        private async void AddSongToMusicListDoubleError()
+        {
+            ContentDialog content = new ContentDialog
+            {
+                Title = "",
+                Content = "歌单已包含该歌曲",
+                IsPrimaryButtonEnabled = true,
+                PrimaryButtonText = "OK",
+                Background = skyblue,
+                Foreground = white,
+            };
+            ContentDialogResult result = await content.ShowAsync();
         }
         private MusicList value_MusicList = new MusicList();
 
@@ -1863,6 +1920,16 @@ namespace MusicPlayer
         private SaveMusic main_savemusic;
         private void MusicListSongsShow_stackPanel_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
+            RestoreMusicListForeGround();
+            Tapped_senderValue = (FrameworkElement)sender;
+            MusicListSongsPlaySameCode();
+            SetHistoryMusicListPlayModeMethod();
+            local_MusicListName.Values["MusicListName"] = main_musicList[playMode_index].MusicList_Name;
+            main_musicList[playMode_index].MusicListColor_str = "skyblue";//设置正在播放歌曲歌单颜色
+        }
+
+        private void RestoreMusicListForeGround()
+        {
             foreach (var item in main_musicList)
             {
                 if (this.RequestedTheme == ElementTheme.Dark)
@@ -1874,11 +1941,6 @@ namespace MusicPlayer
                     item.MusicListColor_str = "black";
                 }
             }
-            Tapped_senderValue = (FrameworkElement)sender;
-            MusicListSongsPlaySameCode();
-            SetHistoryMusicListPlayModeMethod();
-            local_MusicListName.Values["MusicListName"] = main_musicList[playMode_index].MusicList_Name;
-            main_musicList[playMode_index].MusicListColor_str = "skyblue";//设置正在播放歌曲歌单颜色
         }
         private void ClearUseMusicIconColor()
         {
@@ -1907,17 +1969,7 @@ namespace MusicPlayer
 
         private void ListPlay_item_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var item in main_musicList)
-            {
-                if (this.RequestedTheme == ElementTheme.Dark)
-                {
-                    item.MusicListColor_str = "white";
-                }
-                else if (this.RequestedTheme == ElementTheme.Light)
-                {
-                    item.MusicListColor_str = "black";
-                }
-            }
+            RestoreMusicListForeGround();
             Tapped_senderValue = (FrameworkElement)sender;
             MusicListSongsPlaySameCode();
             SetHistoryMusicListPlayModeMethod();
