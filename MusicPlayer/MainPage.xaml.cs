@@ -764,7 +764,7 @@ namespace MusicPlayer
             {
                 for (int j = 0; j < main_musicList[i].Musics.Count; j++)
                 {
-                    if (main_musicList[i].Musics[j].Music_Path == source_path)
+                    if (main_musicList[i].Musics[j] == main_savemusic)
                     {
                         playMode_index = i;
                     }
@@ -1581,6 +1581,17 @@ namespace MusicPlayer
                 SetAcrylic(newWhite);
                 main_grid.Background = myBrush;
             }
+            foreach (var item in main_musicList)
+            {
+                if (item == main_musicList[playMode_index])
+                {
+                    item.MusicListColor_str = "skyblue";
+                }
+                else
+                {
+                    item.MusicListColor_str = "white";
+                }
+            }
             this.RequestedTheme = ElementTheme.Default;
             main_commandBar.RequestedTheme = ElementTheme.Default;
             local_theme.Values["theme"] = "default";
@@ -1936,7 +1947,7 @@ namespace MusicPlayer
                 {
                     item.MusicListColor_str = "white";
                 }
-                else if (this.RequestedTheme == ElementTheme.Light)
+                else
                 {
                     item.MusicListColor_str = "black";
                 }
@@ -1956,6 +1967,7 @@ namespace MusicPlayer
         private void RemoveMusicList_item_Click(object sender, RoutedEventArgs e)
         {
             MusicList remove_value = (MusicList)musicList_senderValue.DataContext;
+            remove_value.Musics.Clear();
             main_musicList.Remove(remove_value);
             for (int j = 0; j < save_mainMusicList.Count; j++)
             {

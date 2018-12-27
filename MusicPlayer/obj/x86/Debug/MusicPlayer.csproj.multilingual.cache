@@ -3,21 +3,21 @@
   <CacheFile>
     <FileName>Strings\zh-CN\Resources.resw</FileName>
     <Checksum>12722319384453323517581076919220624101128</Checksum>
-    <ModifiedTime>2018-12-26T17:18:49.9592182</ModifiedTime>
+    <ModifiedTime>2018-12-27T10:10:17.7569508</ModifiedTime>
     <CacheFileType>NeutralResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>MultilingualResources\MusicPlayer.en-US.xlf</FileName>
-    <Checksum>101679601681842121022445924310223674145137</Checksum>
-    <ModifiedTime>2018-12-26T17:22:42.258043+08:00</ModifiedTime>
+    <Checksum>9668103114125497828414824113397158150113</Checksum>
+    <ModifiedTime>2018-12-27T10:10:17.703095+08:00</ModifiedTime>
     <CacheFileType>XliffResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>Strings\en-US\Resources.resw</FileName>
     <Checksum>850178321172077637110129135296017819</Checksum>
-    <ModifiedTime>2018-12-26T17:22:52.2378951+08:00</ModifiedTime>
+    <ModifiedTime>2018-12-27T10:19:29.418177+08:00</ModifiedTime>
     <CacheFileType>LanguageResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
