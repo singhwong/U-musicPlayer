@@ -75,14 +75,14 @@
           <target state="translated">Help</target>
         </trans-unit>
         <trans-unit id="help_str" translate="yes" xml:space="preserve">
-          <source>免费软件，无广告,普通用户可以下载和安装,严禁用于商业用途.  使用帮助:                                                                      1.用户需要同意或打开本地音乐库访问权限
+          <source>免费软件，无广告,普通用户可以下载和安装,严禁用于商业用途.                          使用帮助:                                                                                                                1.用户需要同意或打开本地音乐库访问权限
 2.启动后自动获取的音乐为本地音乐库里的音乐
 3.支持打开选定文件、打开本地音乐库音乐列表和选定文件夹中的音乐列表
 4.音乐列表拖拽排序
 5.双击歌曲或者使用右键选项进行播放
 6.若背景设置为自定义图片，建议将主题设置为Dark,显示效果更好
 7.可以查询部分歌曲歌词                                                                                                                        8.支持自定义歌单功能，右键歌曲将歌曲添加进歌单                                                                                    9.歌单拖拽排序                  </source>
-          <target state="translated">Free software, no advertising, ordinary users can download and install, strictly prohibit commercial use. 
+          <target state="needs-review-translation">Free software, no advertising, ordinary users can download and install, strictly prohibit commercial use. 
 
 Use help: 
 1. Users need to agree or open access to local music library        
@@ -103,6 +103,7 @@ it is recommended that the theme be set to Dark to show better results.
 8.Support custom MusicList function, right-click song to add it to the MusicList
 
 9.MusicLists can be dragged and sorted </target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="light_menu.Text" translate="yes" xml:space="preserve">
           <source>亮</source>

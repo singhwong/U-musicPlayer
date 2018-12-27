@@ -237,7 +237,7 @@ namespace MusicPlayer
         private void SetMusicListListPlay(MusicList list)
         {
             #region 歌单列表顺序播放
-            
+
             var list_music2 = SetMusic.GetMusicByStream(use_music, _musicStream);
             string path = list_music2.Music_Path;
             for (int i = 0; i < list.Musics.Count; i++)
@@ -245,47 +245,50 @@ namespace MusicPlayer
                 if (list.Musics[i].Music_Path == path)
                 {
                     index_2 = i;
-                    
+
                 }
             }
-            if (index_2 != Num)
+            if (list.Musics.Count > 1)
             {
-                if (IsBackButtonClick)
+                if (index_2 != Num)
                 {
-                    num_2 = index_2 - 1;
-                    IsBackButtonClick = false;
+                    if (IsBackButtonClick)
+                    {
+                        num_2 = index_2 - 1;
+                        IsBackButtonClick = false;
+                    }
+                    else
+                    {
+                        num_2 = index_2 + 1;
+                    }
+                    if (num_2 == list.Musics.Count)
+                    {
+                        num_2 = 0;
+                    }
+                    else if (num_2 == -1)
+                    {
+                        num_2 = list.Musics.Count - 1;
+                    }
                 }
                 else
                 {
-                    num_2 = index_2 + 1;
-                }
-                if (num_2 == list.Musics.Count)
-                {
-                    num_2 = 0;
-                }
-                else if (num_2 == -1)
-                {
-                    num_2 = list.Musics.Count - 1;
-                }
-            }
-            else
-            {
-                if (IsBackButtonClick)
-                {
-                    num_2 = index_2 - 2;
-                    IsBackButtonClick = false;
-                }
-                else
-                {
-                    num_2 = index_2 + 2;
-                }
-                if (num_2 == list.Musics.Count)
-                {
-                    num_2 = 0;
-                }
-                else if (num_2 == -1)
-                {
-                    num_2 = list.Musics.Count - 1;
+                    if (IsBackButtonClick)
+                    {
+                        num_2 = index_2 - 2;
+                        IsBackButtonClick = false;
+                    }
+                    else
+                    {
+                        num_2 = index_2 + 2;
+                    }
+                    if (num_2 == list.Musics.Count)
+                    {
+                        num_2 = 0;
+                    }
+                    else if (num_2 == -1)
+                    {
+                        num_2 = list.Musics.Count - 1;
+                    }
                 }
             }
             main_savemusic = list.Musics[num_2];//获取歌单列表歌曲
@@ -339,7 +342,7 @@ namespace MusicPlayer
 
             #endregion
         }
-        
+
         private async void SetPlayErrorMethod()
         {
             string content_str = resourceLoader.GetString("content_str");
@@ -857,11 +860,13 @@ namespace MusicPlayer
             {
                 try
                 {
+                    int musicList_index = 0;//获取指定歌单索引
                     #region 设置历史歌单历史歌曲icon颜色
                     local_saveMusic = new SaveMusic();
                     string musicListName = local_MusicListName.Values["MusicListName"].ToString();
                     foreach (var item in main_musicList)
                     {
+
                         if (item.MusicList_Name == musicListName)
                         {
                             foreach (var song in item.Musics)
@@ -873,7 +878,10 @@ namespace MusicPlayer
                                 }
                             }
                             item.MusicListColor_str = "skyblue";//第二次启动，历史歌单显示颜色
+                            playMode_index = musicList_index;
+
                         }
+                        musicList_index++;
                     }
                     #endregion
                 }
@@ -1591,7 +1599,7 @@ namespace MusicPlayer
                 }
                 else
                 {
-                    item.MusicListColor_str = "white";
+                    item.MusicListColor_str = "black";
                 }
             }
             this.RequestedTheme = ElementTheme.Default;
@@ -1863,7 +1871,7 @@ namespace MusicPlayer
                     }
                     SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);
                 }
-            }                             
+            }
         }
 
         private async void AddSongToMusicListDoubleError()
@@ -1970,6 +1978,19 @@ namespace MusicPlayer
         private void RemoveMusicList_item_Click(object sender, RoutedEventArgs e)
         {
             MusicList remove_value = (MusicList)musicList_senderValue.DataContext;
+            #region 解决移除选中歌单后新建歌单，新建歌单自动选择bug
+            if (remove_value == main_musicList[playMode_index])
+            {
+                if (this.RequestedTheme == ElementTheme.Dark)
+                {
+                    remove_value.MusicListColor_str = "white";
+                }
+                else
+                {
+                    remove_value.MusicListColor_str = "black";
+                }
+            }
+            #endregion
             remove_value.Musics.Clear();
             main_musicList.Remove(remove_value);
             for (int j = 0; j < save_mainMusicList.Count; j++)

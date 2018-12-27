@@ -1,2 +1,2 @@
-MainPackage=C:\Users\singhwong\Source\Repos\U-musicPlayer\MusicPlayer\bin\x64\Release\Upload\MusicPlayer_1.1.37.0_x64.appx
-SymbolPackage=C:\Users\singhwong\Source\Repos\U-musicPlayer\MusicPlayer\bin\x64\Release\Upload\MusicPlayer_1.1.37.0\MusicPlayer_1.1.37.0_x64.appxsym
+MainPackage=D:\gitUWP\U-musicPlayer\MusicPlayer\bin\x64\Release\Upload\MusicPlayer_1.1.41.0_x64.appx
+SymbolPackage=D:\gitUWP\U-musicPlayer\MusicPlayer\bin\x64\Release\Upload\MusicPlayer_1.1.41.0\MusicPlayer_1.1.41.0_x64.appxsym

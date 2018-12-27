@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" xmlns:uap4="http://schemas.microsoft.com/appx/manifest/uap/windows10/4" IgnorableNamespaces="uap mp uap3 uap4">
-  <Identity Name="14523wongsoft.OwnMusicPlayer" Publisher="CN=142C2F57-E79D-408C-83F9-E14BC50B8D43" Version="1.1.37.0" />
+  <Identity Name="14523wongsoft.OwnMusicPlayer" Publisher="CN=142C2F57-E79D-408C-83F9-E14BC50B8D43" Version="1.1.41.0" />
   <mp:PhoneIdentity PhoneProductId="ae431f83-96ae-4b72-89b1-1094500ed456" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Own MusicPlayer</DisplayName>
