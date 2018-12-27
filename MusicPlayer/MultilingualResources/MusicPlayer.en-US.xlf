@@ -36,7 +36,7 @@
         </trans-unit>
         <trans-unit id="content_str" translate="yes" xml:space="preserve">
           <source>文件不存在或已经被移动，无法播放</source>
-          <target state="translated">Files do not exist or have been moved and cannot be played </target>
+          <target state="translated">Files do not exist or have been moved and cannot be played.</target>
         </trans-unit>
         <trans-unit id="custom_menu.Text" translate="yes" xml:space="preserve">
           <source>自定义</source>
@@ -259,7 +259,7 @@ You can add music to the local music library and refresh it, or add music in oth
         </trans-unit>
         <trans-unit id="musicListNameError_str" translate="yes" xml:space="preserve">
           <source>歌单名不能为空或重复</source>
-          <target state="translated">The MusicList Name cannot be empty or duplicated </target>
+          <target state="translated">The MusicList Name cannot be empty or duplicated.</target>
         </trans-unit>
         <trans-unit id="removeMusicList_item.Text" translate="yes" xml:space="preserve">
           <source>移除</source>
@@ -284,6 +284,10 @@ You can add music to the local music library and refresh it, or add music in oth
         <trans-unit id="listRemove_item.Text" translate="yes" xml:space="preserve">
           <source>从歌单移除</source>
           <target state="translated">Remove from MusicList</target>
+        </trans-unit>
+        <trans-unit id="addDoubleError_str" translate="yes" xml:space="preserve">
+          <source>歌单已包含该歌曲</source>
+          <target state="translated">The MusicList already contains the song. </target>
         </trans-unit>
       </group>
     </body>

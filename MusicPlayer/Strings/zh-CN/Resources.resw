@@ -120,6 +120,9 @@
   <data name="about_str" xml:space="preserve">
     <value>关于</value>
   </data>
+  <data name="addDoubleError_str" xml:space="preserve">
+    <value>歌单已包含该歌曲</value>
+  </data>
   <data name="addFolder_button.Label" xml:space="preserve">
     <value>添加文件夹</value>
   </data>

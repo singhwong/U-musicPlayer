@@ -34,7 +34,7 @@
     <value>Empty </value>
   </data>
   <data name="content_str" xml:space="preserve">
-    <value>Files do not exist or have been moved and cannot be played </value>
+    <value>Files do not exist or have been moved and cannot be played.</value>
   </data>
   <data name="custom_menu.Text" xml:space="preserve">
     <value>Custom </value>
@@ -202,7 +202,7 @@ You can add music to the local music library and refresh it, or add music in oth
     <value>MusicList Name</value>
   </data>
   <data name="musicListNameError_str" xml:space="preserve">
-    <value>The MusicList Name cannot be empty or duplicated </value>
+    <value>The MusicList Name cannot be empty or duplicated.</value>
   </data>
   <data name="removeMusicList_item.Text" xml:space="preserve">
     <value>Remove</value>
@@ -221,5 +221,8 @@ You can add music to the local music library and refresh it, or add music in oth
   </data>
   <data name="listRemove_item.Text" xml:space="preserve">
     <value>Remove from MusicList</value>
+  </data>
+  <data name="addDoubleError_str" xml:space="preserve">
+    <value>The MusicList already contains the song. </value>
   </data>
 </root>
