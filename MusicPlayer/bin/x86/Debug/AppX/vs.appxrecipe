@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T05:37:34.972</Modified>
+      <Modified>2018-12-27T07:42:59.881</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\MusicPlayer.exe">
       <PackagePath>entrypoint\MusicPlayer.exe</PackagePath>
-      <Modified>2018-12-27T05:37:32.987</Modified>
+      <Modified>2018-12-27T07:42:57.315</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\.nuget\packages\microsoft.csharp\4.3.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -549,27 +549,27 @@
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.507</Modified>
+      <Modified>2018-12-27T07:42:29.297</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\LargeTile.scale-125.png">
       <PackagePath>Assets\LargeTile.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.510</Modified>
+      <Modified>2018-12-27T07:42:29.356</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\LargeTile.scale-150.png">
       <PackagePath>Assets\LargeTile.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.512</Modified>
+      <Modified>2018-12-27T07:42:29.436</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\LargeTile.scale-200.png">
       <PackagePath>Assets\LargeTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.515</Modified>
+      <Modified>2018-12-27T07:42:29.535</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\LargeTile.scale-400.png">
       <PackagePath>Assets\LargeTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.520</Modified>
+      <Modified>2018-12-27T07:42:29.775</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\music_1.png">
       <PackagePath>Assets\music_1.png</PackagePath>
@@ -578,167 +578,177 @@
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\SmallTile.scale-100.png">
       <PackagePath>Assets\SmallTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.526</Modified>
+      <Modified>2018-12-27T07:42:28.326</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\SmallTile.scale-125.png">
       <PackagePath>Assets\SmallTile.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.530</Modified>
+      <Modified>2018-12-27T07:42:28.370</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\SmallTile.scale-150.png">
       <PackagePath>Assets\SmallTile.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.533</Modified>
+      <Modified>2018-12-27T07:42:28.430</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\SmallTile.scale-200.png">
       <PackagePath>Assets\SmallTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.537</Modified>
+      <Modified>2018-12-27T07:42:28.477</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\SmallTile.scale-400.png">
       <PackagePath>Assets\SmallTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.539</Modified>
+      <Modified>2018-12-27T07:42:28.540</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.540</Modified>
+      <Modified>2018-12-27T07:42:30.538</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\SplashScreen.scale-125.png">
       <PackagePath>Assets\SplashScreen.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.542</Modified>
+      <Modified>2018-12-27T07:42:30.610</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\SplashScreen.scale-150.png">
       <PackagePath>Assets\SplashScreen.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.544</Modified>
+      <Modified>2018-12-27T07:42:30.696</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\SplashScreen.scale-400.png">
       <PackagePath>Assets\SplashScreen.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.553</Modified>
+      <Modified>2018-12-27T07:42:31.236</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square150x150Logo.scale-100.png">
       <PackagePath>Assets\Square150x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.556</Modified>
+      <Modified>2018-12-27T07:42:28.586</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square150x150Logo.scale-125.png">
       <PackagePath>Assets\Square150x150Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.558</Modified>
+      <Modified>2018-12-27T07:42:28.650</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square150x150Logo.scale-150.png">
       <PackagePath>Assets\Square150x150Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.561</Modified>
+      <Modified>2018-12-27T07:42:28.704</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square150x150Logo.scale-400.png">
+      <PackagePath>Assets\Square150x150Logo.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-12-27T07:42:28.871</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square44x44Logo.altform-unplated_targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.566</Modified>
+      <Modified>2018-12-27T07:42:30.280</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square44x44Logo.altform-unplated_targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.569</Modified>
+      <Modified>2018-12-27T07:42:30.475</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square44x44Logo.altform-unplated_targetsize-32.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-32.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.572</Modified>
+      <Modified>2018-12-27T07:42:30.369</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square44x44Logo.altform-unplated_targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.575</Modified>
+      <Modified>2018-12-27T07:42:30.418</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square44x44Logo.scale-100.png">
       <PackagePath>Assets\Square44x44Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.578</Modified>
+      <Modified>2018-12-27T07:42:29.824</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square44x44Logo.scale-125.png">
       <PackagePath>Assets\Square44x44Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.580</Modified>
+      <Modified>2018-12-27T07:42:29.866</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square44x44Logo.scale-150.png">
       <PackagePath>Assets\Square44x44Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.583</Modified>
+      <Modified>2018-12-27T07:42:29.907</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square44x44Logo.scale-400.png">
       <PackagePath>Assets\Square44x44Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.588</Modified>
+      <Modified>2018-12-27T07:42:29.995</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square44x44Logo.targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.590</Modified>
+      <Modified>2018-12-27T07:42:30.047</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square44x44Logo.targetsize-24.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.593</Modified>
+      <Modified>2018-12-27T07:42:30.089</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square44x44Logo.targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.599</Modified>
+      <Modified>2018-12-27T07:42:30.240</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square44x44Logo.targetsize-32.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-32.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.601</Modified>
+      <Modified>2018-12-27T07:42:30.133</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square44x44Logo.targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.604</Modified>
+      <Modified>2018-12-27T07:42:30.177</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.609</Modified>
+      <Modified>2018-12-27T07:42:31.297</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\StoreLogo.scale-125.png">
       <PackagePath>Assets\StoreLogo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.611</Modified>
+      <Modified>2018-12-27T07:42:31.359</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\StoreLogo.scale-150.png">
       <PackagePath>Assets\StoreLogo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.614</Modified>
+      <Modified>2018-12-27T07:42:31.426</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\StoreLogo.scale-200.png">
       <PackagePath>Assets\StoreLogo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.617</Modified>
+      <Modified>2018-12-27T07:42:31.517</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\StoreLogo.scale-400.png">
       <PackagePath>Assets\StoreLogo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.620</Modified>
+      <Modified>2018-12-27T07:42:31.601</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Wide310x150Logo.scale-100.png">
       <PackagePath>Assets\Wide310x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.623</Modified>
+      <Modified>2018-12-27T07:42:28.920</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Wide310x150Logo.scale-125.png">
       <PackagePath>Assets\Wide310x150Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.627</Modified>
+      <Modified>2018-12-27T07:42:28.980</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Wide310x150Logo.scale-150.png">
       <PackagePath>Assets\Wide310x150Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.631</Modified>
+      <Modified>2018-12-27T07:42:29.045</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Wide310x150Logo.scale-400.png">
+      <PackagePath>Assets\Wide310x150Logo.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-12-27T07:42:29.243</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -747,27 +757,27 @@
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.547</Modified>
+      <Modified>2018-12-27T07:42:30.845</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.564</Modified>
+      <Modified>2018-12-27T07:42:28.767</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.585</Modified>
+      <Modified>2018-12-27T07:42:29.948</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.595</Modified>
+      <Modified>2018-12-27T07:42:30.323</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-12-27T02:10:17.636</Modified>
+      <Modified>2018-12-27T07:42:29.113</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
@@ -779,39 +789,39 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-12-27T05:37:32.554</Modified>
+      <Modified>2018-12-27T07:42:56.834</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\buttonStyle.xbf">
       <PackagePath>buttonStyle.xbf</PackagePath>
-      <Modified>2018-12-27T05:37:32.551</Modified>
+      <Modified>2018-12-27T07:42:56.832</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\LocalMusicControl.xbf">
       <PackagePath>LocalMusicControl.xbf</PackagePath>
-      <Modified>2018-12-27T05:37:32.555</Modified>
+      <Modified>2018-12-27T07:42:56.835</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-12-27T05:37:32.555</Modified>
+      <Modified>2018-12-27T07:42:56.835</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\MusicLists.xbf">
       <PackagePath>MusicLists.xbf</PackagePath>
-      <Modified>2018-12-27T05:37:32.556</Modified>
+      <Modified>2018-12-27T07:42:56.836</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\MusicListSongsShow.xbf">
       <PackagePath>MusicListSongsShow.xbf</PackagePath>
-      <Modified>2018-12-27T05:37:32.557</Modified>
+      <Modified>2018-12-27T07:42:56.836</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\progressRingStyle.xbf">
       <PackagePath>progressRingStyle.xbf</PackagePath>
-      <Modified>2018-12-27T05:37:32.552</Modified>
+      <Modified>2018-12-27T07:42:56.833</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\sliderStyle.xbf">
       <PackagePath>sliderStyle.xbf</PackagePath>
-      <Modified>2018-12-27T05:37:32.553</Modified>
+      <Modified>2018-12-27T07:42:56.833</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\textStyle.xbf">
       <PackagePath>textStyle.xbf</PackagePath>
-      <Modified>2018-12-27T05:37:32.553</Modified>
+      <Modified>2018-12-27T07:42:56.834</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\Windows Kits\10\UnionMetadata\10.0.17763.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -831,11 +841,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2018-12-27T05:37:34.302</Modified>
+      <Modified>2018-12-27T07:42:58.924</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\bin\x86\Debug\Core\MusicPlayer.exe">
       <PackagePath>MusicPlayer.exe</PackagePath>
-      <Modified>2018-12-27T05:37:34.956</Modified>
+      <Modified>2018-12-27T07:42:59.867</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

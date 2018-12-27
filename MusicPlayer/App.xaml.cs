@@ -35,8 +35,8 @@ namespace MusicPlayer
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
-            TileUpdateManager.CreateTileUpdaterForApplication().Clear();
-            TileUpdateManager.CreateTileUpdaterForApplication().EnableNotificationQueue(true);
+            //TileUpdateManager.CreateTileUpdaterForApplication().Clear();
+            //TileUpdateManager.CreateTileUpdaterForApplication().EnableNotificationQueue(true);
 
 
             this.EnteredBackground += App_EnteredBackground;
