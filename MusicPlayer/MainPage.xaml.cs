@@ -281,11 +281,11 @@ namespace MusicPlayer
                     {
                         num_2 = index_2 + 2;
                     }
-                    if (num_2 == list.Musics.Count)
+                    if (num_2 == list.Musics.Count+1)
                     {
                         num_2 = 0;
                     }
-                    else if (num_2 == -1)
+                    else if (num_2 == -2)
                     {
                         num_2 = list.Musics.Count - 1;
                     }

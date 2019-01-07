@@ -4,6 +4,6 @@
 /Lib:"C:\Users\wang\.nuget\packages\microsoft.services.store.engagement\10.1810.16002\SDK\Windows Kits\10\ExtensionSDKs\Microsoft.Services.Store.Engagement\10.0\References\CommonConfiguration\neutral"
 /WinMD:"C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\obj\x86\Release\ilc\in\WinMetadata\Microsoft.Services.Store.Engagement.winmd"
 /WinMD:"C:\Users\wang\source\repos\U-musicPlayer\MusicPlayer\obj\x86\Release\ilc\in\WinMetadata\Windows.winmd"
-/VSTelemetrySessionSettings:"{"IsOptedIn":true,"HostName":"Dev14","AppInsightsInstrumentationKey":"f144292e-e3b2-4011-ac90-20e5c03fbce5","AsimovInstrumentationKey":"AIF-312cbd79-9dbb-4c48-a7da-3cc2a931cb70","AppId":1001,"UserId":"27f8ca31-ee3c-46de-8c27-f0ef0a3a3f64","Id":"c72e1712-9c9e-4077-8c6e-cc5952b29221","ProcessStartTime":636815612322503969}"
+/VSTelemetrySessionSettings:"{"IsOptedIn":true,"HostName":"Dev14","AppInsightsInstrumentationKey":"f144292e-e3b2-4011-ac90-20e5c03fbce5","AsimovInstrumentationKey":"AIF-312cbd79-9dbb-4c48-a7da-3cc2a931cb70","AppId":1001,"UserId":"27f8ca31-ee3c-46de-8c27-f0ef0a3a3f64","Id":"fdef725d-1daf-4365-aa32-00d8edb53514","ProcessStartTime":636824463023731938}"
 /RdXmlPath:"C:\Program Files\Microsoft SDKs\UWPNuGetPackages\microsoft.net.native.compiler\1.7.3\tools\LibraryXML"
 /RunOnlyPreDR
