@@ -387,28 +387,34 @@
                     RequestedTheme="Light">
             <AppBarButton Name="listShow_button"
                           Icon="MusicInfo"
+                          ToolTipService.ToolTip="{x:Bind listShow_button.Label}"
                           x:Uid="listShow_button"
                           Visibility="Collapsed"
                           Click="ListShow_button_Click"/>
             <AppBarButton Name="musicList_button"
                           Icon="List"
+                          ToolTipService.ToolTip="{x:Bind musicList_button.Label}"
                           x:Uid="musicList_button"
                           Click="MusicList_button_Click"/>
             <AppBarSeparator/>
             <AppBarButton Name="back_button"
                           Icon="Previous"
+                          ToolTipService.ToolTip="{x:Bind back_button.Label}"
                           x:Uid="back_button"
                           Click="Back_button_Click_1"/>
             <AppBarButton Name="play_button"
                           Icon="Play"
+                          ToolTipService.ToolTip="{x:Bind play_button.Label}"
                           x:Uid="play_button"
                           Click="Play_button_Click"/>
             <AppBarButton Name="forward_button"
                           Icon="Next"
+                          ToolTipService.ToolTip="{x:Bind forward_button.Label}"
                           x:Uid="forward_button"
                           Click="Forward_button_Click_1"/>
             <AppBarButton Name="model_button"
                           Icon="RepeatAll"
+                          ToolTipService.ToolTip="{x:Bind model_button.Label}"
                           x:Uid="model_button">
                 <AppBarButton.Flyout>
                     <MenuFlyout x:Name="model_flyout">
@@ -429,12 +435,13 @@
             </AppBarButton>
             <AppBarButton Name="stop_button"
                           Icon="Stop"
+                          ToolTipService.ToolTip="{x:Bind stop_button.Label}"
                           x:Uid="stop_button"
                           Click="Model_button_Click_1"/>
             <AppBarSeparator/>
-
             <AppBarButton Name="volume_button"
                           Icon="Volume"
+                          ToolTipService.ToolTip="{x:Bind volume_button.Label}"
                           x:Uid="volume_button"
                           Click="Volume_button_Click">
                 <AppBarButton.Flyout>
@@ -464,27 +471,33 @@
             </AppBarButton>
             <AppBarButton Name="fullScreen_button"
                           Icon='FullScreen'
+                          ToolTipService.ToolTip="{x:Bind fullScreen_button.Label}"
                           x:Uid="fullScreen_button"
                           Click="FullScreen_button_Click"/>
             <AppBarSeparator/>
             <AppBarButton Name="openFile_button"
                           Icon="OpenFile"
+                          ToolTipService.ToolTip="{x:Bind openFile_button.Label}"
                           x:Uid="openFile_button"
                           Click="OpenFile_button_Click"/>
             <AppBarButton Name="musicFolder_button"
                           Icon="Folder"
+                          ToolTipService.ToolTip="{x:Bind musicFolder_button.Label}"
                           x:Uid="musicFolder_button"
                           Click="MusicFolder_button_Click"/>
             <AppBarButton Name="addFolder_button"
                           Icon="NewFolder"
+                          ToolTipService.ToolTip="{x:Bind addFolder_button.Label}"
                           x:Uid="addFolder_button"
                           Click="AddFolder_button_Click"/>
             <AppBarButton Name="clear_button"
                           Icon="Clear"
+                          ToolTipService.ToolTip="{x:Bind clear_button.Label}"
                           x:Uid="clear_button"
                           Click="Clear_button_Click"/>
             <AppBarButton Name="backGround_button"
                           Icon="BrowsePhotos"
+                          ToolTipService.ToolTip="{x:Bind backGround_button.Label}"
                           x:Uid="backGround_button">
                 <AppBarButton.Flyout>
                     <MenuFlyout>
@@ -500,14 +513,17 @@
             <AppBarSeparator/>
             <AppBarButton Name="help_button"
                           Icon="Help"
+                          ToolTipService.ToolTip="{x:Bind help_button.Label}"
                           x:Uid="help_button"
                           Click="Help_button_Click"/>
             <AppBarButton Name="mail_button"
                           Icon="Mail"
+                          ToolTipService.ToolTip="{x:Bind mail_button.Label}"
                           x:Uid="mail_button"
                           Click="Mail_button_Click"/>
             <AppBarButton Name="settings_button"
                           Icon='Setting'
+                          ToolTipService.ToolTip="{x:Bind settings_button.Label}"
                           x:Uid="settings_button">
                 <AppBarButton.Flyout>
                     <MenuFlyout x:Name="menu_flyout">

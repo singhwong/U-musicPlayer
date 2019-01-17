@@ -3,14 +3,14 @@
   <CacheFile>
     <FileName>Strings\zh-CN\Resources.resw</FileName>
     <Checksum>4133149186121641865816720841126254108227</Checksum>
-    <ModifiedTime>2019-01-07T16:24:40.2826855</ModifiedTime>
+    <ModifiedTime>2019-01-17T14:57:46.8349362</ModifiedTime>
     <CacheFileType>NeutralResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>MultilingualResources\MusicPlayer.en-US.xlf</FileName>
     <Checksum>75135166189143961001709011216123217420819</Checksum>
-    <ModifiedTime>2019-01-07T16:26:18.596801+08:00</ModifiedTime>
+    <ModifiedTime>2019-01-17T14:59:16.5759314+08:00</ModifiedTime>
     <CacheFileType>XliffResource</CacheFileType>
     <WarningMessage>
       <string>更新 1 资源字符串与现有的翻译并将其应用到 XLIFF 文件。 相关的翻译都不变改，但应检查，以确保它们仍然有效，更新的源字符串。</string>
@@ -19,7 +19,7 @@
   <CacheFile>
     <FileName>Strings\en-US\Resources.resw</FileName>
     <Checksum>1472450180917941662382361415111996212102</Checksum>
-    <ModifiedTime>2019-01-07T16:26:18.6007903+08:00</ModifiedTime>
+    <ModifiedTime>2019-01-17T14:59:16.5789233+08:00</ModifiedTime>
     <CacheFileType>LanguageResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
