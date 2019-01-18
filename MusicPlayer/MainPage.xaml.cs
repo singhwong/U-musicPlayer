@@ -233,7 +233,7 @@ namespace MusicPlayer
 
         private int num_2 = 0;
         private int index_2 = 0;
-        private int? Num = null;//可空int类型
+        //private int? Num = null;//可空int类型
         private void SetMusicListListPlay(MusicList list)
         {
             #region 歌单列表顺序播放
@@ -248,48 +248,22 @@ namespace MusicPlayer
 
                 }
             }
-            if (list.Musics.Count > 1)
+            if (IsBackButtonClick)
             {
-                if (index_2 != Num)
-                {
-                    if (IsBackButtonClick)
-                    {
-                        num_2 = index_2 - 1;
-                        IsBackButtonClick = false;
-                    }
-                    else
-                    {
-                        num_2 = index_2 + 1;
-                    }
-                    if (num_2 == list.Musics.Count)
-                    {
-                        num_2 = 0;
-                    }
-                    else if (num_2 == -1)
-                    {
-                        num_2 = list.Musics.Count - 1;
-                    }
-                }
-                else
-                {
-                    if (IsBackButtonClick)
-                    {
-                        num_2 = index_2 - 2;
-                        IsBackButtonClick = false;
-                    }
-                    else
-                    {
-                        num_2 = index_2 + 2;
-                    }
-                    if (num_2 == list.Musics.Count+1)
-                    {
-                        num_2 = 0;
-                    }
-                    else if (num_2 == -2)
-                    {
-                        num_2 = list.Musics.Count - 1;
-                    }
-                }
+                num_2 = index_2 - 1;
+                IsBackButtonClick = false;
+            }
+            else
+            {
+                num_2 = index_2 + 1;
+            }
+            if (num_2 == list.Musics.Count)
+            {
+                num_2 = 0;
+            }
+            else if (num_2 == -1)
+            {
+                num_2 = list.Musics.Count - 1;
             }
             main_savemusic = list.Musics[num_2];//获取歌单列表歌曲
             string value_path = main_savemusic.Music_Path;
@@ -299,7 +273,6 @@ namespace MusicPlayer
             //GetLyrics(main_music.Artist,main_music.Title);
             ClearUseMusicIconColor();//清除获取的总歌曲icon颜色并设置歌单歌曲列表icon颜色           
             #endregion
-            Num = index_2;
             #endregion
         }
         private void List_Source()
@@ -366,7 +339,7 @@ namespace MusicPlayer
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             GetLocalIsMusicListSongPlayMethod();
-            ReadLocalMusicListData();//获取保存的历史歌单数据
+
             main_slider.Maximum = 0;//第二次启动，上次保存歌曲进度条，在播放前不可滑动，以优化时间显示
             #region 显示并启用后台运行控件按钮
             systemMedia_TransportControls.IsPlayEnabled = true;
@@ -381,7 +354,7 @@ namespace MusicPlayer
             }//确定设备是否显示反馈按钮
             ListPlay_bool = true;
             GetLocalMusic();//获取本地音乐文件ListView
-
+            ReadLocalMusicListData();//获取保存的历史歌单数据
             playTime_textblock.Text = "00:00/00:00";
 
             HistoryThemeHelpMethod();//根据保存的主题,启动后运行该主题
@@ -1444,6 +1417,8 @@ namespace MusicPlayer
             use_music.Remove(menu_music);
             allListSongsCount = use_music.Count;
             songNum_textBlock.Text = allListSongsCount.ToString();
+            AutoRemoveMusicFromList.RemoveMusicFromList(use_music,main_musicList,save_mainMusicList);
+            SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);
         }
 
         private void AfterRemoveSongMethod()
@@ -1473,6 +1448,8 @@ namespace MusicPlayer
             await file.DeleteAsync(StorageDeleteOption.Default);
             allListSongsCount = use_music.Count;
             songNum_textBlock.Text = allListSongsCount.ToString();
+            AutoRemoveMusicFromList.RemoveMusicFromList(use_music, main_musicList,save_mainMusicList);
+            SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);
         }
 
         private async void Direct_menu_Click(object sender, RoutedEventArgs e)
@@ -1487,6 +1464,8 @@ namespace MusicPlayer
             await file.DeleteAsync(StorageDeleteOption.PermanentDelete);
             allListSongsCount = use_music.Count;
             songNum_textBlock.Text = allListSongsCount.ToString();
+            AutoRemoveMusicFromList.RemoveMusicFromList(use_music, main_musicList,save_mainMusicList);
+            SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);
         }
 
         private async void GetFolderMusic()
@@ -1749,8 +1728,19 @@ namespace MusicPlayer
 
         private void MusicList_button_Click(object sender, RoutedEventArgs e)
         {
-            MusicList_SplitView.IsPaneOpen = !MusicList_SplitView.IsPaneOpen;
-            MusicList_ListView.SelectedItem = null;
+            if (main_progressRing.IsActive)
+            {
+                SetContentDialog();
+            }
+            else
+            {               
+                MusicList_SplitView.IsPaneOpen = !MusicList_SplitView.IsPaneOpen;
+                MusicList_ListView.SelectedItem = null;
+                AutoRemoveMusicFromList.RemoveMusicFromList(use_music, main_musicList, save_mainMusicList);
+                SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);//移除无效歌曲后，重新保存data
+
+                //自动从歌单删除歌曲(该歌曲已从总歌曲列表移除)            
+            }
         }
         private void SetMusicListName(string name)
         {
