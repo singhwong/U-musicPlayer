@@ -245,7 +245,6 @@ namespace MusicPlayer
                 if (list.Musics[i].Music_Path == path)
                 {
                     index_2 = i;
-
                 }
             }
             if (IsBackButtonClick)
@@ -579,7 +578,7 @@ namespace MusicPlayer
                 music.MusicSeconds_Str = list_hh + ":" + list_mm + ":" + list_ss;
                 music.Music_Stream = main_stream;
                 music.Music_Path = song.Name;
-                music.Id = num;
+                //music.Id = num;
                 music.SongFile = song;
                 music.Music_Color = transParent;
                 music.Album_title = song_Properties.Album;
@@ -934,17 +933,8 @@ namespace MusicPlayer
                     GetSavedMusicForeGround();
                     if (IsMusicListSongPlay_bool)
                     {
-                        //try
-                        //{
                         SetHistoryMusicListPalyModeSameCode();
                         SetMusicListListPlay(local_saveMusicList);
-                        //}
-                        //catch
-                        //{
-                        //    SetHistoryMusicListPlayModeMethod();
-                        //    SetMusicListListPlay(main_musicList[playMode_index]);
-                        //}
-                        //SetMusicListListPlay();//歌单歌曲列表，列表循环播放模式设置
                     }
                     else
                     {
@@ -957,17 +947,8 @@ namespace MusicPlayer
                     GetSavedMusicForeGround();
                     if (IsMusicListSongPlay_bool)
                     {
-                        //try
-                        //{
                         SetHistoryMusicListPalyModeSameCode();
                         SetMusicListRandomPlay(local_saveMusicList);
-                        //}
-                        //catch
-                        //{
-                        //    SetHistoryMusicListPlayModeMethod();
-                        //    SetMusicListRandomPlay(main_musicList[playMode_index]);
-                        //}
-                        //SetMusicListRandomPlay();//歌单歌曲列表，随机循环播放模式设置
                     }
                     else
                     {
@@ -1509,11 +1490,17 @@ namespace MusicPlayer
             }
             else
             {
+                musicList_button.IsEnabled = true;
                 listView_grid.Visibility = Visibility.Visible;
                 IslistShowButtonClick = true;
                 GetSavedMusicForeGround();
                 allMusic.Clear();
                 GetFolderMusic();
+                //if (main_progressRing.IsActive == false)
+                //{
+                //    AutoRemoveMusicFromList.RemoveMusicFromList(use_music, main_musicList, save_mainMusicList);
+                //    SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);//移除无效歌曲后，重新保存data
+                //}               
             }
         }
 
@@ -1600,6 +1587,7 @@ namespace MusicPlayer
             }
             else
             {
+                musicList_button.IsEnabled = true;
                 allMusic.Clear();
                 use_music.Clear();
                 main_mediaElement.Stop();
@@ -1607,6 +1595,11 @@ namespace MusicPlayer
                 play_button.Label = play_str;//显示 "播放"
                 IsMusicPlaying = false;
                 GetLocalMusic();
+                //if (main_progressRing.IsActive == false)
+                //{
+                //    AutoRemoveMusicFromList.RemoveMusicFromList(use_music, main_musicList, save_mainMusicList);
+                //    SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);//移除无效歌曲后，重新保存data
+                //}               
             }
         }
         private void Clear_button_Click(object sender, RoutedEventArgs e)
@@ -1617,6 +1610,10 @@ namespace MusicPlayer
             }
             else
             {
+                musicList_button.IsEnabled = false;
+                MusicList_SplitView.IsPaneOpen = false;
+                the_colume.Width = third_colume.Width;
+                second_colume.Width = new GridLength(0);
                 songNum_textBlock.Text = "0";
                 DisPoseStream();
                 use_music.Clear();

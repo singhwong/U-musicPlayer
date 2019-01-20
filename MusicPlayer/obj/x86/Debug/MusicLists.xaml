@@ -23,7 +23,7 @@
     <Grid>
         <TextBlock x:ConnectionId='3' Name="musicList_textblock"
                                                                 
-                   FontWeight="Light"
+                   FontWeight="Bold"
                    TextWrapping="Wrap"/>
         <ProgressBar x:ConnectionId='4' Name="control_progressBar"
                      Visibility="Collapsed"/>

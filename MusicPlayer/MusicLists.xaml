@@ -23,7 +23,7 @@
     <Grid>
         <TextBlock Name="musicList_textblock"
                    Text="{x:Bind this_musicList.MusicList_Name}"
-                   FontWeight="Light"
+                   FontWeight="Bold"
                    TextWrapping="Wrap"/>
         <ProgressBar Name="control_progressBar"
                      Visibility="Collapsed"/>
