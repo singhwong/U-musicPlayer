@@ -1490,7 +1490,6 @@ namespace MusicPlayer
             }
             else
             {
-                musicList_button.IsEnabled = true;
                 listView_grid.Visibility = Visibility.Visible;
                 IslistShowButtonClick = true;
                 GetSavedMusicForeGround();
@@ -1587,7 +1586,6 @@ namespace MusicPlayer
             }
             else
             {
-                musicList_button.IsEnabled = true;
                 allMusic.Clear();
                 use_music.Clear();
                 main_mediaElement.Stop();
@@ -1610,10 +1608,6 @@ namespace MusicPlayer
             }
             else
             {
-                musicList_button.IsEnabled = false;
-                MusicList_SplitView.IsPaneOpen = false;
-                the_colume.Width = third_colume.Width;
-                second_colume.Width = new GridLength(0);
                 songNum_textBlock.Text = "0";
                 DisPoseStream();
                 use_music.Clear();
@@ -1733,8 +1727,8 @@ namespace MusicPlayer
             {               
                 MusicList_SplitView.IsPaneOpen = !MusicList_SplitView.IsPaneOpen;
                 MusicList_ListView.SelectedItem = null;
-                AutoRemoveMusicFromList.RemoveMusicFromList(use_music, main_musicList, save_mainMusicList);
-                SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);//移除无效歌曲后，重新保存data
+                //AutoRemoveMusicFromList.RemoveMusicFromList(use_music, main_musicList, save_mainMusicList);
+                //SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);//移除无效歌曲后，重新保存data
 
                 //自动从歌单删除歌曲(该歌曲已从总歌曲列表移除)            
             }
@@ -1799,6 +1793,8 @@ namespace MusicPlayer
             the_colume.Width = new GridLength(0);
             second_colume.Width = third_colume.Width;
             value_List = (MusicList)e.ClickedItem;
+            //AutoRemoveMusicFromList.RemoveMusicListSong(use_music,value_List,save_mainMusicList);
+            //SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);
             MusicShow_ListView.ItemsSource = value_List.Musics;
             musidlistTitle_textblock.Text = value_List.MusicList_Name;
 
@@ -2070,6 +2066,13 @@ namespace MusicPlayer
             }
             SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);
             value_List.Musics.Remove(remove_value);
+        }
+
+        private void ClearMusic_button_Click(object sender, RoutedEventArgs e)
+        {
+            AutoRemoveMusicFromList.RemoveMusicListSong(use_music, value_List, save_mainMusicList);
+            SaveDataClass.SaveMusicListData(save_mainMusicList, filePath);//移除无效歌曲后，重新保存data
+
         }
     }
 }

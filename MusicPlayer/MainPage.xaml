@@ -74,7 +74,7 @@
                             Width="200"
                             Margin="0,30,0,0"
                             Background="Transparent"
-                            x:Uid="addMusicList_button"
+                            x:Uid="addMusicList_button"                           
                             Style="{StaticResource button_Style}"
                             Click="AddMusicList_button_Click"/>
                     <ListView Name="MusicList_ListView"
@@ -210,13 +210,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <!--<Button Name="addMusic_button"
+                        <Button Name="clearMusic_button"
                                 HorizontalAlignment="Right"
                                 FontFamily="Segoe MDL2 Assets"
-                                Content="&#xE710;"
+                                Content="&#xE72C;"
+                                ToolTipService.ToolTip="清空无效歌曲"
                                 Style="{StaticResource button_Style}"
                                 Background="Transparent"
-                                Visibility="Collapsed"/>-->
+                                Click="ClearMusic_button_Click"/>
                         <TextBlock Name="musidlistTitle_textblock"
                                    FontSize="17"
                                    FontWeight="Bold"
@@ -225,6 +226,7 @@
                                 HorizontalAlignment="Left"
                                 FontFamily="Segoe MDL2 Assets"
                                 Content="&#xE72B;"
+                                 ToolTipService.ToolTip="隐藏歌单"
                                 Style="{StaticResource button_Style}"
                                 Background="Transparent"
                                 Click="Back_Button_Click"/>
@@ -371,15 +373,16 @@
                                   Visibility="Collapsed"
                                   AudioCategory="BackgroundCapableMedia"
                                   CurrentStateChanged="Main_mediaElement_CurrentStateChanged_1"/>
-                    <ContentDialog x:Name="addList_ContentDialog"
+                    
+                        <ContentDialog x:Name="addList_ContentDialog"
                                    PrimaryButtonText="OK" 
                                    IsPrimaryButtonEnabled="True"
                                    CloseButtonText="Cancle">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
                             <TextBlock Name="addListContentDialogTile_textblock"
                                        x:Uid="addListContentDialogTile_textblock"
                                        HorizontalAlignment="Center"/>
@@ -394,7 +397,9 @@
                                          Width="200"/>
                             </StackPanel>
                         </Grid>
-                    </ContentDialog>
+                        </ContentDialog>
+                   
+                    
                     <ContentDialog x:Name="musicList_ContentDialog"
                                    PrimaryButtonText="OK"
                                    IsPrimaryButtonEnabled="False"

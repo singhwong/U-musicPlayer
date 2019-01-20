@@ -3,23 +3,23 @@
   <CacheFile>
     <FileName>Strings\zh-CN\Resources.resw</FileName>
     <Checksum>4133149186121641865816720841126254108227</Checksum>
-    <ModifiedTime>2019-01-20T09:00:29.2870328</ModifiedTime>
+    <ModifiedTime>2019-01-20T14:34:45.9983278</ModifiedTime>
     <CacheFileType>NeutralResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>MultilingualResources\MusicPlayer.en-US.xlf</FileName>
     <Checksum>75135166189143961001709011216123217420819</Checksum>
-    <ModifiedTime>2019-01-20T09:03:16.9836269+08:00</ModifiedTime>
+    <ModifiedTime>2019-01-20T14:35:23.701472+08:00</ModifiedTime>
     <CacheFileType>XliffResource</CacheFileType>
     <WarningMessage>
-      <string>1 resource strings with existing translations were updated and applied to the XLIFF file.  The related translations are unchanged, but should be checked to ensure they are still valid for the updated source string.</string>
+      <string>更新 1 资源字符串与现有的翻译并将其应用到 XLIFF 文件。 相关的翻译都不变改，但应检查，以确保它们仍然有效，更新的源字符串。</string>
     </WarningMessage>
   </CacheFile>
   <CacheFile>
     <FileName>Strings\en-US\Resources.resw</FileName>
     <Checksum>1472450180917941662382361415111996212102</Checksum>
-    <ModifiedTime>2019-01-20T09:03:16.9866182+08:00</ModifiedTime>
+    <ModifiedTime>2019-01-20T14:35:23.7194229+08:00</ModifiedTime>
     <CacheFileType>LanguageResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
